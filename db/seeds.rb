@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+DatabaseCleaner.allow_production = true  
+DatabaseCleaner.allow_remote_database_url = true
+#-------------------------------------------
+DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean
+
+puts "tout est détruit"
+
+10.times do 
+	@fist_name = Faker::Name.first_name
+	@user = User.create!(email: "#{@fist_name}@yopmail.com",  password: "password", password_confirmation: "password")
+end
+puts "users créés"
