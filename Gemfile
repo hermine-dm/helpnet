@@ -25,6 +25,7 @@ gem 'rubocop', '~> 0.57.2'
 gem 'dotenv-rails'
 gem 'database_cleaner'
 gem "aws-sdk-s3", require: false
+gem 'thredded', '~> 0.16.14'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
