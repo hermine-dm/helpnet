@@ -17,6 +17,7 @@ DatabaseCleaner.clean
 puts "tout est détruit"
 
 @user = User.create!(email: "admin_helpnet@yopmail.com",  password: "password", password_confirmation: "password", admin: true)
+puts "admin créé"
 
 10.times do 
 	@fist_name = Faker::Name.first_name
