@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  #before_action :authenticate_user
+  #before_action :authenticate_current_user
 
 	def show
     @user = User.find(params[:id])
@@ -16,5 +19,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    User.find(params[:id]).delete 
+    flash[:alert] = 'Votre compte a été supprimé'
+    redirect_to new_user_registration_path
   end
 end

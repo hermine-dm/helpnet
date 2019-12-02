@@ -1,0 +1,45 @@
+<%= form_tag url_for(action: 'update'), method: "patch", class: 'container' do %>
+  <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
+  <div class="row justify-content-center">
+    <div class="col-md-6 pt-5">
+      <%= label_tag 'Pseudo' %>
+      <div class="form-label-group">
+        <%= text_field_tag 'name', value = @user.name %>
+      </div>
+    </div>
+    <div class="col-md-6 pt-5">
+      <%= label_tag 'Nom' %>
+      <div class="form-label-group">
+        <%= text_field_tag 'last_name', value = @user.last_name %>
+      </div>
+    </div>
+    <div class="col-md-6 pt-5">
+      <%= label_tag 'Prénom' %>
+      <div class="form-label-group">
+        <%= text_field_tag 'first_name', value = @user.first_name %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 pt-5">
+      <%= label_tag 'Email' %>
+      <div class="form-label-group">
+        <%= text_field_tag 'email', value = @user.email %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6 pt-5">
+      <%= label_tag 'Code Postal' %>
+      <div class="form-label-group">
+        <%= text_field_tag 'zip_code', value = @user.zip_code %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 py-5">
+      <%= submit_tag "Valider les modifications", class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+<% end %>
