@@ -15,4 +15,11 @@ module ApplicationHelper
   		end
   	end
 
+  	def authenticate_admin
+	    @user = current_user
+	    unless (@user.admin == true)  
+	    	redirect_to root_path
+  		end
+  	end
+
 end

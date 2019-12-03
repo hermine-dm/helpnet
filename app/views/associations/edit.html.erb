@@ -1,0 +1,54 @@
+<section>
+    </br>
+      <div class="container bg-white">
+        </br>
+      <h1 class="display-4 d-flex justify-content-center text-primary">Modifier les informations</h1>
+      <div class="container d-flex justify-content-center">
+        <div class="">
+            <%= form_for @association do |f| %>
+              <div class="form-group">
+                <%= label_tag "Le nom de l'association" %><span class="text-muted">(*)</span> </br>
+                <%= f.text_field :name %> 
+              </div>    
+              <div class="form-group">
+                  <%= label_tag 'Le numéro du registre RNA'%><span class="text-muted">(*)</span> </br>
+                  <%= f.text_field  :num_rna  %>
+              </div>
+              <div class="form-group">
+                  <%= label_tag "La description de l'assocation"%><span class="text-muted">(*)</span> </br>
+                  <%= f.text_field  :description  %>
+              </div>
+              <div class="form-group">
+                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> </br>
+                  <%= f.text_field :location %>
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span></br>
+                <%= f.text_field :zip_code%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le site internet" %> </br>
+                <%= f.text_field :website%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le lien Facebook" %> </br>
+                <%= f.text_field :fb_website%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "L'email de contact" %> </br>
+                <%= f.text_field :email%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le logo" %> <span class="text-muted">lien vers le logo</span> </br>
+                <%= f.text_field :logo_url%> 
+              </div>
+              <span class="text-muted">les champs avec (*) sont obligatoires</span>
+              <div class="">
+              <%= f.submit 'Modifier', :class => "btn btn-default bg-primary text-white" %>
+              </div>
+              </br> </br> </br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
