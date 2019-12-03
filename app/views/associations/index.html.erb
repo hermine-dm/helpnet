@@ -1,5 +1,3 @@
-<h1>Associations#index</h1>
-<p>Find me in app/views/associations/index.html.erb</p>
 <% @associations.each do |association| %>
        <div class="col-md-4 mt-4">
         <div class="card h-100 ">
@@ -14,3 +12,7 @@
       </div>
     
 <% end %>
+
+<% if current_user && current_user.admin == true %>
+  <div class="btn btn-primary"> <%= link_to "Ajouter une nouvelle association", new_association_path(), :class => "text-white" %>  </div>
+<%end%>

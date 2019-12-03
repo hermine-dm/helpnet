@@ -1,5 +1,3 @@
-<h1>Associations#show</h1>
-<p>Find me in app/views/associations/show.html.erb</p>
 
  <section>
 	<div class="container pt-5">
@@ -11,6 +9,9 @@
 	            <h4 class="card-title pt-3 "> <%= @association.name %> </h4>
 	            <p class="card-text"></br> 
       </div>
+      <% unless @association.logo_url.nil? %>
+          <img src="<%= @association.logo_url %>" alt="logo_assoc">
+      <%end%>
     </div>
     <div class="row py-3 bg-white border">
       <div class="container col-lg-8 py-2 px-5">
@@ -48,5 +49,10 @@
         <div class="container col-lg-4 py-3 px-5 bg-white">
         </div>
       </div>
+      <hr>
+      <% if current_user && current_user.admin == true %>
+        <div class="btn btn-primary"> <%= link_to "Editer", edit_association_path(@association.id), :class => "text-white" %>  </div>
+        <div class="btn btn-primary"> <%= link_to "Supprimer",association_path(@association.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, :class => "text-white"%></div>
+      <%end%>
   </div>
 </section>
