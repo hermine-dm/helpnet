@@ -19,7 +19,7 @@ puts "admin créé"
 
 10.times do 
 	@fist_name = Faker::Name.first_name
-	@user = User.create!(email: "#{@fist_name}@yopmail.com",  password: "password", password_confirmation: "password")
+	@user = User.create!(email: "#{@fist_name}#{rand(0..15)}@yopmail.com",  password: "password", password_confirmation: "password", created_at: Faker::Date.between(from: 30.days.ago, to: Date.today))
 end
 puts "users créés"
 

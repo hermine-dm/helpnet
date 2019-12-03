@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, on: :update
 
   after_create :generate_name
-  after_create :welcome_send
+  #after_create :welcome_send
 
   def generate_name #create a name from the email adress and id
   	a = self.email.chars.index("@") #find the position of @ in the email adress
