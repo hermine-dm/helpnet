@@ -101,10 +101,10 @@ Thredded.parent_mailer = 'ActionMailer::Base'
 # How Thredded generates URL slugs from text:
 
 # Default:
-# Thredded.slugifier = ->(input) { input.parameterize }
+ Thredded.slugifier = ->(input) { input.parameterize }
 
 # If your forum is in a language other than English, you might want to use the babosa gem instead
-Thredded.slugifier = ->(input) { Babosa::Identifier.new(input).normalize.transliterate(:french).to_s }
+# Thredded.slugifier = ->(input) { Babosa::Identifier.new(input).normalize.transliterate(:french).to_s }
 
 # By default, thredded uses integers for record ID route constraints.
 # For integer based IDs (default):
