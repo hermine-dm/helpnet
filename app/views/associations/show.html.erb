@@ -1,0 +1,52 @@
+<h1>Associations#show</h1>
+<p>Find me in app/views/associations/show.html.erb</p>
+
+ <section>
+	<div class="container pt-5">
+		<div class="row">
+      <div class="container col-lg-8 bg-light px-0">
+
+      </div>
+			<div class="col-lg-4 bg-light"> 
+	            <h4 class="card-title pt-3 "> <%= @association.name %> </h4>
+	            <p class="card-text"></br> 
+      </div>
+    </div>
+    <div class="row py-3 bg-white border">
+      <div class="container col-lg-8 py-2 px-5">
+         <div class="text-primary"><i class="far fa-heart"></i> </div>
+      </div>
+      <div class="col-lg-4 "> 
+              <div class="btn btn-outline-primary btn-block">  </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="container col-lg-8 py-3 px-5 bg-white border"> 
+            <h6 class="text-primary"><strong>Description</strong></h6>
+            <p class="text-dark"> <%= @association.description %> </p>
+          </div>
+          <div class="container col-lg-4 py-3 px-5 bg-white">
+            <h6 class="text-primary"><strong>Adresse exacte</strong></h6>
+            <p class="text-dark"> <%= @association.location %> </p>
+            <p class="text-dark"> <%= @association.zip_code %> </p>
+          </div>
+      </div>
+      <div class="row center">
+        <div class="container col-lg-8 py-3 px-5 bg-white border"> 
+          <h6 class="text-primary"><strong>Nous suivre</strong></h6>
+          <% unless @association.fb_website.nil? %>
+            <div class="text-primary"> <i class="fab fa-facebook-f"> </i> <%= link_to "Notre Facebook", @association.fb_website, :class => "text-white" %> </div>
+          <%end%>
+          <% unless @association.website.nil? %>
+          <div class="text-primary"> <%= link_to "Notre site", @association.website, :class => "text-white" %> </div>
+          <%end%>
+          <% unless @association.email.nil? %>
+          <div class="text-primary"> <%= link_to "Notre contact", @association.email, :class => "text-white" %> </div>
+          <%end%>
+        </div>
+
+        <div class="container col-lg-4 py-3 px-5 bg-white">
+        </div>
+      </div>
+  </div>
+</section>
