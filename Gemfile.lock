@@ -72,7 +72,6 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    babosa (1.0.3)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.5)
@@ -360,7 +359,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3
-  babosa
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
