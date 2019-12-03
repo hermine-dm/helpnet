@@ -11,8 +11,6 @@ DatabaseCleaner.allow_remote_database_url = true
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
-#require 'thredded/database_seeder'
-#Thredded::DatabaseSeeder.run
 
 puts "tout est détruit"
 
