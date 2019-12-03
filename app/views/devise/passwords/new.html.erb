@@ -1,16 +1,25 @@
-<h2>Forgot your password?</h2>
+<body class="d-flex justify-content-center fluid-container" style="background-color: #D3D3D3;">
+  <div class= "container d-flex justify-content-center" >
+    <div class=" d-flex flex-column form" style="padding: 5% 7% 5% 7%;">
+      <h2>Vous avez oublié votre mot de passe ?</h2>
+      <p class="m-2">Entrez votre adresse e-mail pour récupérer votre mot de passe</p>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="field m-2">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Envoyer le lien par email ", :class=> 'btn btn-primary m-1' %>
+        </div>
+      <% end %>
+      <div style="font-size: 10px;">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
+</body>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
