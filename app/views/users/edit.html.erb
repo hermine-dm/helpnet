@@ -5,61 +5,54 @@
 
 <div class="container">
   <%= form_tag url_for(action: 'update'), method: "patch", class: 'container' do %>
-  <div class="row mt-n5 mb-3 text-center">
-    <div class="col-md-2">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi" alt="" height="120" width="120" class="rounded-circle">
-      <a href="" class="btn btn-outline-primary">Changer avatar</a>
-    </div>
-    <div class="col-md-10">
-      <div class="row d-flex justify-content-between">
-
-        <div class="col-md-3 d-flex flex-column">
-          <h1 class="mb-4 text-md-left"><%= text_field_tag 'name', value = @user.name %></h1>
-          <p class="text-md-left">Dernière connexion : </p>
+    <div class="row mt-n5 mb-3 text-center">
+      <div class="col-md-2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi" alt="" height="120" width="120" class="rounded-circle">
+        <a href="" class="btn btn-outline-primary">Changer avatar (NA)</a>
+      </div>
+      <div class="col-md-10">
+        <div class="row d-flex justify-content-between">
+          <div class="col-md-3 d-flex flex-column">
+            <h1 class="mb-4 text-md-left"><%= text_field_tag 'name', value = @user.name %></h1>
+            <p class="text-md-left">Dernière connexion : <%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></p>
+          </div>
         </div>
-        <% if current_user == false || current_user.id != @user.id %>
-        <div class="col-md-2 align-self-end">
-          <%= link_to "Contacter", root_path, class: 'btn btn-primary mb-2' %>
-        </div>
-        <% end %>
       </div>
     </div>
-  </div>
 
-  <div class="row border text-center py-3">
-    <div class="col-6">inscrit depuis le 12/12/19</div>
-    <div class="col-6">nb de posts: 15</div>
-  </div>
-
-  <div class="row border text-center py-3">
-    <div class="col-md-6">
-      <%= label_tag 'Nom : ' %>
-      <%= text_field_tag 'last_name', value = @user.last_name %>
+    <div class="row border text-center text-muted py-3">
+      <div class="col-6">inscrit depuis le <%= @user.created_at.strftime("%d-%m-%Y") %> </div>
+      <div class="col-6">nb de posts : <%= @user.thredded_posts.count %></div>
     </div>
 
-    <div class="col-md-6">
-      <%= label_tag 'Prénom : ' %>
-      <%= text_field_tag 'first_name', value = @user.first_name %>
-    </div>
-  </div>
+    <div class="row border text-center py-3">
+      <div class="col-md-6">
+        <%= label_tag 'Nom : ' %>
+        <%= text_field_tag 'last_name', value = @user.last_name %>
+      </div>
 
-  <div class="row border text-center py-3">
-    <div class="col-md-6">
-      <%= label_tag 'Email : ' %>
-      <%= text_field_tag 'email', value = @user.email %>
+      <div class="col-md-6">
+        <%= label_tag 'Prénom : ' %>
+        <%= text_field_tag 'first_name', value = @user.first_name %>
+      </div>
     </div>
-    <div class="col-md-6">
-      <%= label_tag 'Localisation : ' %>
-      <%= text_field_tag 'zip_code', value = @user.zip_code %>
-    </div>
-  </div>
 
-<div class="row d-flex pt-3 justify-content-end">
-  <div class="col-md-3 text-right">
-    <%= submit_tag "Valider les modifications", class: 'btn btn-primary' %>
-  </div>
+    <div class="row border text-center py-3">
+      <div class="col-md-6">
+        <%= label_tag 'Email : ' %>
+        <%= text_field_tag 'email', value = @user.email %>
+      </div>
+      <div class="col-md-6">
+        <%= label_tag 'Localisation : ' %>
+        <%= text_field_tag 'zip_code', value = @user.zip_code %>
+      </div>
+    </div>
+
+    <div class="row d-flex pt-3 justify-content-end">
+      <div class="col-md-3 text-right">
+        <%= submit_tag "Valider les modifications", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-</div>
-
-<% end %>
