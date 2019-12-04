@@ -11,7 +11,7 @@
                                async: !Rails.application.config.assets.debug,
                                defer: true,
                                'data-turbolinks-track': 'reload' %>
-    <%== Gravatar.prefetch_dns %>
+    <%= Gravatar.prefetch_dns%>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <%= csrf_meta_tags %>
