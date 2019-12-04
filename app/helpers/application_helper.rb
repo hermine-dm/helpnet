@@ -8,9 +8,9 @@ module ApplicationHelper
 	end
 
 
-	def authenticate_current_user
+	def authenticate_current_user_or_admin
 	    @user = User.find(params[:id])
-	    unless (current_user.id == @user.id)
+	    unless (current_user.id == @user.id || current_user.admin == true )
 	    	redirect_to root_path
   		end
   	end
