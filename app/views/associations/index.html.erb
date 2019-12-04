@@ -1,0 +1,18 @@
+<% @associations.each do |association| %>
+       <div class="col-md-4 mt-4">
+        <div class="card h-100 ">
+          <div class="card-body">
+            <h4 class="card-title"> <%= association.name %> </h4>
+            <p class="card-text"> <i class="fas fa-map-marked-alt"></i>  : <%= association.location %></br><%= association.description %>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+            <div class="btn btn-primary"> <%= link_to "Plus d'informations", association_path(association.id), :class => "text-white" %>  </div>
+          </div>
+        </div>
+      </div>
+    
+<% end %>
+
+<% if current_user && current_user.admin == true %>
+  <div class="btn btn-primary"> <%= link_to "Ajouter une nouvelle association", new_association_path(), :class => "text-white" %>  </div>
+<%end%>
