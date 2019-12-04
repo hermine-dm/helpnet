@@ -1,58 +1,63 @@
+<div class="container-fluid py-5 bg-light">
+  <br>
+</div>
 
- <section>
-	<div class="container pt-5">
-		<div class="row">
-      <div class="container col-lg-8 bg-light px-0">
-
-      </div>
-			<div class="col-lg-4 bg-light"> 
-	            <h4 class="card-title pt-3 "> <%= @association.name %> </h4>
-	            <p class="card-text"></br> 
-      </div>
-      <% unless @association.logo_url.nil? %>
-          <img src="<%= @association.logo_url %>" alt="logo_assoc">
-      <%end%>
+<div class="container mt-n5">
+  <div class="row">
+    <div class="col-md-2 text-center">
+      <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnybl2dND6AAjhk2HYuG9m8-Wt-jsPWnil6A89n1F7uMGEZ3b2" alt="" width="150" height="150">
     </div>
-    <div class="row py-3 bg-white border">
-      <div class="container col-lg-8 py-2 px-5">
-         <div class="text-primary"><i class="far fa-heart"></i> </div>
-      </div>
-      <div class="col-lg-4 "> 
-              <div class="btn btn-outline-primary btn-block">  </div>
-      </div>
+    <div class="col-md-6 text-center text-md-left">
+      <h1> <%= @association.name %> </h1>
+      <p>Slogan ou courte description de l'asso à ajouter par la suite</p>
     </div>
-    <div class="row">
-        <div class="container col-lg-8 py-3 px-5 bg-white border"> 
-            <h6 class="text-primary"><strong>Description</strong></h6>
-            <p class="text-dark"> <%= @association.description %> </p>
-          </div>
-          <div class="container col-lg-4 py-3 px-5 bg-white">
-            <h6 class="text-primary"><strong>Adresse exacte</strong></h6>
-            <p class="text-dark"> <%= @association.location %> </p>
-            <p class="text-dark"> <%= @association.zip_code %> </p>
-          </div>
-      </div>
-      <div class="row center">
-        <div class="container col-lg-8 py-3 px-5 bg-white border"> 
-          <h6 class="text-primary"><strong>Nous suivre</strong></h6>
-          <% unless @association.fb_website.nil? %>
-            <div class="text-primary"> <i class="fab fa-facebook-f"> </i> <%= link_to "Notre Facebook", @association.fb_website, :class => "text-white" %> </div>
-          <%end%>
-          <% unless @association.website.nil? %>
-          <div class="text-primary"> <%= link_to "Notre site", @association.website, :class => "text-white" %> </div>
-          <%end%>
-          <% unless @association.email.nil? %>
-          <div class="text-primary"> <%= link_to "Notre contact", @association.email, :class => "text-white" %> </div>
-          <%end%>
-        </div>
-
-        <div class="container col-lg-4 py-3 px-5 bg-white">
-        </div>
-      </div>
-      <hr>
-      <% if current_user && current_user.admin == true %>
-        <div class="btn btn-primary"> <%= link_to "Editer", edit_association_path(@association.id), :class => "text-white" %>  </div>
-        <div class="btn btn-primary"> <%= link_to "Supprimer",association_path(@association.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, :class => "text-white"%></div>
-      <%end%>
   </div>
-</section>
+
+<div class="row py-3">
+  <div class="col py-3 text-center">
+    <h2 class="pb-3">
+      Description :
+    </h2>
+    <p> <%= @association.description %> </p>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid bg-light py-3">
+    <div class="container">
+    <div class="row text-center">
+      <div class="col py-3">
+        <h2>
+          Nous Contacter :
+        </h2>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-3">
+        <p> <%= @association.location %> </p>
+        <p> <%= @association.zip_code %> </p>
+      </div>
+    <div class="col-md-3">
+      <% unless @association.email.nil? %>
+      <div class=""> <%= link_to @association.email, @association.email%> </div>
+      <%end%>
+      <% unless @association.website.nil? %>
+      <div class=""> <%= link_to @association.website, @association.website%> </div>
+      <%end%>
+      <% unless @association.fb_website.nil? %>
+      <div class=""> <i class="fab fa-facebook-f">  </i> <%= link_to "Notre Facebook", @association.fb_website %> </div>
+      <%end%>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="container py-3">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="py-3"> Nous soutenir : </h2>
+      <p> <%= @association.description %> </p>
+      <%= link_to 'Faire un don', '#', class: 'btn btn-primary my-3' %>
+    </div>
+  </div>
+  </div>
