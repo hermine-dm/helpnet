@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'admin/show'
   devise_for :users
   resources :users, only: [:show, :edit, :update, :destroy] do
   	resources :avatars, only: [:create]
   end
+  get "admin/show"
   resources :associations
   root to: 'home#index'
   mount Thredded::Engine => '/forum'
