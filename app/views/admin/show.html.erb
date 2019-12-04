@@ -1,0 +1,68 @@
+<div class="container-fluid bg-light py-5">
+  <br>
+</div>
+
+<div class="container">
+  <div class="row mt-n5 text-center">
+    <div class="col-md-12 h1">
+      DASHBOARD ADMIN
+    </div>
+  </div>
+  <div class="row border text-center py-4 mb-2">
+    <div class="col-2 mb-4 text-md-left">
+      Utilisateurs créés
+    </div>
+    <div class="col-10 py-2">
+      <%= line_chart [{name: "Utilisateurs créés", data: User.group_by_day(:created_at).count },{name: "Utilisateurs connectés", data: User.group_by_day(:last_sign_in_at).count }] %>
+    </div>
+  </div>
+  <div class="row border text-center py-4 mb-2">
+    <div class="col-2 mb-4 text-md-left">
+      Utilisateurs connectés
+    </div>
+    <div class="col-10">
+      <%= line_chart User.group_by_day(:last_sign_in_at).count %>
+    </div> <!-- ne sert a rien tant que last_sign_in_at est pas renseigné-->
+  </div>
+  <div class="row border text-center py-4 pl-3 mb-2">
+    Liste des associations => en attente partial pour voir
+      <ul class="list-group col-12 text-left py-2"> 
+        <li class="row py-2"> 
+          <div class="col-2 h6">ID</div>
+          <div class="col-3 h6">NOM</div>
+          <div class="col-3 h6">#RNA</div>
+        </li>
+        <% @associations.each do |association| %>
+         <li class="row py-2">
+          <div class="col-2 h6"><%= association.id %> </div>
+          <div class="col-3 h6"><%= association.name %> </div>
+          <div class="col-3 h6"><%= association.num_rna %> </div>
+          <div class="col-4 text-right"><%= link_to 'Supprimer', association_path(association.id), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
+        </li>
+        <%end%> 
+      </ul>
+  </div>
+  <div class="row border text-center py-4 pl-3 mb-2">
+    Liste des users (sauf admin) => en attente partial pour voir
+      <ul class="list-group col-12 text-left py-2"> 
+        <li class="row py-2"> 
+          <div class="col-1 h6"> ID </div>
+          <div class="col-3 h6"> PSEUDO </div>
+          <div class="col-3 h6"> EMAIL </div>
+          <div class="col-1 h6"> #POSTS </div>
+        </li>
+        <% @users.each do |user| %>
+         <li class="row py-2"> 
+          <% unless user.admin == true %> 
+            <div class="col-1 h6"><%= user.id %> </div>
+            <div class="col-3 h6"><%= user.name %> </div>
+            <div class="col-3 h6"><%= user.email %> </div>
+            <div class="col-1 h6"><%= user.thredded_posts.count %> </div>
+            <div class="col-4 text-right"><%= link_to 'Supprimer', user_path(user.id), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
+          <%end%>
+        </li>
+        <%end%> 
+      </ul>
+      </div>
+  </div>
+</div>

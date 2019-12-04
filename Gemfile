@@ -27,8 +27,10 @@ gem 'database_cleaner'
 gem "aws-sdk-s3", require: false
 gem 'thredded', '~> 0.16.14'
 gem 'factory_bot'
-gem 'rails-i18n'
+gem 'rails-i18n' #pour tout traduire
 gem 'kaminari-i18n'
+gem "chartkick" #pour faire des graphiques
+gem 'groupdate' #pour grouper par date
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

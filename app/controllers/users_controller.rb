@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user
-  before_action :authenticate_current_user
+  before_action :authenticate_current_user, except: [:destroy]
+  before_action :authenticate_current_user_or_admin, only: [:destroy]
 
 	def show
     @user = User.find(params[:id])
@@ -24,6 +25,10 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).delete 
     flash[:alert] = 'Votre compte a été supprimé'
-    redirect_to new_user_registration_path
+    if current_user.admin == true
+      redirect_back(fallback_location: admin_show_path)
+    else 
+      redirect_to root_path
+    end
   end
 end
