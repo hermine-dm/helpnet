@@ -11,6 +11,11 @@
       <h1> <%= @association.name %> </h1>
       <p>Slogan ou courte description de l'asso à ajouter par la suite</p>
     </div>
+    <div class="col-md-4 text-center text-md-right">
+      <% if current_user && current_user.admin == true %>
+        <%= link_to "Editer infos", edit_association_path(@association.id), class: 'btn btn-primary' %>
+      <%end%>
+    </div>
   </div>
 
 <div class="row py-3">
@@ -52,12 +57,11 @@
   </div>
   </div>
 
-  <div class="container py-3">
-  <div class="row">
+  <div class="container">
+  <div class="row py-3">
     <div class="col text-center">
       <h2 class="py-3"> Nous soutenir : </h2>
       <p> <%= @association.description %> </p>
       <%= link_to 'Faire un don', '#', class: 'btn btn-primary my-3' %>
     </div>
-  </div>
   </div>
