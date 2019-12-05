@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 DatabaseCleaner.allow_production = true  
 DatabaseCleaner.allow_remote_database_url = true
 #-------------------------------------------
@@ -17,7 +18,7 @@ puts "tout est détruit"
 @user = User.create!(email: "admin_helpnet@yopmail.com",  password: "password", password_confirmation: "password", admin: true)
 puts "admin créé"
 
-10.times do 
+15.times do 
 	@fist_name = Faker::Name.first_name
 	@user = User.create!(email: "#{@fist_name}#{rand(0..20)}@yopmail.com",  password: "password", password_confirmation: "password", created_at: Faker::Date.between(from: 15.days.ago, to: Date.today), last_sign_in_at: Faker::Date.between(from: 15.days.ago, to: Date.today))
 end
@@ -69,3 +70,33 @@ puts "users créés"
 			Ce Lochois de 26 ans aime les défis sportifs et les voyages, mais c’est avec un objectif tout particulier qu’il s’élancera, avec sa brouette, le 15 juillet prochain.  » Je voudrais faire connaître la maladie de Charcot et récolter des fonds qui serviront la recherche qui la concerne. Cette maladie a causé la mort de mon père le 25 mai dernier, moins d’un an après avoir été diagnostiqué « , explique le jeune homme, d’une voix qui laisse percevoir un mental d’acier. Son père, Philippe Monnerie, dirigeait l’entreprise Juhel à Loches, spécialisée dans le transport routier de fret de proximité. Applicateur d’enrobés de profession, Vincent Monnerie n’a pas cherché longtemps le moyen de transporter facilement son minimum vital lors de son périple à travers les Alpes. Ce sera une brouette ! Le véhicule avec lequel il est le plus à l’aise, puisque c’est son outil de travail. Un véhicule qui fait travailler « tous les muscles du corps », mais dont le maniement pourrait s’avérer scabreux dans la descente de l’un des 21 cols à franchir. Pas de quoi faire reculer le Lochois de 26 ans, qui a hérité de son père Philippe, décédé en mai dernier de la maladie de Charcot, un an après avoir été diagnostiqué, le goût de l’effort, des voyages, et de l’engagement pour les autres. Philippe a œuvré pour les plus démunis en Afrique, Vincent promet de soutenir « sur le long terme » la recherche sur la maladie de Charcot. https://youtu.be/KKx4VZp6WGU",
 		location: "Sur les routes avec la brouette", zip_code: "75000", website: "https://associationmomoneextreme.wordpress.com/", fb_website: "https://www.facebook.com/elviajeroencarretilla/", phone: "0785543847", donate_link: "https://www.helloasso.com/associations/momone-extreme/formulaires/1?fbclid=IwAR01xed06N89XYM6Pd-I2HvQyBfj0CYW8tt-1IvVcLzszrbTY9zgivS1ZCk", logo_url: "https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/36347132_2065484783715532_9133833453475725312_n.jpg?_nc_cat=111&_nc_ohc=sSA126E2_jIAQkaFIQkZbG7fil0gF17F7jREPu0wDR5OpjZDjPn8BDZEw&_nc_ht=scontent-cdg2-1.xx&oh=366784a7340dd764a8191eb7f90f104b&oe=5E6DCB8A")
 puts "associations créées"
+
+		Thredded::Messageboard.create(name: "La Relation avec l'entourage", description: "Ce theme sert à échanger sur vos relations avec votre entourage proche")
+		Thredded::Messageboard.create(name: "Les Aides gouvernementales", description: "Ce theme sert à échanger sur  tous les sujets fiscaux // aides, etc")
+		Thredded::Messageboard.create(name: "L'Annonce", description: "Ce theme sert à échanger sur tous les sujets liés à l'annonce de la maladie")
+		Thredded::Messageboard.create(name: "La Vie intime", description: "Ce theme sert à échanger sur tous les sujets liés à la vie intime (toilettes, couples, etc)")
+		Thredded::Messageboard.create(name: "La Relation avec le corps médical", description: "Ce theme sert à échanger sur tous les sujets liés à vos relations avec vos médecins, infirmier.ères, kiné, ect.")
+		Thredded::Messageboard.create(name: "La Médication", description: "Ce theme sert à échanger sur tous les sujets liés aux médicaments et oméopathies")
+		Thredded::Messageboard.create(name: "Divers", description: "Tout ce que vous voulez!")
+puts "thredded categories créées"
+
+a = 1
+User.all.each do |user|
+	Thredded::UserDetail.create(user_id: user.id)
+	Thredded::MessageboardUser.create(thredded_user_detail_id: user.id, thredded_messageboard_id: Thredded::Messageboard.all.sample.id, last_seen_at: DateTime.now)
+	2.times do
+		mbid = Thredded::Messageboard.all.sample.id 
+		Thredded::Topic.create(user_id: user.id, title: "#{Faker::Marketing.buzzwords}", posts_count: 1, messageboard_id: mbid)
+		Thredded::Post.create(user_id: user.id, content: "#{Faker::Lorem.paragraph(sentence_count: 2)}", source: "web", postable_id: a, messageboard_id: mbid, moderation_state: "approved")
+	a = a + 1
+	end
+end
+hash = {}
+Thredded::Post.all.each{|post| hash[post.postable_id] = post.messageboard_id}
+
+50.times do 
+	pid = Thredded::Post.all.sample.postable_id
+	Thredded::Post.create(user_id: User.all.sample.id, content: "#{Faker::Lorem.paragraph(sentence_count: 2)}", source: "web", postable_id: pid, messageboard_id: hash[pid], moderation_state: "approved")
+end
+puts "divers thredded (topics/msg) créées"
+
