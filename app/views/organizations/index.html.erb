@@ -14,8 +14,18 @@
                   <p class="card-text"> <%= organization.description %>
                 </div>
               </div>
-              <div class="card-footer d-flex justify-content-center">
+              <div class="card-footer d-flex justify-content-between">
                 <div class="btn btn-primary"> <%= link_to "En savoir plus", organization_path(organization.id), :class => "text-white" %>  </div>
+                <%if current_user%>
+                  <% @follow = Follow.find_by(user_id:current_user.id, organization_id:organization.id)%>
+                  <%if @follow == nil%>
+                    <a class="btn btn-secondary" <%= link_to "Suivre", organization_follows_path(organization.id), method: :post %></a>
+                  <%else%>
+                    <a class="btn btn-secondary" <%= link_to "Ne plus suivre", organization_follow_path(organization.id, @follow.id), method: :delete %></a>
+                  <%end%>
+                <%else%>
+                    <a class="btn btn-secondary" <%= link_to "Suivre", new_user_session_path%></a>
+                <%end%>
               </div>
             </div>
           </div>

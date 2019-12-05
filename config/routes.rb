@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "admin/show"
   get "/static/:page" => "static#show"
   resources :organizations do
-    resources :follow, only: [:create, :destroy]
+    resources :follows, only: [:create, :destroy]
   end
   root to: 'home#index'
   mount Thredded::Engine => '/forum'

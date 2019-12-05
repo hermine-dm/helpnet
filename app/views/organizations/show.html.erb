@@ -22,6 +22,16 @@
       <% if current_user && current_user.admin == true %>
         <%= link_to "Editer infos", edit_organization_path(@organization.id), class: 'btn btn-primary' %>
       <%end%>
+      <%if current_user%>
+        <% @follow = Follow.find_by(user_id:current_user.id, organization_id:@organization.id)%>
+        <%if @follow == nil%>
+          <a class="btn btn-secondary" <%= link_to "Suivre", organization_follows_path(@organization.id), method: :post %></a>
+        <%else%>
+          <a class="btn btn-secondary" <%= link_to "Ne plus suivre", organization_follow_path(@organization.id, @follow.id), method: :delete %></a>
+        <%end%>
+      <%else%>
+          <a class="btn btn-secondary" <%= link_to "Suivre", new_user_session_path%></a>
+      <%end%>
     </div>
   </div>
 
