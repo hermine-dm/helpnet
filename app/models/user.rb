@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, on: :update
   has_one_attached :avatar
   has_many :follows
-  has_many :assocs, through: :follows
+  has_many :associations, through: :follows
   after_create :generate_name
   #after_create :welcome_send
 
