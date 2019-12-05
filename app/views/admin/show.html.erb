@@ -32,13 +32,13 @@
           <div class="col-3 h6">NOM</div>
           <div class="col-3 h6">#RNA</div>
         </li>
-        <% @associations.each do |association| %>
+        <% @organizations.each do |organization| %>
          <li class="row py-2">
-          <div class="col-3 h6"><%= association.id %> </div>
-          <div class="col-3 h6"><%= association.name %> </div>
-          <div class="col-3 h6"><%= association.num_rna %> </div>
-          <div class="col-1 text-right"><%= link_to 'Supprimer', association_path(association.id), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
-          <div class="col-1 text-right"><%= link_to 'Editer', edit_association_path(association.id),  class: 'btn btn-sm btn-primary' %></div>
+          <div class="col-3 h6"><%= organization.id %> </div>
+          <div class="col-3 h6"><%= organization.name %> </div>
+          <div class="col-3 h6"><%= organization.num_rna %> </div>
+          <div class="col-1 text-right"><%= link_to 'Supprimer', organization_path(organization.id), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
+          <div class="col-1 text-right"><%= link_to 'Editer', edit_organization_path(organization.id),  class: 'btn btn-sm btn-primary' %></div>
         </li>
 
         <%end%> 

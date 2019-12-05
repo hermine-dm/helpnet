@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   get "admin/show"
   get "/static/:page" => "static#show"
-  resources :associations do
+  resources :organizations do
     resources :follow, only: [:create, :destroy]
   end
   root to: 'home#index'
