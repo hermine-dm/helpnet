@@ -2,7 +2,7 @@
 <html>
   <head>
 
-    <title>Thredded | <%= yield :thredded_page_title %></title>
+    <title>Helpnet | <%= yield :thredded_page_title %></title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <%= stylesheet_link_tag 'thredded', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tag %>
@@ -27,7 +27,10 @@
   </head>
   <body>
     <%= render 'layouts/navbar' %>
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
 

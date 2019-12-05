@@ -9,7 +9,7 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
               <%= f.label :email %><br/>
-              <div class="border rounded">
+              <div class="border rounded p-1">
                 <span class="fa fa-user errspan ml-1"></span>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=> 'noborder' %>
               </div>
@@ -17,7 +17,7 @@
 
             <div class="field">
               <%= f.label :password %><br/>
-              <div class="border rounded errspan" style="border-radius: 25px;">
+              <div class="border rounded errspan p-1" style="border-radius: 25px;">
                 <i class="fas fa-unlock-alt ml-1"></i>
                 <%= f.password_field :password, autocomplete: "current-password", :class=> 'noborder' %>
               </div>
