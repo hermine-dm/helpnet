@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container-fluid py-5 bg-light">
   <h1 class="text-center">Modifier les informations</h1>
 </div>
@@ -33,6 +34,67 @@
         <h2>
           Contacts :
         </h2>
+=======
+<section>
+    </br>
+      <div class="container bg-white">
+        </br>
+      <h1 class="display-4 d-flex justify-content-center text-primary">Modifier les informations</h1>
+      <div class="container d-flex justify-content-center">
+        <div class="">
+            <%= form_for @association do |f| %>
+              <div class="form-group">
+                <%= label_tag "Le nom de l'association" %><span class="text-muted">(*)</span> </br>
+                <%= f.text_field :name %> 
+              </div>    
+              <div class="form-group">
+                  <%= label_tag 'Le numéro du registre RNA'%><span class="text-muted">(*)</span> </br>
+                  <%= f.text_field  :num_rna  %>
+              </div>
+              <div class="form-group">
+                  <%= label_tag "La description de l'assocation"%><span class="text-muted">(*)</span> </br>
+                  <%= f.text_field  :description  %>
+              </div>
+              <div class="form-group">
+                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> </br>
+                  <%= f.text_field :location %>
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span></br>
+                <%= f.text_field :zip_code%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le site internet" %> </br>
+                <%= f.text_field :website%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le lien Facebook" %> </br>
+                <%= f.text_field :fb_website%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "L'email de contact" %> </br>
+                <%= f.text_field :email%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Logo de l'association" %> </br>
+                <%if @association.logo.attached?%>
+                  <%= image_tag @association.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"150" %> </br>
+                  <p> Changer de logo :</p>
+                  <%= f.file_field :logo %>
+                <%else%>
+                  <p> Ajouter un logo :</p>
+                  <%= f.file_field :logo %>
+                <%end%>
+              </div>
+              <span class="text-muted">les champs avec (*) sont obligatoires</span>
+              <div class="">
+              <%= f.submit 'Modifier', :class => "btn btn-default bg-primary text-white" %>
+              </div>
+              </br> </br> </br>
+            <% end %>
+           </div>
+        </div>
+>>>>>>> b093fd4b748c4d8bc835c254187a94ae38779c01
       </div>
     </div>
     <div class="row d-flex justify-content-center">
