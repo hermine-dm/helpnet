@@ -6782,8 +6782,24 @@ button.bg-dark:focus {
   background-color: transparent !important;
 }
 
+.bg-orange {
+  background-color: #fbd8be !important;
+}
+
+.bg-dark-purple {
+  background-color: #7776BC !important;
+}
+
+.bg-light-purple {
+  background-color: #B8B8FF !important;
+}
+
 .bg-purple-gradient {
   background: linear-gradient(127deg, #fff, rgba(184, 184, 255, 0.4)) !important;
+}
+
+.bg-orange-gradient {
+  background: linear-gradient(to right, #fff, rgba(251, 216, 190, 0.4)) !important;
 }
 
 .border {
