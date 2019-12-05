@@ -17,5 +17,15 @@
 }
 .btn-google:hover{
     color:#fff;background-color:#c23321;
+    
     border-color:rgba(0,0,0,0.2);
+}
+.errspan {    
+    position: relative;
+    z-index: 2;
+    color: grey;
+  }
+
+.noborder{
+    border: none;
 }
