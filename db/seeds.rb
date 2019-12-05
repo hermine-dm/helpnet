@@ -24,7 +24,7 @@ end
 puts "users créés"
 
 
-	association1 = Association.create!(name: "ARSLA", num_rna: "W000000000", 
+	organization1 = Organization.create!(name: "ARSLA", num_rna: "W000000000", 
 		description: "Première association en France à lutter sur tous les fronts de la maladie de Charcot ou SLA, l'ARSLA oeuvre depuis toujours pour arriver un jour à son éradication.", 
 		location: "111 Rue de Reuilly,Paris", zip_code: "75012", website: "https://www.arsla.org/contact/", fb_website: "https://www.facebook.com/ARSLA.asso?fref=ts", phone: "0143389911", donate_link: "https://don.arsla.org/", 
 		content: "
@@ -45,7 +45,7 @@ puts "users créés"
 				    Promotion et accélération de la recherche
 				https://www.youtube.com/watch?v=rLtkR-Zm-4E",
 				logo_url: "https://www.arsla.org/wp-content/themes/arsla/images/logo.png")
-	association2 = Association.create!(name: "Espoir SLA", num_rna: "W343020413", 
+	organization2 = Organization.create!(name: "Espoir SLA", num_rna: "W343020413", 
 		description: "le projet principal est de participer à diffèrentes manifestations sportives afin de communiquer sur cette maladie orpheline encore méconnue du grand public.", 
 		location: "Montpellier", zip_code: "34000", email: "espoirsla@gmail.com", website: "https://www.espoirsla.com/", fb_website: "https://www.facebook.com/lacoursedelespoir/", phone: "01........", donate_link: "https://www.espoirsla.com/faire-un-don", 
 		content: "Récemment, nous avons appris que notre père était atteint d'une maladie du motoneurone type SLA (Sclérose Latérale Amyotrophique), une maladie qui touche 1 personne sur 25 000. 
@@ -60,10 +60,10 @@ puts "users créés"
 				Chacun de vos sourires nous donnera la force de vaincre cette maladie .
 				La Famille ESPOIR SLA ",
 		logo_url: "https://static.wixstatic.com/media/6fd0dc_11a5ce9a4ea24566a8ebbcf3314a20fd~mv2.png/v1/fill/w_164,h_139,al_c,q_80,usm_0.66_1.00_0.01/6fd0dc_11a5ce9a4ea24566a8ebbcf3314a20fd~mv2.webp")
-	association3 = Association.create!(name: "Espoir Charcot", num_rna: "W692005753", 
+	organization3 = Organization.create!(name: "Espoir Charcot", num_rna: "W692005753", 
 		description: "L’association Espoir Charcot veut donner un statut social à la maladie, permettre aux personnes de s'informer et d'être accompagnées",content: "L’association Espoir Charcot a 4 objectifs opérationnels: Donner un statut social à la maladie de Charcot à travers des évènements.Soutenir, aider et accompagner les malades dans leur quotidien. Soutenir, aider et accompagner les « aidants familiaux » pendant et après la maladie de leur proche. Soutenir les chercheurs et collecter des fonds pour la recherche fondamentale et clinique.", 
 		location: "161 Route de Pouilly,LIERGUES", zip_code: "69400", website: "http://www.espoircharcot.org/", fb_website: "https://www.facebook.com/EspoirCharcot", phone: "0680513937", donate_link: "http://www.espoircharcot.org/donner/", logo_url: "http://www.espoircharcot.org/wp-content/uploads/2015/03/Espoir-typo-orange-e1428756860575.jpg")
-	association4 = Association.create!(name: "Momone Extrême", num_rna: "W692005753", 
+	organization4 = Organization.create!(name: "Momone Extrême", num_rna: "W692005753", 
 		description: "L’association Momone Extrême a pour objectif de soutenir la recherche sur la maladie de Charcot, par le biais de projets sportifs insolites.", email: "association.momone.extreme@gmail.com",
 		content: "Parcourir 704 km, sur la route des grandes Alpes, en poussant une brouette chargée de ses affaires de voyage : voilà le défi que s’est lancé Vincent Monnerie.
 			Ce Lochois de 26 ans aime les défis sportifs et les voyages, mais c’est avec un objectif tout particulier qu’il s’élancera, avec sa brouette, le 15 juillet prochain.  » Je voudrais faire connaître la maladie de Charcot et récolter des fonds qui serviront la recherche qui la concerne. Cette maladie a causé la mort de mon père le 25 mai dernier, moins d’un an après avoir été diagnostiqué « , explique le jeune homme, d’une voix qui laisse percevoir un mental d’acier. Son père, Philippe Monnerie, dirigeait l’entreprise Juhel à Loches, spécialisée dans le transport routier de fret de proximité. Applicateur d’enrobés de profession, Vincent Monnerie n’a pas cherché longtemps le moyen de transporter facilement son minimum vital lors de son périple à travers les Alpes. Ce sera une brouette ! Le véhicule avec lequel il est le plus à l’aise, puisque c’est son outil de travail. Un véhicule qui fait travailler « tous les muscles du corps », mais dont le maniement pourrait s’avérer scabreux dans la descente de l’un des 21 cols à franchir. Pas de quoi faire reculer le Lochois de 26 ans, qui a hérité de son père Philippe, décédé en mai dernier de la maladie de Charcot, un an après avoir été diagnostiqué, le goût de l’effort, des voyages, et de l’engagement pour les autres. Philippe a œuvré pour les plus démunis en Afrique, Vincent promet de soutenir « sur le long terme » la recherche sur la maladie de Charcot. https://youtu.be/KKx4VZp6WGU",

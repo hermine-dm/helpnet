@@ -2,7 +2,7 @@ class AdminController < ApplicationController
 	before_action :authenticate_admin
 
   def show
-  	@associations = Association.all
+  	@organizations = Organization.all
   	@users = User.all
   end
 end

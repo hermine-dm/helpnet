@@ -1,4 +1,4 @@
-class Association < ApplicationRecord
+class Organization < ApplicationRecord
   	has_one_attached :logo
 	validates :name, presence: true, uniqueness: true
 	validates :description, presence: true, length: { in: 100..200, wrong_length: "100 to 200 characters is allowed" }

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   get "admin/show"
   get "/static/:page" => "static#show"
-  resources :associations
+  resources :organizations
   root to: 'home#index'
   mount Thredded::Engine => '/forum'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
