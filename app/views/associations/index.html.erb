@@ -22,8 +22,9 @@
         
     <% end %>
   </div>
-
-  <% if current_user && current_user.admin == true %>
-    <div class="btn btn-primary"> <%= link_to "Ajouter une nouvelle association", new_association_path(), :class => "text-white" %>  </div>
-  <%end%>
+  <div class="d-flex flex-row justify-content-center mt-5">
+    <% if current_user && current_user.admin == true %>
+      <div class="btn btn-primary "> <%= link_to "Ajouter une nouvelle association", new_association_path(), :class => "text-white" %>  </div>
+    <%end%>
+  </div>
 </div>
