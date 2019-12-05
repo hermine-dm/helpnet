@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(name: params[:name], first_name: params[:first_name], last_name: params[:last_name], email: params[:email], zip_code: params[:zip_code])
+    post_params = params.require(:user).permit(:name, :first_name, :last_name, :email, :zip_code, :avatar)
+    if @user.update(post_params)
       flash[:success] = 'Vos informations ont bien été modifiées'
       redirect_to @user
     else

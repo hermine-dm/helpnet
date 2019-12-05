@@ -11,16 +11,13 @@
       <%else%>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi" alt="" height="120" width="120" class="rounded-circle">
       <%end%>
-      <%= form_tag user_avatars_path(@user), multipart: true do %>
-        <%= file_field_tag :avatar%>
-        <%= submit_tag "Changer avatar", class:"btn btn-outline-primary" %>
-      <% end %>
+      <%= form_for @user do |f| %>
+        <%= f.file_field :avatar %>
       </div>
-      <%= form_tag url_for(action: 'update'), method: "patch" do %>
       <div class="col-md-10">
         <div class="row d-flex justify-content-between">
           <div class="col-md-3 d-flex flex-column">
-            <h1 class="mb-4 text-md-left"><%= text_field_tag 'name', value = @user.name %></h1>
+            <h1 class="mb-4 text-md-left"><%= f.text_field :name %></h1>
             <p class="text-md-left">Dernière connexion : <%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></p>
           </div>
         </div>
@@ -35,29 +32,29 @@
     <div class="row border text-center py-3">
       <div class="col-md-6">
         <%= label_tag 'Nom : ' %>
-        <%= text_field_tag 'last_name', value = @user.last_name %>
+        <%= f.text_field :last_name %>
       </div>
 
       <div class="col-md-6">
         <%= label_tag 'Prénom : ' %>
-        <%= text_field_tag 'first_name', value = @user.first_name %>
+        <%= f.text_field :first_name %>      
       </div>
     </div>
 
     <div class="row border text-center py-3">
       <div class="col-md-6">
         <%= label_tag 'Email : ' %>
-        <%= text_field_tag 'email', value = @user.email %>
+        <%= f.text_field :email %>
       </div>
       <div class="col-md-6">
         <%= label_tag 'Localisation : ' %>
-        <%= text_field_tag 'zip_code', value = @user.zip_code %>
+        <%= f.text_field :zip_code %>
       </div>
     </div>
 
     <div class="row d-flex pt-3 justify-content-end">
       <div class="col-md-3 text-right">
-        <%= submit_tag "Valider les modifications", class: 'btn btn-primary' %>
+        <%= f.submit 'Enregistrer les modifications', :class => "btn btn-default bg-primary text-white" %>
       </div>
     </div>
   <% end %>
