@@ -9,16 +9,16 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item text-uppercase px-3 active">
-          <%= link_to "Association", associations_path, class: 'nav-link' %>
+          <%= link_to "Association", main_app.associations_path, class: 'nav-link' %>
         </li>
         <li class="nav-item text-uppercase px-3 active">
-          <%= link_to "Forum", thredded_path, class: 'nav-link' %>
+          <%= link_to "Forum", main_app.thredded_path, class: 'nav-link' %>
         </li>
         <li class="nav-item text-uppercase px-3 active">
-          <%= link_to "Articles (NA)", root_path, class: 'nav-link' %>
+          <%= link_to "Articles (NA)", main_app.root_path, class: 'nav-link' %>
         </li>
         <li class="nav-item text-uppercase px-3 active">
-          <%= link_to "Marketplace (NA)", root_path, class: 'nav-link' %>
+          <%= link_to "Marketplace (NA)", main_app.root_path, class: 'nav-link' %>
         </li>
 
         <% if user_signed_in? == false %>
@@ -29,16 +29,16 @@
                 </a>
                 <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                  <%= link_to "S'inscrire", new_user_registration_path, class: 'dropdown-item text-uppercase' %>
+                  <%= link_to "S'inscrire", main_app.new_user_registration_path, class: 'dropdown-item text-uppercase' %>
                   <div class="dropdown-divider"></div>
-                  <%= link_to "Se Connecter", new_user_session_path, class: 'dropdown-item text-uppercase' %>
+                  <%= link_to "Se Connecter", main_app.new_user_session_path, class: 'dropdown-item text-uppercase' %>
                 </div>
               </li>
 
         <% else %>
               <% if current_user.admin == true %>
                 <li class="nav-item text-uppercase px-3 active">
-                  <%= link_to "Dashboard",  admin_show_path, class: 'nav-link' %>
+                  <%= link_to "Dashboard",  main_app.admin_show_path, class: 'nav-link' %>
                 </li>
               <%end%>
               <li class="nav-item dropdown">
@@ -47,9 +47,9 @@
                 </a>
                 <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                  <%= link_to "Mon Profil", user_path(current_user.id), class: 'dropdown-item text-uppercase' %>
+                  <%= link_to "Mon Profil", main_app.user_path(current_user.id), class: 'dropdown-item text-uppercase' %>
                   <div class="dropdown-divider"></div>
-                  <%= link_to "Se Déconnecter", destroy_user_session_path, method: :delete, class: 'dropdown-item text-uppercase' %>
+                  <%= link_to "Se Déconnecter", main_app.destroy_user_session_path, method: :delete, class: 'dropdown-item text-uppercase' %>
                 </div>
               </li>
 
