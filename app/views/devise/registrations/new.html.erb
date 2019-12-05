@@ -1,29 +1,38 @@
 <div class="h-100" style="background-color: #D3D3D3;">
   <div class="d-flex justify-content-center fluid-container" >
     <div class= "container d-flex justify-content-center" >
-      <div class=" d-flex flex-column form p-5">
+      <div class=" d-flex flex-column form" style="padding: 3rem 5rem 3rem 5rem">
         <h2>Créer votre compte </h2>
-        <h5 class="m-2">One Account to share, heal, hangout</h5>
+        <h5 class="m-2">Libérez la parole !</h5>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
           <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.label :email %>
+            <div class="border rounded p-1 flex-row d-flex align-items-center">
+              <span class="fa fa-user errspan pl-1 pr-2"></span>
+               <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=> 'noborder flex-fill' %>
+            </div>
           </div>
 
           <div class="field">
             <%= f.label :password %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <em>(<%= @minimum_password_length %> caractères minimum)</em>
+            <% end %>
+            <div class="border rounded p-1 flex-row d-flex align-items-center">
+                <span class="fas fa-unlock-alt errspan pl-1 pr-2"></span>
+                <%= f.password_field :password, autocomplete: "new-password", :class=> 'noborder flex-fill' %>
+            </div>
           </div>
 
           <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.label :password_confirmation %>
+            <div class="border rounded p-1 flex-row d-flex align-items-center">
+              <span class="fas fa-unlock-alt errspan pl-1 pr-2"></span>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=> 'noborder flex-fill' %>
+            </div>  
           </div>
           <br/>
           <p style="font-size: 8px;">En vous inscrivant, vous acceptez les <a href="https://media.giphy.com/media/q8pghZNgAQ0rm/giphy.gif" target="_blank"> conditions générales d'utilisations.</a></p>
@@ -32,11 +41,8 @@
             <%= f.submit "Créer mon compte", :class=> 'btn btn-primary' %>
           </div>
           <% end %>
-          <br />
-          <div>
-          <a class="btn btn-sm btn-google m-2 w-50" style=" color: white;">
-          <span class="fab fa-google"  style="color: white;"></span> Sign in with Google
-          </a>
+          <div class="actions">
+            <a class=" row btn btn-sm btn-google m-2 p-2" style=" color: white;"><span class="fab fa-google"  style="color: white;"></span> S'inscire avec Google</a>
           </div>
 
           <div style="font-size: 10px;">
