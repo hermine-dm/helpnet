@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2019_12_05_144220) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_follows_on_organization_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -63,15 +72,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_144220) do
     t.text "content"
     t.string "phone"
     t.string "donate_link"
-  end
-
-  create_table "follows", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "organization_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["association_id"], name: "index_follows_on_association_id"
-    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "thredded_categories", force: :cascade do |t|
