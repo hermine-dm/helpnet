@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 shadow">
     <a class="navbar-brand" href="/">
       HELPNET
     </a>
@@ -42,8 +42,8 @@
                 </li>
               <%end%>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn btn-outline-primary text-light text-uppercase" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Mon Profil
+                <a class="nav-link dropdown-toggle btn btn-outline-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= current_user.name%>
                 </a>
                 <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
                 <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
