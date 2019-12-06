@@ -9,7 +9,7 @@
                   <%if User.find(article.user_id).avatar.attached?%>
                     <%= image_tag User.find(article.user_id).avatar, alt: 'avatar', class:"rounded-circle", height:"120", width:"120"%>
                   <%else%>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi" alt="" height="120" width="120" class="rounded-circle">
+                    <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
                   <%end%>
                   <div class="row pl-2">Auteur: <%= User.find(article.user_id).name %></div>
                 </div>
@@ -18,16 +18,16 @@
                 </div>
               </div>
               <div class="card-footer d-flex justify-content-between">
-                <div class="btn btn-primary"> <%= link_to "En savoir plus", article_path(article.id), :class => "text-white" %>  </div>
+                <%= link_to "En savoir plus", article_path(article.id), :class => "btn btn-primary text-white" %>
                 <%if current_user%>
                   <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:article.id)%>
                   <%if @like == nil%>
-                    <a class="text-dark" <%= link_to "Like", article_article_likes_path(article.id), method: :post %></a>
+                    <%= link_to "Like", article_article_likes_path(article.id), method: :post, :class => "text-dark" %>
                   <%else%>
-                   <a class="text-muted" <%= link_to "Unlike", article_article_like_path(article.id, @like.id), method: :delete %></a>
+                   <%= link_to "Unlike", article_article_like_path(article.id, @like.id), method: :delete, :class => "text-muted" %>
                   <%end%>
                 <%else%>
-                  <a class="text-dark" <%= link_to "Like", new_user_session_path%></a>
+                  <%= link_to "Like", new_user_session_path, :class => "text-dark"%>
                 <%end%>
               </div>
             </div>
@@ -36,7 +36,7 @@
   </div>
   <div class="d-flex flex-row justify-content-center mt-5">
     <% if current_user && current_user.admin == true %>
-      <div class="btn btn-primary "> <%= link_to "Ajouter une nouvelle association", new_organization_path(), :class => "text-white" %>  </div>
+      <%= link_to "Ajouter une nouvelle association", new_organization_path(), :class => " btn btn-primary text-white" %>
     <%end%>
   </div>
 </div>
