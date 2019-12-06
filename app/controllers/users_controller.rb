@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Vos informations ont bien été modifiées'
       redirect_to @user
     else
+      flash.now[:error] = @user.errors.messages.first
       render :edit
     end
   end
