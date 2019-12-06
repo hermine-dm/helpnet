@@ -1,4 +1,4 @@
-<footer class="page-footer font-small bg-dark navbar-dark text-white pt-4 mt-5 footer">
+<footer class="page-footer font-small bg-light navbar-dark text-white pt-4 footer">
   <div class="container">
   <!-- Footer Links -->
   <div class="container-fluid text-center text-md-left">
@@ -25,20 +25,20 @@
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Forum</h5>
+        <h5 class="text-uppercase">Shining</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Sujet du jour</a>
+           <%= link_to "Forum", main_app.thredded_path, class: 'nav-link' %>
           </li>
           <li>
-            <a href="#!"></a>
+            <%= link_to "Associations", main_app.organizations_path, class: 'nav-link' %>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+            <%= link_to "Articles", main_app.articles_path, class: 'nav-link' %>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+          <%= link_to "Marketplace (NA)", main_app.root_path, class: 'nav-link' %>
           </li>
         </ul>
 
@@ -49,20 +49,20 @@
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Associations</h5>
+        <h5 class="text-uppercase">À Propos</h5>
 
         <ul class="list-unstyled">
           <li>
-            <a href="#!">Link 1</a>
+           <%= link_to "L'équipe", main_app.root_path, class: 'nav-link' %>
           </li>
           <li>
-            <a href="#!">Link 2</a>
+           <%= link_to "The Hacking Project", 'https://www.thehackingproject.org/', class: 'nav-link' %>
           </li>
           <li>
-            <a href="#!">Link 3</a>
+           <%= link_to "Contact", main_app.root_path, class: 'nav-link' %>
           </li>
           <li>
-            <a href="#!">Link 4</a>
+           <%= link_to "Jobs", main_app.root_path, class: 'nav-link' %>
           </li>
         </ul>
 
@@ -76,9 +76,9 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2019 Copyright :
+  <p class="footer-copyright text-center py-3">© 2019 Copyright :
     <a href="https://www.thehackingproject.org/"> Shiny - The Hacking Project</a>
-  </div>
+  </p>
   <!-- Copyright -->
 </div>
 </footer>

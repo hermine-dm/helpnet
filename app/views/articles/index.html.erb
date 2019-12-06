@@ -19,6 +19,16 @@
               </div>
               <div class="card-footer d-flex justify-content-between">
                 <div class="btn btn-primary"> <%= link_to "En savoir plus", article_path(article.id), :class => "text-white" %>  </div>
+                <%if current_user%>
+                  <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:article.id)%>
+                  <%if @like == nil%>
+                    <a class="text-dark" <%= link_to "Like", article_article_likes_path(article.id), method: :post %></a>
+                  <%else%>
+                   <a class="text-muted" <%= link_to "Unlike", article_article_like_path(article.id, @like.id), method: :delete %></a>
+                  <%end%>
+                <%else%>
+                  <a class="text-dark" <%= link_to "Like", new_user_session_path%></a>
+                <%end%>
               </div>
             </div>
           </div>

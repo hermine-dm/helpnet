@@ -14,10 +14,44 @@
     <div class="col-md-6 text-center text-md-left">
       <h1> <%= @article.title %> </h1>
       <h5>Par: <%= @user.name %></h5>
+      <%if current_user%>
+        <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
+        <%if @like == nil%>
+          <a class="text-dark" <%= link_to "Like", article_article_likes_path(@article.id), method: :post %></a>
+        <%else%>
+         <a class="text-muted" <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete %></a>
+        <%end%>
+      <%else%>
+        <a class="text-dark" <%= link_to "Like", new_user_session_path%></a>
+      <%end%>
     </div>
-<div class="row py-3">
-  <div class="col py-3 text-center">
-    <p> <%= @article.content %> </p>
   </div>
-</div>
+  <div class="row py-3">
+    <div class="col py-3 text-center">
+      <p> <%= @article.content %> </p>
+    </div>
+  </div>
+  <div class="row py-3 justify-content-center">
+    <div class="form-group">
+      <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
+      <%= text_area_tag 'content', "", class: "form-control", rows:"3"%>
+    </div>
+    <div class="col-2">
+      <%= submit_tag "Commenter", class: 'btn btn-success btn-sm'  %>
+      <%end%>
+    </div>
+  </div>
+  <% @comments.each do |comment| %>
+  <div class="row justify-content-center">
+    <div class="col-lg-4 text-align-left">
+      <div class="bs-component">
+        <blockquote class="blockquote">
+          <p class="mb-0"><%=comment.content%></p>
+          <footer class="blockquote-footer"><%=comment.user.name%>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+  <%end%>
 </div>

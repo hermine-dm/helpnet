@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 	def show
 		@article=Article.find(params[:id])
 		@user=User.find(@article.user_id)
+		@comments=@article.article_comments
 	end
 	def index
 		@articles=Article.all
