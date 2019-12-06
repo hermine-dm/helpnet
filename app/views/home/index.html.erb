@@ -5,11 +5,11 @@
       <div class="col-md-8 py-5 my-5">
         <h1>LOREM ipsum dolor</h1>
         <p class="py-3">sit amet, consectetur adipisicing elit. Temporibus laborum fuga ipsum</p>
-        <a href="#" class="btn btn-lg btn-primary">Découvrir</a>
+        <%= link_to "Découvrir", '#', class: 'btn btn-lg btn-primary' %>
       </div>
 <!-- ***** SIGN UP FORM ***** -->
       <div class="col-md-4">
-
+        <!-- render sign_in form here -->
       </div>
     </div>
   </div>
@@ -19,20 +19,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4 text-center bg-orange py-5">
-      <span class="fas fa-comments errspan fa-5x mb-3 mt-5"></span>
+      <span class="fas fa-comments fa-5x mb-3 mt-5 icon-1"></span>
       <h2 class="py-3">Un espace d'échange</h2>
       <%= link_to "Découvrir", main_app.thredded_path, class: 'btn btn-lg btn-primary my-3' %>
     </div>
     <div class="col-md-4 text-center bg-dark-purple py-5">
-      <span class="fas fa-user errspan fa-5x mb-3 mt-5"></span>
-      <h2 class="py-3">Des professionnels</h2>
+      <span class="fas fa-user fa-5x mb-3 mt-5 icon-2"></span>
+      <h2 class="py-3 text-light">Des professionnels</h2>
           <%= link_to "Découvrir", main_app.organizations_path, class: 'btn btn-lg btn-primary my-3' %>
     </div>
     <div class="col-md-4 text-center bg-light-purple py-5">
-      <span class="fas fa-hand-holding-heart errspan fa-5x mb-3 mt-5"></span>
+      <span class="fas fa-hand-holding-heart fa-5x mb-3 mt-5 icon-3"></span>
       <h2 class="py-3">De la solidarité</h2>
-      <a href="#" class="btn btn-lg btn-primary my-3">Découvrir (NA)</a>
-    </div>
+  <%= link_to "Découvrir (NA)", '#', class: 'btn btn-lg btn-primary my-3' %>    </div>
   </div>
 </div>
 
@@ -84,7 +83,7 @@
       <div class="col-md-6 py-5 px-4 text-center text-md-left">
         <h2>Notre DonnatePlace</h2>
         <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, laudantium</p>
-        <a href="#" class="btn btn-lg btn-primary">Découvrir (NA)</a>
+          <%= link_to "Découvrir (NA)", '#', class: 'btn btn-lg btn-primary my-3' %>
       </div>
     </div>
   </div>
