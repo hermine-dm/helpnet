@@ -25,12 +25,12 @@
       <%if current_user%>
         <% @follow = Follow.find_by(user_id:current_user.id, organization_id:@organization.id)%>
         <%if @follow == nil%>
-          <a class="btn btn-secondary" <%= link_to "Suivre", organization_follows_path(@organization.id), method: :post %></a>
+          <%= link_to "Suivre", organization_follows_path(@organization.id), class: 'btn btn-secondary', method: :post %>
         <%else%>
-          <a class="btn btn-secondary" <%= link_to "Ne plus suivre", organization_follow_path(@organization.id, @follow.id), method: :delete %></a>
+          <%= link_to "Ne plus suivre", organization_follow_path(@organization.id, @follow.id), class: 'btn btn-secondary', method: :delete %>
         <%end%>
       <%else%>
-          <a class="btn btn-secondary" <%= link_to "Suivre", new_user_session_path%></a>
+         <%= link_to "Suivre", new_user_session_path, class: 'btn btn-secondary'%>
       <%end%>
     </div>
   </div>
@@ -45,7 +45,7 @@
 </div>
 </div>
 
-<div class="container-fluid bg-light py-3">
+<div class="container-fluid py-3 bg-orange-gradient">
     <div class="container">
     <div class="row text-center">
       <div class="col py-3">
@@ -56,19 +56,20 @@
     </div>
     <div class="row d-flex justify-content-center">
       <div class="col-md-3">
-        <p> <%= @organization.location %> </p>
-        <p> <%= @organization.zip_code %> </p>
-        <p> <%= @organization.phone %> </p>
+  
+        <p><i class="fas fa-home"></i>  <%= @organization.location %> </p>
+        <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.zip_code %> </p>
+        <p><i class="fas fa-phone-alt"></i>  <%= @organization.phone %> </p>
       </div>
     <div class="col-md-3">
       <% unless @organization.email.nil? %>
-      <div class=""> <%= link_to @organization.email, @organization.email%> </div>
+      <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
       <%end%>
       <% unless @organization.website.nil? %>
-      <div class=""> <%= link_to @organization.website, @organization.website%> </div>
+      <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
       <%end%>
       <% unless @organization.fb_website.nil? %>
-      <div class=""> <i class="fab fa-facebook-f">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> </div>
+      <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
       <%end%>
     </div>
   </div>
