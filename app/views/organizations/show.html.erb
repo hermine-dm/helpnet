@@ -1,4 +1,4 @@
-<div class="container-fluid py-5 bg-light">
+<div class="container-fluid py-5 bg-orange-gradient">
   <br>
 </div>
 
@@ -8,7 +8,7 @@
 
 
       <%if @organization.logo.attached?%>
-        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"150" %>
+        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %>
       <%else%>
        <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnybl2dND6AAjhk2HYuG9m8-Wt-jsPWnil6A89n1F7uMGEZ3b2" alt="" width="150" height="150">
       <%end%>

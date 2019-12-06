@@ -1,109 +1,89 @@
-<div class="container-fluid py-5 bg-light">
+<div class="container-fluid py-5 bg-orange-gradient">
   <h1 class="text-center">Modifier les informations</h1>
 </div>
 <%= form_for @organization do |f| %>
-<div class="container mt-n5">
-  <div class="row">
-    <div class="col-md-2 text-center">
-      <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnybl2dND6AAjhk2HYuG9m8-Wt-jsPWnil6A89n1F7uMGEZ3b2" alt="" width="150" height="150">
+  <div class="container mt-n5">
+    <div class="row">
+      <div class="col-md-2 text-center">
+        <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnybl2dND6AAjhk2HYuG9m8-Wt-jsPWnil6A89n1F7uMGEZ3b2" alt="" width="150" height="150">
+      </div>
+      <div class="col-md-8 text-center text-md-left">
+        <h2> <%= f.text_field :name %> (*) </h2>
+        <%= label_tag 'Le numéro du registre RNA : '%>
+        <%= f.text_field  :num_rna  %> (*)
+      </div>
     </div>
-    <div class="col-md-8 text-center text-md-left">
-      <h2> <%= f.text_field :name %> (*) </h2>
-      <p>Slogan ou courte description de l'asso à ajouter par la suite</p>
-      <%= label_tag 'Le numéro du registre RNA : '%>
-      <%= f.text_field  :num_rna  %> (*)
+
+    <div class="row">
+      <div class="col py-3 text-center">
+        <h4 class="pb-3">
+          Slogan : <small>(entre 100 et 200 caractères)</small> (*)
+        </h4>
+        <p> <%= f.text_area :description, class: 'w-75' %> </p>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col py-3 text-center">
+          <h4 class="pb-3">
+            Description : (*)
+          </h4>
+          <p> <%= f.text_area :content, class: 'w-75', style: 'height: 20rem;' %> </p>
+        </div>
     </div>
   </div>
 
-<div class="row py-3">
-  <div class="col py-3 text-center">
-    <h2 class="pb-3">
-      Description : (*)
-    </h2>
-    <p> <%= f.text_area :description, class: 'w-75' %> </p>
-  </div>
-</div>
-</div>
-
-<div class="container-fluid bg-light py-3">
-    <div class="container">
-    <div class="row text-center">
-      <div class="col py-3">
-        <h2>
-          Contacts :
-        </h2>
-
-<section>
-
-      <div class="container bg-white">
-      <h1 class="display-4 d-flex justify-content-center text-primary">Modifier les informations</h1>
+      <div class="container bg-light py-3">
+      <h2 class="d-flex justify-content-center">Informations de contacts</h2>
       <div class="container d-flex justify-content-center">
         <div class="">
-            <%= form_for @organization do |f| %>
               <div class="form-group">
-                <%= label_tag "Le nom de l'association" %><span class="text-muted">(*)</span> </br>
-                <%= f.text_field :name %> 
-              </div>    
-              <div class="form-group">
-                  <%= label_tag 'Le numéro du registre RNA'%><span class="text-muted">(*)</span> </br>
-                  <%= f.text_field  :num_rna  %>
-              </div>
-              <div class="form-group">
-                  <%= label_tag "La description de l'assocation"%><span class="text-muted">(*)</span> </br>
-                  <%= f.text_field  :description  %>
-              </div>
-              <div class="form-group">
-                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> </br>
+                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> <br/>
                   <%= f.text_field :location %>
               </div>
               <div class="form-group">
-                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span></br>
+                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span><br/>
                 <%= f.text_field :zip_code%> 
               </div>
               <div class="form-group">
-                <%= label_tag "Le site internet" %> </br>
+                <%= label_tag "Le site internet" %> <br/>
                 <%= f.text_field :website%> 
               </div>
               <div class="form-group">
-                <%= label_tag "Le lien Facebook" %> </br>
+                <%= label_tag "Le lien Facebook" %> <br/>
                 <%= f.text_field :fb_website%> 
               </div>
               <div class="form-group">
-                <%= label_tag "L'email de contact" %> </br>
+                <%= label_tag "L'email de contact" %> <br/>
                 <%= f.text_field :email%> 
               </div>
               <div class="form-group">
-                <%= label_tag "Logo de l'association" %> </br>
+                <%= label_tag "Logo de l'association" %> <br/>
                 <%if @organization.logo.attached?%>
                   <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"150" %> </br>
                   <p> Changer de logo :</p>
                   <%= f.file_field :logo %>
                 <%else%>
-                  <p> Ajouter un logo :</p>
+                  <p style="color: #212529;"> Ajouter un logo :</p>
                   <%= f.file_field :logo %>
                 <%end%>
               </div>
-              <span class="text-muted">les champs avec (*) sont obligatoires</span>
+              <span class="text-muted" style="font-size: 10px">les champs avec (*) sont obligatoires</span>
               <div class="">
-              <%= f.submit 'Modifier', :class => "btn btn-default bg-primary text-white" %>
-              </div>
-            <% end %>
            </div>
         </div>
       </div>
     </div>
   </div>
   </div>
-
   <div class="container">
   <div class="row py-3">
     <div class="col text-center">
       <h2 class="py-3"> Soutenir l'association : </h2>
-      <%= label_tag "Description (2 lignes) pour les dons : " %> <br>
-      Description pour le Don à renseigner ici
-      <br>
-      <%= label_tag "Lien HelloAsso : " %> <br>
-      lien pour page faire don à renseigner ici
+        <div class="form-group">
+                <%= label_tag "Lien pour faire des dons" %> <br/>
+                <%= f.text_field :donate_link%> 
+              </div>
     </div>
   </div>
   <div class="row text-center py-3">
