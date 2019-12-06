@@ -1,24 +1,13 @@
-# README
+Comment ça marche ?
+En Production (dev pour le moment)
+Rdv sur https://helpnet-dev.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Acces user : Inscris toi puis connecte toi avec ton adresse mail (ou une yopmail;-)
 
-Things you may want to cover:
 
-* Ruby version
+Accès admin :
 
-* System dependencies
+Login : admin_helpnet@yopmail.com mdp : password
 
-* Configuration
+Tu auras accès à un dashboard et editer /supprimer les associations/users/msg etc.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
