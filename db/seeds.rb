@@ -20,7 +20,7 @@ puts "admin créé"
 
 15.times do 
 	@fist_name = Faker::Name.first_name
-	@user = User.create!(email: "#{@fist_name}#{rand(0..20)}@yopmail.com",  password: "password", password_confirmation: "password", created_at: Faker::Date.between(from: 15.days.ago, to: Date.today), last_sign_in_at: Faker::Date.between(from: 15.days.ago, to: Date.today))
+	@user = User.create!(email: "#{@fist_name}#{rand(0..100)}@yopmail.com",  password: "password", password_confirmation: "password", created_at: Faker::Date.between(from: 15.days.ago, to: Date.today), last_sign_in_at: Faker::Date.between(from: 15.days.ago, to: Date.today))
 end
 puts "users créés"
 
@@ -81,8 +81,13 @@ puts "chaque user suit une assoce"
 end
 puts "articles créés"
 
+User.all.each do |user|
+	Thredded::UserPreference.create(user_id: user.id)
+	Thredded::NotificationsForFollowedTopics.create(user_id: user.id, notifier_key: "email", enabled: false)
+	Thredded::NotificationsForPrivateTopics.create(user_id: user.id, notifier_key: "email", enabled: false)
 
-
+end
+puts "changement des notifications de preferences pour chaque user"
 
 		Thredded::Messageboard.create(name: "La Relation avec l'entourage", description: "Ce theme sert à échanger sur vos relations avec votre entourage proche")
 		Thredded::Messageboard.create(name: "Les Aides gouvernementales", description: "Ce theme sert à échanger sur  tous les sujets fiscaux // aides, etc")
