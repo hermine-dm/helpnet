@@ -35,8 +35,19 @@
           <p> <%= f.text_area :content, class: 'w-75', style: 'height: 20rem;' %> </p>
         </div>
     </div>
-  </div>
-
+  
+    <div class="form-group text-center">
+     <h4> <%= label_tag "Logo de l'association" %></h4>
+      <%if @organization.logo.attached?%>
+        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"150" %> </br>
+        <p> Changer de logo :</p>
+        <%= f.file_field :logo %>
+      <%else%>
+        <p style="color: #212529;"> Ajouter un logo :</p>
+        <%= f.file_field :logo %>
+      <%end%>
+      </div>
+    </div>
   <div class="container bg-light py-3">
       <h2 class="d-flex justify-content-center">Informations de contacts</h2>
       <div class="container d-flex justify-content-center">
@@ -60,17 +71,6 @@
               <div class="form-group">
                 <%= label_tag "L'email de contact" %> <br/>
                 <%= f.text_field :email%> 
-              </div>
-              <div class="form-group">
-                <%= label_tag "Logo de l'association" %> <br/>
-                <%if @organization.logo.attached?%>
-                  <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"150" %> </br>
-                  <p> Changer de logo :</p>
-                  <%= f.file_field :logo %>
-                <%else%>
-                  <p style="color: #212529;"> Ajouter un logo :</p>
-                  <%= f.file_field :logo %>
-                <%end%>
               </div>
               <span class="text-muted" style="font-size: 10px">les champs avec (*) sont obligatoires</span>
           </div>
