@@ -53,7 +53,7 @@ Thredded.content_visible_while_pending_moderation = true
 # :position            (default) set the position manually (new messageboards go to the bottom, by creation timestamp)
 # :last_post_at_desc   most recent post first
 # :topics_count_desc   most topics first
-Thredded.messageboards_order = :position
+Thredded.messageboards_order = :last_post_at_desc
 
 # Whether admin users see button to delete entire messageboards on the messageboard edit page.
 Thredded.show_messageboard_delete_button = false
@@ -82,13 +82,13 @@ Thredded.layout = 'thredded/application'
 # ==> Email Configuration
 # Email "From:" field will use the following
 # (this is also used as the "To" address for both email notifcations, as all the recipients are on bcc)
-# Thredded.email_from = 'no-reply@example.com'
+Thredded.email_from = 'no-reply-helpnet@yopmail.com'
 
 # Emails going out will prefix the "Subject:" with the following string
-# Thredded.email_outgoing_prefix = '[My Forum] '
+Thredded.email_outgoing_prefix = 'helpnet-forum'
 #
 # The parent mailer for all Thredded mailers
-# Thredded.parent_mailer = 'ActionMailer::Base'
+Thredded.parent_mailer = 'ActionMailer::Base'
 
 # ==> Model configuration
 # The range of valid messageboard name lengths. Default:
@@ -101,10 +101,10 @@ Thredded.layout = 'thredded/application'
 # How Thredded generates URL slugs from text:
 
 # Default:
-# Thredded.slugifier = ->(input) { input.parameterize }
+ Thredded.slugifier = ->(input) { input.parameterize }
 
 # If your forum is in a language other than English, you might want to use the babosa gem instead
-# Thredded.slugifier = ->(input) { Babosa::Identifier.new(input).normalize.transliterate(:russian).to_s }
+# Thredded.slugifier = ->(input) { Babosa::Identifier.new(input).normalize.transliterate(:french).to_s }
 
 # By default, thredded uses integers for record ID route constraints.
 # For integer based IDs (default):

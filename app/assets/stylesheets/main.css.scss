@@ -1,0 +1,148 @@
+// source https://github.com/thredded/thredded/blob/master/app/assets/stylesheets/thredded/base/_variables.scss
+
+// Grid
+$thredded-grid-container-max-width: 80rem !default; /* MODIFIE */
+$thredded-grid-breakpoint-max-widths: (mobile: 34rem, tablet: 48rem) !default;
+
+// Minimum width required for the content that breaks out of the container, such
+// as post avatars and topic post counts
+$thredded-content-breakout-min-width: 4rem !default;
+
+// Typography
+$thredded-base-font-family: "Assistant", sans-serif !default; /* MODIFIE */
+$thredded-base-font-size: 1rem !default; // 16px
+$thredded-font-size-small: 0.875rem !default; // 14px
+$thredded-base-line-height: 1.5 !default;
+$thredded-heading-font-family: "Noto Sans SC", sans-serif !default;  /* MODIFIE */
+$thredded-heading-line-height: 1.2 !default;
+$thredded-messageboard-title-font-size: 1.125rem !default;
+$thredded-topic-header-font-size: 1.25rem !default;
+$thredded-topic-header-font-size-tablet-and-up: 1.5rem !default;
+
+// Spacings
+$thredded-large-spacing: $thredded-base-line-height * 2rem !default;
+$thredded-base-spacing: $thredded-base-line-height * 1rem !default;
+$thredded-small-spacing: $thredded-base-spacing / 2 !default;
+$thredded-inline-spacing: 0.4375em !default;
+
+// Named colors 
+$thredded-brand: rgb(119, 118, 188) !default; /* MODIFIE */
+$thredded-dark-gray: rgba(#424242, 0.25) !default;
+$thredded-light-gray: #eee !default;
+
+// Colors of text, background, actions (links), and navigation
+$thredded-text-color: rgb(79, 79, 79) !default; /* MODIFIE */
+$thredded-secondary-text-color: rgb(94, 87, 55) !default; /* MODIFIE */
+$thredded-background-color: #fff !default;
+$thredded-action-color: $thredded-brand !default;
+$thredded-action-hover-color: darken($thredded-action-color, 15%) !default;
+$thredded-action-transition: color 0.1s linear !default;
+$thredded-nav-color: $thredded-text-color !default;
+$thredded-nav-hover-color: $thredded-action-color !default;
+$thredded-nav-current-color: $thredded-action-color !default;
+$thredded-overlay-background-color: opacify($thredded-background-color, 1) !default;
+$thredded-overlay-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12) !default;
+$thredded-secondary-nav-color: $thredded-secondary-text-color !default;
+$thredded-spoiler-background-color: rgba(0, 0, 0, .06) !default;
+$thredded-code-selected-line-background: #f8eec7 !default;
+
+
+// Colors of alerts and flash messages /* TOUT MODIFIE */
+$thredded-alert-danger-background: rgb(248, 215, 218) !default;
+$thredded-alert-danger-color: rgb(114, 28, 36) !default;
+$thredded-alert-info-background: rgb(209, 236, 241) !default;
+$thredded-alert-info-color: rgb(12, 84, 96) !default;
+$thredded-alert-success-background: rgb(212, 237, 218) !default;
+$thredded-alert-success-color: rgb(21, 87, 36) !default;
+$thredded-alert-warning-background: rgb(255, 243, 205) !default;
+$thredded-alert-warning-color: rgb(255, 243, 205) !default;
+
+// Borders
+$thredded-base-border-color: $thredded-light-gray !default;
+$thredded-base-border: 1px solid $thredded-base-border-color !default;
+$thredded-blockquote-border-color: $thredded-light-gray !default;
+
+// Form inputs
+$thredded-form-background: $thredded-background-color !default;
+$thredded-form-border-color: rgb(206, 212, 218) !default; /* MODIFIE */
+$thredded-form-border-hover-color: darken($thredded-form-border-color, 6.4%) !default;
+$thredded-form-border-focus-color: $thredded-action-color !default;
+$thredded-form-border: 1px solid $thredded-form-border-color !default;
+$thredded-form-box-shadow: inset 0 1px 3px rgba(#000, 0.06) !default;
+$thredded-form-color: $thredded-brand !default; /* MODIFIE */
+
+// Buttons
+$thredded-button-background: $thredded-action-color !default;
+$thredded-button-color: #fff !default;
+$thredded-button-hover-background: rgb(119, 118, 188) !default; /* MODIFIE */
+$thredded-button-hover-color: $thredded-button-color !default;
+
+$thredded-button-light-background: lighten($thredded-button-background, 35%) !default;
+$thredded-button-light-color: darken($thredded-button-background, 15%) !default;
+$thredded-button-light-hover-background: darken($thredded-button-light-background, 15%) !default;
+$thredded-button-light-hover-color: darken($thredded-button-light-color, 15%) !default;
+
+
+$thredded-button-border-radius: 2rem !default; /*MODIFIE*/
+$thredded-button-font-family: $thredded-base-font-family !default;
+$thredded-button-font-size: 16px !default; /*MODIFIE*/
+$thredded-button-font-weight: 400 !default; /*MODIFIE*/
+$thredded-button-line-height: 24px !default; /*MODIFIE*/
+
+// Badges (unread count, posts count)
+$thredded-badge-active-color: $thredded-button-color !default;
+$thredded-badge-active-background: $thredded-action-color !default;
+$thredded-badge-inactive-color: $thredded-button-color !default;
+$thredded-badge-inactive-background: rgba($thredded-text-color, 0.3) !default;
+
+// Locked topics
+$thredded-badge-locked-color: $thredded-alert-warning-background;
+$thredded-badge-locked-background: $thredded-alert-warning-color;
+
+// Onebox
+$thredded-onebox-favicons: (
+  'amazon': 'favicons/amazon.png',
+  'githubblob': 'favicons/github.png',
+  'githubcommit': 'favicons/github.png',
+  'githubgist': 'favicons/github.png',
+  'githubissue': 'favicons/github.png',
+  'githubpullrequest': 'favicons/github.png',
+  'googledocs': 'favicons/google_branding/logo_drive_48px.png',
+  'stackexchange': 'favicons/stackexchange.png',
+  'twitterstatus': 'favicons/twitter.png',
+  'wikipedia': 'favicons/wikipedia.png',
+) !default;
+// Properties applied based on the image filename:
+$thredded-onebox-favicon-properties: () !default;
+
+// Layout features
+
+// Messageboards grid
+// Whether to display messageboards as a grid on the desktop screen sizes.
+$thredded-messageboards-grid: true !default;
+// Paddings within a grid item
+$thredded-messageboards-grid-item-padding-x: "($thredded-base-spacing * 0.8) "!default;
+$thredded-messageboards-grid-item-padding-y: $thredded-base-spacing !default;
+// Spacing between grid items, must be set in the same unit as the border width
+$thredded-messageboards-grid-item-gutter-x: 50px !default; /*MODIFIE*/
+$thredded-messageboards-grid-item-gutter-y: 20px !default; /*MODIFIE*/
+// The width of the border around a grid item
+$thredded-messageboards-grid-item-border-width: 2px !default;
+$thredded-messageboards-grid-item-border-color:
+    // If one of the gutters is 0 the borders will be collapsed by overlap.
+    // Ensure their color does not have and alpha component:
+    if($thredded-messageboards-grid-item-gutter-x == 0 or $thredded-messageboards-grid-item-gutter-y == 0,
+       // Use the closest non-transparent color
+       mix(opacify($thredded-base-border-color, 1), $thredded-background-color,
+           percentage(alpha($thredded-base-border-color))),
+       $thredded-base-border-color) !default;
+// Minimum width of a grid item
+$thredded-messageboards-grid-item-flex-basis: 30rem !default;
+
+// Topics list
+$thredded-topics-list-gutter-y: $thredded-base-spacing !default;
+$thredded-topics-topic-posts-counter-width: 3rem !default;
+$thredded-topics-topic-follow-icon-width: 2rem !default;
+$thredded-grid-container-max-width: 80rem !default;
+
+@import "thredded";

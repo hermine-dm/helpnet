@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  
-  #before_action :authenticate_user
-  #before_action :authenticate_current_user
+
+  before_action :authenticate_user
+  before_action :authenticate_current_user, except: [:destroy]
+  before_action :authenticate_current_user_or_admin, only: [:destroy]
 
 	def show
     @user = User.find(params[:id])
@@ -13,10 +14,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(name: params[:name], first_name: params[:first_name], last_name: params[:last_name], email: params[:email], zip_code: params[:zip_code])
+    post_params = params.require(:user).permit(:name, :first_name, :last_name, :email, :zip_code, :avatar)
+    if @user.update(post_params)
       flash[:success] = 'Vos informations ont bien été modifiées'
       redirect_to @user
     else
+      flash.now[:error] = @user.errors.messages.first
       render :edit
     end
   end
@@ -24,6 +27,10 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).delete 
     flash[:alert] = 'Votre compte a été supprimé'
-    redirect_to new_user_registration_path
+    if current_user.admin == true
+      redirect_back(fallback_location: admin_show_path)
+    else 
+      redirect_to root_path
+    end
   end
 end

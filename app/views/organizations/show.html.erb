@@ -1,0 +1,87 @@
+<div class="container-fluid py-5 bg-orange-gradient">
+  <br>
+</div>
+
+<div class="container mt-n5">
+  <div class="row">
+    <div class="col-md-2 text-center">
+
+
+      <%if @organization.logo.attached?%>
+        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %>
+      <%else%>
+        <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
+      <%end%>
+
+    </div>
+    <div class="col-md-6 text-center text-md-left">
+      <h1> <%= @organization.name %> </h1>
+      <p><%= @organization.description %></p>
+    </div>
+    <div class="col-md-4 text-center text-md-right">
+      <% if current_user && current_user.admin == true %>
+        <%= link_to "Editer infos", edit_organization_path(@organization.id), class: 'btn btn-primary' %>
+      <%end%>
+      <%if current_user%>
+        <% @follow = Follow.find_by(user_id:current_user.id, organization_id:@organization.id)%>
+        <%if @follow == nil%>
+          <%= link_to "Suivre", organization_follows_path(@organization.id), class: 'btn btn-secondary', method: :post %>
+        <%else%>
+          <%= link_to "Ne plus suivre", organization_follow_path(@organization.id, @follow.id), class: 'btn btn-secondary', method: :delete %>
+        <%end%>
+      <%else%>
+         <%= link_to "Suivre", new_user_session_path, class: 'btn btn-secondary'%>
+      <%end%>
+    </div>
+  </div>
+
+  <div class="row py-3">
+    <div class="col py-3 text-center">
+      <h2 class="pb-3">
+        Description :
+      </h2>
+      <p> <%= @organization.content %> </p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid py-3 bg-orange-gradient">
+  <div class="container">
+      <div class="row text-center">
+        <div class="col py-3">
+          <h2>
+            Nous Contacter :
+          </h2>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-3">
+    
+          <p><i class="fas fa-home"></i>  <%= @organization.location %> </p>
+          <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.zip_code %> </p>
+          <p><i class="fas fa-phone-alt"></i>  <%= @organization.phone %> </p>
+        </div>
+        <div class="col-md-3">
+          <% unless @organization.email.nil? %>
+            <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
+          <%end%>
+          <% unless @organization.website.nil? %>
+            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
+          <%end%>
+          <% unless @organization.fb_website.nil? %>
+            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
+          <%end%>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row py-3">
+    <div class="col text-center">
+      <h2 class="py-3"> Nous soutenir : </h2>
+      <p> <%= @organization.description %> </p>
+      <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3' %>
+    </div>
+  </div>
+</div>
