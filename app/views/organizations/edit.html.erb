@@ -1,7 +1,7 @@
 <div class="container-fluid py-5 bg-light">
   <h1 class="text-center">Modifier les informations</h1>
 </div>
-<%= form_for @association do |f| %>
+<%= form_for @organization do |f| %>
 <div class="container mt-n5">
   <div class="row">
     <div class="col-md-2 text-center">
@@ -39,7 +39,7 @@
       <h1 class="display-4 d-flex justify-content-center text-primary">Modifier les informations</h1>
       <div class="container d-flex justify-content-center">
         <div class="">
-            <%= form_for @association do |f| %>
+            <%= form_for @organization do |f| %>
               <div class="form-group">
                 <%= label_tag "Le nom de l'association" %><span class="text-muted">(*)</span> </br>
                 <%= f.text_field :name %> 
@@ -74,8 +74,8 @@
               </div>
               <div class="form-group">
                 <%= label_tag "Logo de l'association" %> </br>
-                <%if @association.logo.attached?%>
-                  <%= image_tag @association.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"150" %> </br>
+                <%if @organization.logo.attached?%>
+                  <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"150" %> </br>
                   <p> Changer de logo :</p>
                   <%= f.file_field :logo %>
                 <%else%>
@@ -117,7 +117,7 @@
       <hr class="pb-3">
       <p>Pour supprimer le compte de cette association ainsi que ses informations, cliquer ici : </p>
       <% if current_user && current_user.admin == true %>
-      <%= link_to "Supprimer",association_path(@association.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
+      <%= link_to "Supprimer",organization_path(@organization.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
       <%end%>
     </div>
   </div>
