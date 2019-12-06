@@ -447,6 +447,12 @@ mark,
   background-color: #fcf8e3;
 }
 
+.icon {
+  background: -webkit-linear-gradient(0deg, rgba(245, 245, 245, 0.9), rgba(255, 255, 255, 0.25));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
