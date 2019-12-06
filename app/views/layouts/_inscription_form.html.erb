@@ -33,15 +33,15 @@
               <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=> 'noborder flex-fill' %>
             </div>  
           </div>
-          <br/>
-          <p style="font-size: 8px;">En vous inscrivant, vous acceptez les <a href="https://media.giphy.com/media/q8pghZNgAQ0rm/giphy.gif" target="_blank"> conditions générales d'utilisations.</a></p>
+          
+          <p style="font-size: 8px;">En vous inscrivant, vous acceptez les <%= link_to "conditions générales d'utilisations", "https://media.giphy.com/media/q8pghZNgAQ0rm/giphy.gif"%></p>
 
           <div class="actions">
             <%= f.submit "Créer mon compte", :class=> 'btn btn-primary' %>
           </div>
           <% end %>
           <div class="actions">
-            <a class=" row btn btn-sm btn-google m-2 p-2" style=" color: white;"><span class="fab fa-google"  style="color: white;"></span> S'inscire avec Google</a>
+            <div class=" row btn btn-sm btn-google m-2 p-2" style=" color: white;"><span class="fab fa-google"  style="color: white;"></span> S'inscrire avec Google</div>
           </div>
 
           <div style="font-size: 10px;">

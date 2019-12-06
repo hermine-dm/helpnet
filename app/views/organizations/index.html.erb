@@ -19,22 +19,21 @@
                 <%if current_user%>
                   <% @follow = Follow.find_by(user_id:current_user.id, organization_id:organization.id)%>
                   <%if @follow == nil%>
-                    <a class="btn btn-secondary" <%= link_to "Suivre", organization_follows_path(organization.id), method: :post %></a>
+                    <%= link_to "Suivre", organization_follows_path(organization.id), method: :post, :class => "btn btn-secondary"  %>
                   <%else%>
-                    <a class="btn btn-secondary" <%= link_to "Ne plus suivre", organization_follow_path(organization.id, @follow.id), method: :delete %></a>
+                    <%= link_to "Ne plus suivre", organization_follow_path(organization.id, @follow.id), method: :delete, :class => "btn btn-secondary" %>
                   <%end%>
                 <%else%>
-                    <a class="btn btn-secondary" <%= link_to "Suivre", new_user_session_path%></a>
+                    <%= link_to "Suivre", new_user_session_path, :class => "btn btn-secondary"%>
                 <%end%>
               </div>
             </div>
-          </div>
-        
+          </div> 
     <% end %>
   </div>
   <div class="d-flex flex-row justify-content-center mt-5 mb-5">
     <% if current_user && current_user.admin == true %>
-      <div class="btn btn-primary "> <%= link_to "Ajouter une nouvelle association", new_organization_path(), :class => "text-white" %>  </div>
+      <%= link_to "Ajouter une nouvelle association", new_organization_path(), :class => "btn btn-primary text-white" %>  
     <%end%>
   </div>
 </div>

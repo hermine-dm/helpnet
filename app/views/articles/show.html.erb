@@ -8,7 +8,7 @@
       <%if @user.avatar.attached?%>
         <%= image_tag @user.avatar, alt: 'avatar', class:"rounded-circle", height:"120", width:"120"%>
       <%else%>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi" alt="" height="120" width="120" class="rounded-circle">
+        <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
       <%end%>
     </div>
     <div class="col-md-6 text-center text-md-left">
@@ -17,12 +17,12 @@
       <%if current_user%>
         <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
         <%if @like == nil%>
-          <a class="text-dark" <%= link_to "Like", article_article_likes_path(@article.id), method: :post %></a>
+          <%= link_to "Like", article_article_likes_path(@article.id), method: :post, :class => "text-dark" %>
         <%else%>
-         <a class="text-muted" <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete %></a>
+          <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, :class => "text-muted" %>
         <%end%>
       <%else%>
-        <a class="text-dark" <%= link_to "Like", new_user_session_path%></a>
+        <%= link_to "Like", new_user_session_path, :class => "text-dark"%>
       <%end%>
     </div>
   </div>
@@ -31,16 +31,16 @@
       <p> <%= @article.content %> </p>
     </div>
   </div>
-  <div class="row py-3 justify-content-center">
-    <div class="form-group">
-      <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
-      <%= text_area_tag 'content', "", class: "form-control", rows:"3"%>
+  <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
+    <div class="row py-3 justify-content-center">
+      <div class="form-group">
+        <%= text_area_tag 'content', "", class: "form-control", rows:"3"%>
+      </div>
+      <div class="col-2">
+        <%= submit_tag "Commenter", class: 'btn btn-primary btn-sm'  %>
+      </div>
     </div>
-    <div class="col-2">
-      <%= submit_tag "Commenter", class: 'btn btn-success btn-sm'  %>
-      <%end%>
-    </div>
-  </div>
+  <%end%>
   <% @comments.each do |comment| %>
   <div class="row justify-content-center">
     <div class="col-lg-4 text-align-left">
