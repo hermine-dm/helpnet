@@ -31,16 +31,16 @@
       <p> <%= @article.content %> </p>
     </div>
   </div>
-  <div class="row py-3 justify-content-center">
-    <div class="form-group">
-      <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
-      <%= text_area_tag 'content', "", class: "form-control", rows:"3"%>
+  <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
+    <div class="row py-3 justify-content-center">
+      <div class="form-group">
+        <%= text_area_tag 'content', "", class: "form-control", rows:"3"%>
+      </div>
+      <div class="col-2">
+        <%= submit_tag "Commenter", class: 'btn btn-primary btn-sm'  %>
+      </div>
     </div>
-    <div class="col-2">
-      <%= submit_tag "Commenter", class: 'btn btn-primary btn-sm'  %>
-      <%end%>
-    </div>
-  </div>
+  <%end%>
   <% @comments.each do |comment| %>
   <div class="row justify-content-center">
     <div class="col-lg-4 text-align-left">

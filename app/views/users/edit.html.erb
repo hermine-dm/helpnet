@@ -6,18 +6,16 @@
 <div class="container">
     <div class="row mt-n5 mb-3 text-center">
       <div class="col-md-2">
-      <%if @user.avatar.attached?%>
-        <%= image_tag @user.avatar, alt: 'avatar', class:"rounded-circle", height:"120", width:"120" %>
-      <%else%>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi" alt="" height="120" width="120" class="rounded-circle">
-      <%end%>
-      <%= form_for @user do |f| %>
-        <%= f.file_field :avatar %>
+        <%if @user.avatar.attached?%>
+          <%= image_tag @user.avatar, alt: 'avatar', class:"rounded-circle", height:"120", width:"120" %>
+        <%else%>
+          <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
+        <%end%>
       </div>
       <div class="col-md-10">
         <div class="row d-flex justify-content-between">
           <div class="col-md-3 d-flex flex-column">
-            <h1 class="mb-4 text-md-left"><%= f.text_field :name %></h1>
+            <h1 class="mb-4 text-md-left"><%= @user.name %></h1>
             <p class="text-md-left">Dernière connexion : <%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></p>
           </div>
         </div>
@@ -29,34 +27,46 @@
       <div class="col-6">nb de posts : <%= @user.thredded_posts.count %></div>
     </div>
 
-    <div class="row border text-center py-3">
-      <div class="col-md-6">
-        <%= label_tag 'Nom : ' %>
-        <%= f.text_field :last_name %>
+    <%= form_for @user do |f| %>
+      <div class="row border text-center py-3">
+        <div class="col-md-6">
+          Changer sa photo : <%= f.file_field :avatar %>
+        </div>
+
+        <div class="col-md-6">
+          <%= label_tag 'Pseudo : ' %>
+          <%= f.text_field :name %>    
+        </div>
+      </div>
+      <div class="row border text-center py-3">
+        <div class="col-md-6">
+          <%= label_tag 'Nom : ' %>
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="col-md-6">
+          <%= label_tag 'Prénom : ' %>
+          <%= f.text_field :first_name %>      
+        </div>
       </div>
 
-      <div class="col-md-6">
-        <%= label_tag 'Prénom : ' %>
-        <%= f.text_field :first_name %>      
+      <div class="row border text-center py-3">
+        <div class="col-md-6">
+          <%= label_tag 'Email : ' %>
+          <%= f.text_field :email %>
+        </div>
+        <div class="col-md-6">
+          <%= label_tag 'Localisation : ' %>
+          <%= f.text_field :zip_code %>
+        </div>
       </div>
-    </div>
 
-    <div class="row border text-center py-3">
-      <div class="col-md-6">
-        <%= label_tag 'Email : ' %>
-        <%= f.text_field :email %>
+      <div class="row d-flex pt-3 justify-content-end">
+        <div class="col-md-3 text-right">
+          <%= f.submit 'Enregistrer les modifications', :class => "btn btn-default bg-primary text-white" %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <%= label_tag 'Localisation : ' %>
-        <%= f.text_field :zip_code %>
-      </div>
-    </div>
-
-    <div class="row d-flex pt-3 justify-content-end">
-      <div class="col-md-3 text-right">
-        <%= f.submit 'Enregistrer les modifications', :class => "btn btn-default bg-primary text-white" %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+    <br/>
 </div>
 

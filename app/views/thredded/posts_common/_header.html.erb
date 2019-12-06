@@ -4,7 +4,7 @@
     <%if post.user.avatar.attached? %>
         <%= image_tag main_app.url_for(post.user.avatar), alt: 'avatar', class:"rounded-circle", height:"120", width:"120" %>
     <%else%>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi" alt="" height="120" width="120" class="rounded-circle">
+        <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
     <%end%>
 
   <h2 class="thredded--post--user"><%= user_link post.user %></h2>

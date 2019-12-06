@@ -10,7 +10,7 @@
       <%if @organization.logo.attached?%>
         <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %>
       <%else%>
-       <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnybl2dND6AAjhk2HYuG9m8-Wt-jsPWnil6A89n1F7uMGEZ3b2" alt="" width="150" height="150">
+        <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
       <%end%>
 
     </div>
@@ -35,48 +35,48 @@
     </div>
   </div>
 
-<div class="row py-3">
-  <div class="col py-3 text-center">
-    <h2 class="pb-3">
-      Description :
-    </h2>
-    <p> <%= @organization.content %> </p>
+  <div class="row py-3">
+    <div class="col py-3 text-center">
+      <h2 class="pb-3">
+        Description :
+      </h2>
+      <p> <%= @organization.content %> </p>
+    </div>
   </div>
-</div>
 </div>
 
 <div class="container-fluid py-3 bg-orange-gradient">
-    <div class="container">
-    <div class="row text-center">
-      <div class="col py-3">
-        <h2>
-          Nous Contacter :
-        </h2>
-      </div>
-    </div>
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-3">
-  
-        <p><i class="fas fa-home"></i>  <%= @organization.location %> </p>
-        <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.zip_code %> </p>
-        <p><i class="fas fa-phone-alt"></i>  <%= @organization.phone %> </p>
-      </div>
-    <div class="col-md-3">
-      <% unless @organization.email.nil? %>
-      <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
-      <%end%>
-      <% unless @organization.website.nil? %>
-      <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
-      <%end%>
-      <% unless @organization.fb_website.nil? %>
-      <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
-      <%end%>
-    </div>
-  </div>
-  </div>
-  </div>
-
   <div class="container">
+      <div class="row text-center">
+        <div class="col py-3">
+          <h2>
+            Nous Contacter :
+          </h2>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-3">
+    
+          <p><i class="fas fa-home"></i>  <%= @organization.location %> </p>
+          <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.zip_code %> </p>
+          <p><i class="fas fa-phone-alt"></i>  <%= @organization.phone %> </p>
+        </div>
+        <div class="col-md-3">
+          <% unless @organization.email.nil? %>
+            <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
+          <%end%>
+          <% unless @organization.website.nil? %>
+            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
+          <%end%>
+          <% unless @organization.fb_website.nil? %>
+            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
+          <%end%>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="container">
   <div class="row py-3">
     <div class="col text-center">
       <h2 class="py-3"> Nous soutenir : </h2>
@@ -84,3 +84,4 @@
       <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3' %>
     </div>
   </div>
+</div>
