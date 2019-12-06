@@ -8,12 +8,12 @@ $thredded-grid-breakpoint-max-widths: (mobile: 34rem, tablet: 48rem) !default;
 // as post avatars and topic post counts
 $thredded-content-breakout-min-width: 4rem !default;
 
-// Typography -- PAS ENCORE MODIFIE
-$thredded-base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// Typography
+$thredded-base-font-family: "Assistant", sans-serif !default; /* MODIFIE */
 $thredded-base-font-size: 1rem !default; // 16px
 $thredded-font-size-small: 0.875rem !default; // 14px
 $thredded-base-line-height: 1.5 !default;
-$thredded-heading-font-family: inherit !default;
+$thredded-heading-font-family: "Noto Sans SC", sans-serif !default;  /* MODIFIE */
 $thredded-heading-line-height: 1.2 !default;
 $thredded-messageboard-title-font-size: 1.125rem !default;
 $thredded-topic-header-font-size: 1.25rem !default;
@@ -26,7 +26,7 @@ $thredded-small-spacing: $thredded-base-spacing / 2 !default;
 $thredded-inline-spacing: 0.4375em !default;
 
 // Named colors 
-$thredded-brand: rgb(127, 141, 255) !default; /* MODIFIE */
+$thredded-brand: rgb(119, 118, 188) !default; /* MODIFIE */
 $thredded-dark-gray: rgba(#424242, 0.25) !default;
 $thredded-light-gray: #eee !default;
 
@@ -64,12 +64,12 @@ $thredded-blockquote-border-color: $thredded-light-gray !default;
 
 // Form inputs
 $thredded-form-background: $thredded-background-color !default;
-$thredded-form-border-color: darken($thredded-base-border-color, 5%) !default;
+$thredded-form-border-color: rgb(206, 212, 218) !default; /* MODIFIE */
 $thredded-form-border-hover-color: darken($thredded-form-border-color, 6.4%) !default;
 $thredded-form-border-focus-color: $thredded-action-color !default;
 $thredded-form-border: 1px solid $thredded-form-border-color !default;
 $thredded-form-box-shadow: inset 0 1px 3px rgba(#000, 0.06) !default;
-$thredded-form-color: $thredded-text-color !default;
+$thredded-form-color: $thredded-brand !default; /* MODIFIE */
 
 // Buttons
 $thredded-button-background: $thredded-action-color !default;
@@ -121,13 +121,13 @@ $thredded-onebox-favicon-properties: () !default;
 // Whether to display messageboards as a grid on the desktop screen sizes.
 $thredded-messageboards-grid: true !default;
 // Paddings within a grid item
-$thredded-messageboards-grid-item-padding-x: ($thredded-base-spacing * 0.8) !default;
+$thredded-messageboards-grid-item-padding-x: "($thredded-base-spacing * 0.8) "!default;
 $thredded-messageboards-grid-item-padding-y: $thredded-base-spacing !default;
 // Spacing between grid items, must be set in the same unit as the border width
-$thredded-messageboards-grid-item-gutter-x: 0 !default;
-$thredded-messageboards-grid-item-gutter-y: 0 !default;
+$thredded-messageboards-grid-item-gutter-x: 50px !default; /*MODIFIE*/
+$thredded-messageboards-grid-item-gutter-y: 20px !default; /*MODIFIE*/
 // The width of the border around a grid item
-$thredded-messageboards-grid-item-border-width: 1px !default;
+$thredded-messageboards-grid-item-border-width: 2px !default;
 $thredded-messageboards-grid-item-border-color:
     // If one of the gutters is 0 the borders will be collapsed by overlap.
     // Ensure their color does not have and alpha component:
@@ -137,7 +137,7 @@ $thredded-messageboards-grid-item-border-color:
            percentage(alpha($thredded-base-border-color))),
        $thredded-base-border-color) !default;
 // Minimum width of a grid item
-$thredded-messageboards-grid-item-flex-basis: 21.5rem !default;
+$thredded-messageboards-grid-item-flex-basis: 30rem !default;
 
 // Topics list
 $thredded-topics-list-gutter-y: $thredded-base-spacing !default;
