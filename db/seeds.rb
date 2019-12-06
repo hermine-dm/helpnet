@@ -71,6 +71,19 @@ puts "users créés"
 		location: "Sur les routes avec la brouette", zip_code: "75000", website: "https://associationmomoneextreme.wordpress.com/", fb_website: "https://www.facebook.com/elviajeroencarretilla/", phone: "0785543847", donate_link: "https://www.helloasso.com/associations/momone-extreme/formulaires/1?fbclid=IwAR01xed06N89XYM6Pd-I2HvQyBfj0CYW8tt-1IvVcLzszrbTY9zgivS1ZCk", logo_url: "https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/36347132_2065484783715532_9133833453475725312_n.jpg?_nc_cat=111&_nc_ohc=sSA126E2_jIAQkaFIQkZbG7fil0gF17F7jREPu0wDR5OpjZDjPn8BDZEw&_nc_ht=scontent-cdg2-1.xx&oh=366784a7340dd764a8191eb7f90f104b&oe=5E6DCB8A")
 puts "associations créées"
 
+User.all.each do |user|
+	Follow.create(user_id: user.id, organization_id:Organization.all.sample.id)
+end
+puts "chaque user suit une assoce"
+
+10.times do
+	Article.create(user_id: User.all.sample.id, content: Faker::Lorem.paragraph,title: Faker::Lorem.sentence)
+end
+puts "articles créés"
+
+
+
+
 		Thredded::Messageboard.create(name: "La Relation avec l'entourage", description: "Ce theme sert à échanger sur vos relations avec votre entourage proche")
 		Thredded::Messageboard.create(name: "Les Aides gouvernementales", description: "Ce theme sert à échanger sur  tous les sujets fiscaux // aides, etc")
 		Thredded::Messageboard.create(name: "L'Annonce", description: "Ce theme sert à échanger sur tous les sujets liés à l'annonce de la maladie")
