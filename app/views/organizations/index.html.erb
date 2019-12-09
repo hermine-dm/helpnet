@@ -6,8 +6,12 @@
             <div class="card h-100">
               <div class="card-body d-flex flex-row">
                 <div class="col-md-4 d-flex flex-column justify-content-center">
-                  <%= image_tag("#{organization.logo_url}", size: "100x100", class: "rounded-circle mb-2", alt: "Logo Asso")%>                
-                  <div class="row pl-2"><%= organization.location %></div>
+                  <%if organization.logo.attached?%>
+                   <%= image_tag organization.logo, alt: 'logo', class:"rounded-circle", height:"100", width:"100" %>
+                  <%else%>
+                    <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
+                  <%end%>
+                  <div class="row pl-2" style="font-size: 14px"><%= organization.location %></div>
                 </div>
                 <div class="col-md-8 d-flex flex-column justify-content-center">
                   <h4 class="card-title self-align-top"> <%= organization.name %> </h4>
