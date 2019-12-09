@@ -14,7 +14,7 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = Organization.new(name: params[:name],description: params[:description], location: params[:location], zip_code: params[:zip_code], website: params[:website], fb_website: params[:fb_website], email: params[:email], num_rna: params[:num_rna]) 
+    @organization = Organization.new(name: params[:name],description: params[:description], location: params[:location], zip_code: params[:zip_code], website: params[:website], fb_website: params[:fb_website], email: params[:email], num_rna: params[:num_rna], donate_link: params[:donate_link], content: params[:content]) 
     @organization.user_id = current_user.id
     if @organization.save # essaie de sauvegarder en base
       flash[:success] = "Merci l'association est en cours de validation par l'administration" 
@@ -38,7 +38,7 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization = Organization.find(params[:id])
-    post_params = params.require(:organization).permit(:name, :description, :location, :zip_code, :website, :fb_website, :email, :num_rna, :logo, :validatedbyadmin)
+    post_params = params.require(:organization).permit(:name, :description, :location, :zip_code, :website, :fb_website, :email, :num_rna, :logo, :content, :donate_link, :validatedbyadmin)
     if @organization.update(post_params)
       flash[:success] = "Les informations ont bien été prises en compte"
       redirect_to organization_path(@organization.id)

@@ -13,7 +13,7 @@
                 <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire </div>
               </div>
 
-              <div class="row">
+              <div class="flex-row d-flex align-items-end">
                 <div class="col">
                   <%= label_tag 'Le numéro du registre RNA (*)'%> <br/>
                   <%= text_field_tag 'num_rna', "", class: "form-control", placeholder: "W000000000"  %>
@@ -31,10 +31,13 @@
                   <div class="invalid-feedback"> Ce champs est obligatoire </div>
                 </div>
               </div>
-              </br>
               <div class="mb-3">
                 <%= label_tag "Le site web" %> <br/>
                 <%= text_field_tag 'website', "", class: "form-control", placeholder: "www.assocation.org"%>
+              </div>
+              <div class="mb-3">
+                <%= label_tag "Un lien pour les donations" %> <br/>
+                <%= text_field_tag 'donate_link', "", class: "form-control", placeholder: "www.assocation.org/donate"%>
               </div>
               <div class="mb-3">
                 <%= label_tag "Le lien facebook" %> <br/>
@@ -50,13 +53,17 @@
               </div>
               <hr class="mb-4">
               <div class="mb-3">
-                <%= label_tag "Description de l'assocation " %> <br/>
+               <div class="mb-3">
+                <%= label_tag "Votre Slogan (au moins 100 caractères)" %> <br/>
                 <%= text_area_tag 'description', "", class: "form-control"%>
                 <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
               </div>
+                <%= label_tag "Description de l'assocation " %> <br/>
+                <%= text_area_tag 'content', "", class: "form-control", style: 'height: 20rem;'%>
+                <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
+              </div>
 
-              <%= submit_tag "Valider", class: 'btn btn-primary btn-lg'  %>
-              <br/>
+              <%= submit_tag "Valider", class: 'btn btn-primary btn-lg mb-2'  %>
           <% end %>
           
         </div>

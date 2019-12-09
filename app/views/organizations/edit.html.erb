@@ -50,7 +50,7 @@
   <div class="container bg-light py-3">
       <h2 class="d-flex justify-content-center">Informations de contacts</h2>
       <div class="container d-flex justify-content-center">
-        <div class="">
+        <div class=" text-center">
               <div class="form-group">
                   <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> <br/>
                   <%= f.text_field :location %>
@@ -95,9 +95,9 @@
 
   <div class="row py-3">
     <div class="col text-center">
-      <p>Pour supprimer le compte de cette association ainsi que ses informations, cliquer ici : </p>
       <% if current_user && current_user.admin == true %>
-      <%= link_to "Supprimer",organization_path(@organization.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
+        <p>Pour supprimer le compte de cette association ainsi que ses informations, cliquer ici : </p>
+        <%= link_to "Supprimer",organization_path(@organization.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
       <%end%>
     </div>
   </div>
