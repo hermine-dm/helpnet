@@ -2,7 +2,8 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_admin, except: [:show, :index]
   
   def index
-  	@organizations = Organization.all
+    @organizations = Organization.all
+
   end
 
   def show
