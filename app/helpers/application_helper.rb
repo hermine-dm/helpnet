@@ -35,7 +35,22 @@ module ApplicationHelper
 	    	redirect_to root_path
   		end
   	end
-  	
+
+  	def authenticate_user_assoc
+  		@user = current_user
+  		if @user.organization.nil?
+	    	redirect_to root_path
+  		end
+  	end
+
+  	def authenticate_user_assoc_author
+  		@user = current_user
+  		@article = Article.find(params[:id])
+  		unless @user.id == @article.user_id 
+	    	redirect_to root_path
+  		end
+  	end
+
 	def bootstrap_class_for_flash(type)
 	  case type
 	    when 'notice' then "alert-info"

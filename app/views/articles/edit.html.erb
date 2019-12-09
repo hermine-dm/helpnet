@@ -26,9 +26,9 @@
 <% end %>
 <div class="row py-3">
   <div class="col text-center">
-    <p>Pour supprimer cet article, cliquer ici : </p>
     <% if current_user && (current_user == @user || current_user.admin == true)%>
-    <%= link_to "Supprimer",article_path(@article.id), method: :delete, data: {confirm: "Etes vous sur(e)? L'article sera définitevement supprimé"}, class: 'btn btn-outline-primary' %>
+      <p>Pour supprimer cet article, cliquer ici : </p>
+      <%= link_to "Supprimer",article_path(@article.id), method: :delete, data: {confirm: "Etes vous sur(e)? L'article sera définitevement supprimé"}, class: 'btn btn-outline-primary' %>
     <%end%>
   </div>
 </div>

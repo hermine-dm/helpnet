@@ -35,8 +35,8 @@
     <% end %>
   </div>
   <div class="d-flex flex-row justify-content-center mt-5">
-    <% if current_user && current_user.admin == true %>
-      <%= link_to "Ajouter une nouvelle association", new_organization_path(), :class => " btn btn-primary text-white" %>
+    <% if current_user && current_user.organization.nil? == false %>
+      <%= link_to "Ajouter un nouvel article", new_article_path(), :class => " btn btn-primary text-white" %>
     <%end%>
   </div>
 </div>
