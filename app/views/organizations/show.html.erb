@@ -19,7 +19,7 @@
       <p><%= @organization.description %></p>
     </div>
     <div class="col-md-4 text-center text-md-right">
-      <% if current_user && current_user.admin == true %>
+      <% if current_user && (current_user.admin == true || current_user.organization.id == @organization.id) %>
         <%= link_to "Editer infos", edit_organization_path(@organization.id), class: 'btn btn-primary' %>
       <%end%>
       <%if current_user%>

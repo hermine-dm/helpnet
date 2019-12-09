@@ -1,8 +1,9 @@
 class OrganizationsController < ApplicationController
-  before_action :authenticate_admin, except: [:show, :index]
-  
+  before_action :authenticate_admin, only: [:destroy, :validate]
+  before_action :authenticate_user_assoc_or_admin, only: [:edit, :update]
+
   def index
-  	@organizations = Organization.all
+  	@organizations = Organization.all.where(validatedbyadmin: true)
   end
 
   def show
@@ -28,9 +29,16 @@ class OrganizationsController < ApplicationController
   	@organization = Organization.find(params[:id])
   end
 
+  def validate
+    @organization = Organization.find(params[:organization_id])
+    if @organization.validatedbyadmin == false then @organization.update(validatedbyadmin: true) else @organization.update(validatedbyadmin: false) end 
+    flash[:success] = "Les informations ont bien été prises en compte"
+    redirect_back(fallback_location: admin_show_path)
+  end
+
   def update
     @organization = Organization.find(params[:id])
-    post_params = params.require(:organization).permit(:name, :description, :location, :zip_code, :website, :fb_website, :email, :num_rna, :logo)
+    post_params = params.require(:organization).permit(:name, :description, :location, :zip_code, :website, :fb_website, :email, :num_rna, :logo, :validatedbyadmin)
     if @organization.update(post_params)
       flash[:success] = "Les informations ont bien été prises en compte"
       redirect_to organization_path(@organization.id)
@@ -43,7 +51,7 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization = Organization.find(params[:id])
     @organization.destroy
-    redirect_to organizations_path
+    redirect_back(fallback_location: admin_show_path)
   end
 
 end
