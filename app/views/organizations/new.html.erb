@@ -1,72 +1,17 @@
- <section>
-    <br/>
-    <div class="container bg-white">
-    <br/>
-      <h1 class="mt-5">Inscrire une association</h1>
-      <div class="container d-flex justify-content-center ">
-        <div class="col-md-8 order-md-1">
-          <%= form_tag organizations_path, method: "post" do %>
-            <input type="hidden" name="authenticity_token" value= <%= form_authenticity_token %> ><br/>
-              <div class="mb-3">
-                <%= label_tag "Le nom de l'association (*)" %> <br/>
-                <%= text_field_tag 'name', "", class: "form-control", placeholder: "Nom"%>
-                <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire </div>
-              </div>
+<div class="container-fluid py-5 bg-orange-gradient">
+  <br>
+</div>
 
-              <div class="flex-row d-flex align-items-end">
-                <div class="col">
-                  <%= label_tag 'Le numéro du registre RNA (*)'%> <br/>
-                  <%= text_field_tag 'num_rna', "", class: "form-control", placeholder: "W000000000"  %>
-                  <div class="invalid-feedback"> Ce champs est obligatoire </div>
-                </div>
-                <br/>
-                <div class="col">
-                  <%= label_tag "l'adresse du siege social (*)" %><br/>
-                  <%= text_field_tag 'location', "", class: "form-control"%>
-                  <div class="invalid-feedback"> Ce champs est obligatoire </div>
-                </div>
-                <div class="col">
-                  <%= label_tag 'Le code postal (*)' %> <br/>
-                  <%= text_field_tag 'zip_code', "", class: "form-control"%>
-                  <div class="invalid-feedback"> Ce champs est obligatoire </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <%= label_tag "Le site web" %> <br/>
-                <%= text_field_tag 'website', "", class: "form-control", placeholder: "www.assocation.org"%>
-              </div>
-              <div class="mb-3">
-                <%= label_tag "Un lien pour les donations" %> <br/>
-                <%= text_field_tag 'donate_link', "", class: "form-control", placeholder: "www.assocation.org/donate"%>
-              </div>
-              <div class="mb-3">
-                <%= label_tag "Le lien facebook" %> <br/>
-                <%= text_field_tag 'fb_website', "", class: "form-control"%>
-              </div>
-              <div class="mb-3">
-                <%= label_tag "L'email de contact" %> <br/>
-                <%= text_field_tag 'email', "", class: "form-control"%>
-              </div>
-              <div class="mb-3">
-                <%= label_tag "Logo de la société" %> <br/>
-                <%= file_field_tag :logo%>
-              </div>
-              <hr class="mb-4">
-              <div class="mb-3">
-               <div class="mb-3">
-                <%= label_tag "Votre Slogan (au moins 100 caractères)" %> <br/>
-                <%= text_area_tag 'description', "", class: "form-control"%>
-                <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
-              </div>
-                <%= label_tag "Description de l'assocation " %> <br/>
-                <%= text_area_tag 'content', "", class: "form-control", style: 'height: 20rem;'%>
-                <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
-              </div>
-
-              <%= submit_tag "Valider", class: 'btn btn-primary btn-lg mb-2'  %>
-          <% end %>
-          
-        </div>
-      </div>
+<div class="container mt-n5 pb-3">
+  <div class="row ">
+    <div class="col-md-10 text-center text-md-left">
+      <h1>Inscrire une association</h1>
     </div>
-</section>
+  </div>
+</div>
+
+<div class="container mt-5">
+    <%= render 'organizations/orga_form' %>
+</div>
+
+
