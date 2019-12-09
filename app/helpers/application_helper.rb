@@ -29,9 +29,8 @@ module ApplicationHelper
   	end
 
   	def authenticate_user_assoc_or_admin
-	    @user = current_user
 	    @organization = Organization.find(params[:id])
-	    unless (@user.organization.id == @organization.id || current_user.admin == true )
+	    unless ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true )
 	    	redirect_to root_path
   		end
   	end
