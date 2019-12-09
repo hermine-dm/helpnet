@@ -1,3 +1,8 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ #hero {
+    background:linear-gradient(left,rgb(255, 255, 255),rgba(255,255,255,0.6)), url("https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500&w=1260");
+    background-position: center;
+    background-size: cover;
+ }
