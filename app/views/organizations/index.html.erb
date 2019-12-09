@@ -1,13 +1,20 @@
 <h1 class="d-flex justify-content-center mt-5">Nos associations partenaires</h1>
 <div class="container">
-  <div class="card-deck mt-3">
+  <div class="card-deck mt-3 mb-5">
     <% @organizations.each do |organization| %>
           <%= render 'organization_card', organization: organization %>
     <% end %>
   </div>
-  <div class="d-flex flex-row justify-content-center mt-5 mb-5">
+  <hr>
+  <div class="d-flex flex-row justify-content-center mt-3 mb-5">
     <% if current_user && current_user.organization.nil? %>
-      <%= link_to "Ajouter une nouvelle association", new_organization_path(), :class => "btn btn-primary text-white" %>  
+      <div class="row">
+        <div class="col-10">
+          <p>Vous gèrez une association et vous aimeriez qu'elle apparaisse sur le site, partager ces évènements, etc. Cliquez sur le bouton pour remplir le formulaire </p>
+        </div>
+        <div class="col-2 text-right">
+          <%= link_to "Espace association", new_organization_path(), :class => "btn btn-sm btn-outline-primary" %>
+        </div>  
     <%end%>
   </div>
 </div>
