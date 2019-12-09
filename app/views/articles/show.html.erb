@@ -1,36 +1,51 @@
+<!-- ***** Gradient banner ***** -->
 <div class="container-fluid py-5 bg-orange-gradient">
   <br>
 </div>
 
 <div class="container mt-n5">
+  <!-- ***** Title && Author ***** -->
   <div class="row">
-    <div class="col-md-2 text-center">
-      <%if @organization.logo.attached?%>
-        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120"%>
-      <%else%>
-        <%= image_tag "https://c4dev.org/wp/wp-content/uploads/2018/10/picto-solidarite.png", alt:"", class:"rounded-circle", height:"120", width:"120" %>
-      <%end%>
-    </div>
-    <div class="col-md-6 text-center text-md-left">
-      <h1> <%= @article.title %> </h1>
-      <h5>Par : <%= @user.name %> de <%= @organization.name %> </h5>
-      <%if current_user%>
-        <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
-        <%if @like == nil%>
-          <%= link_to "Like", article_article_likes_path(@article.id), method: :post, :class => "text-dark" %>
-        <%else%>
-          <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, :class => "text-muted" %>
-        <%end%>
-      <%else%>
-        <%= link_to "Like", new_user_session_path, :class => "text-dark"%>
-      <%end%>
+    <div class="col-md-8 text-center text-md-left">
+      <h1> <%= @article.title %> </h1> <!-- Title -->
+      <h5>Par : <%= @user.name %> de <%= @organization.name %> </h5> <!-- Author -->
     </div>
   </div>
+
+  <!-- ***** Article's body ***** -->
   <div class="row py-3">
     <div class="col py-3 text-center">
       <p> <%= @article.content %> </p>
     </div>
   </div>
+
+<!-- ***** Thank Section ***** -->
+  <div class="row">
+    <div class="col text-center">
+      <p>
+      Vous avez trouvé cet article intéressant ? Faites le savoir à son auteur :
+      <%if current_user%>
+      <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
+      <%if @like == nil%>
+      <%= link_to "Like", article_article_likes_path(@article.id), method: :post, :class => "ml-3 btn btn-primary" %>
+      <%else%>
+      <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, :class => "ml-3 btn btn-secondary" %>
+      <%end%>
+      <%else%>
+      <%= link_to "Like", new_user_session_path, :class => "ml-3 btn btn-primary"%>
+      <%end%>
+      </p>
+    </div>
+  </div>
+
+  <!-- ***** Comment Section ***** -->
+<div class="row py-3">
+  <h3>Réagir à cet article</h3>
+</div>
+<div class="row">
+  
+</div>
+
   <div class="row py-3">
   <div class="col text-center">
     <% if current_user && (current_user == @user || current_user.admin == true)%>
@@ -42,10 +57,10 @@
   <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
     <div class="row py-3 justify-content-center">
       <div class="form-group">
-        <%= text_area_tag 'content', "", class: "form-control", rows:"3"%>
+        <%= text_area_tag 'content', "", class: "form-control", rows:"3", class:"w-100"%>
       </div>
-      <div class="col-2">
-        <%= submit_tag "Commenter", class: 'btn btn-primary btn-sm'  %>
+      <div>
+        <%= submit_tag "Commenter", class: 'btn btn-primary'  %>
       </div>
     </div>
   <%end%>
