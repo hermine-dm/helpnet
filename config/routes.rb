@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/static/:page" => "static#show"
   resources :organizations do
     resources :follows, only: [:create, :destroy]
+    resources :events
   end
   resources :articles do
     resources :article_likes, only: [:create, :destroy]

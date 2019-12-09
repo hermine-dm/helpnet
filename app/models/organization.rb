@@ -10,4 +10,5 @@ class Organization < ApplicationRecord
   	has_one_attached :logo
   	has_many :follows
   	has_many :users, through: :follows
+  	has_many :events
 end
