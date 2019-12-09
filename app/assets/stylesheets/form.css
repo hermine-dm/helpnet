@@ -7,6 +7,21 @@
     box-shadow: 5px 5px 5px #CCC;
 }
 
+.form_home{
+    background-color: white;
+    padding: 1%;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #CCC;
+}
+
+.form_home p{
+font-size: 12px;
+}
+.form_home label{
+    font-size: 14px;
+    }
+
 .btn-google{
     color:#fff;background-color:#dd4b39;
     border-color:rgba(0,0,0,0.2);
