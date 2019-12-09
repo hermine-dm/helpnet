@@ -20,7 +20,6 @@
         <% if ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true) %>
           <%= link_to "Editer infos", edit_organization_path(@organization.id), class: 'btn btn-primary' %>
         <%end%>
-
         <% @follow = Follow.find_by(user_id:current_user.id, organization_id:@organization.id)%>
         <%if @follow == nil%>
           <%= link_to "Suivre", organization_follows_path(@organization.id), class: 'btn btn-secondary', method: :post %>
