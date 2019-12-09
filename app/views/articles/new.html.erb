@@ -27,11 +27,3 @@
     </div>
   </div>
 <% end %>
-<div class="row py-3">
-  <div class="col text-center">
-    <p>Pour éditer cet article, cliquer ici : </p>
-    <% if current_user && current_user.admin == true %>
-    <%= link_to "Editer",edit_article_path(@article.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
-    <%end%>
-  </div>
-</div>

@@ -1,12 +1,9 @@
 module ApplicationHelper
-	
-
 	def authenticate_user
 		unless current_user
 	    	redirect_to new_user_session_path
 	  	end
 	end
-
 	def authenticate_current_user
 	    @user = User.find(params[:id])
 	    unless (current_user.id == @user.id)
@@ -43,5 +40,15 @@ module ApplicationHelper
 	    when 'error' then "alert-danger"
 	    when 'alert' then "alert-warning"
 	  end
+	end
+
+	def address_validation
+		@address=Address.new(number: params[:number], street:params[:street], additionnal_information:params[:additionnal_information], zip_code:params[:zip_code], city:params[:city])
+		if @address.save
+			return @address
+		else
+	      	flash[:error] = "Désolé il y a une erreur :#{@address.errors.full_messages.to_sentence}"
+	      	redirect_back(fallback_location: root_path)
+		end
 	end
 end
