@@ -11,16 +11,17 @@ class OrganizationsController < ApplicationController
   end
 
   def new
+    @organization = Organization.new
   end
 
   def create
-    @organization = Organization.new(name: params[:name],description: params[:description], location: params[:location], zip_code: params[:zip_code], website: params[:website], fb_website: params[:fb_website], email: params[:email], num_rna: params[:num_rna], donate_link: params[:donate_link], content: params[:content]) 
+    @organization = Organization.new(name: params[:organization][:name],logo: params[:organization][:logo], description: params[:organization][:description], phone: params[:organization][:phone], location: params[:organization][:location], zip_code: params[:organization][:zip_code], website: params[:organization][:website], fb_website: params[:organization][:fb_website], email: params[:organization][:email], num_rna: params[:organization][:num_rna], donate_link: params[:organization][:donate_link], content: params[:organization][:content]) 
+    @organization.user_id = current_user.id
     if @organization.save # essaie de sauvegarder en base
-      flash[:success] = "Merci l'association a bien été créée" 
+      flash[:success] = "Merci l'association est en cours de validation par l'administration" 
       redirect_to organizations_path
     else
       flash.now[:error] = "Désolé il y a une erreur :#{@organization.errors.full_messages.to_sentence}"
-      puts @organization.errors.full_messages.to_sentence
       render :new
     end
   end

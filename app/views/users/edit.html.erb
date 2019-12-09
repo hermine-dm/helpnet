@@ -4,8 +4,9 @@
 </div>
 
 <div class="container">
-    <div class="row mt-n5 mb-3 text-center">
-      <div class="col-md-2">
+  <%= form_for @user do |f| %>
+    <div class="row mt-n5 mb-3">
+      <div class="col-md-2 text-center">
         <%if @user.avatar.attached?%>
           <%= image_tag @user.avatar, alt: 'avatar', class:"rounded-circle", height:"120", width:"120" %>
         <%else%>
@@ -14,58 +15,56 @@
       </div>
       <div class="col-md-10">
         <div class="row d-flex justify-content-between">
-          <div class="col-md-3 d-flex flex-column">
-            <h1 class="mb-4 text-md-left"><%= @user.name %></h1>
-            <p class="text-md-left">Dernière connexion : <%= @user.last_sign_in_at.strftime("%d-%m-%Y") %></p>
+          <div class="col-md-5">
+            <h1 class="mb-4 text-md-left text-center"><%= @user.name %></h1>
+            <div class="text-md-left text-center">
+              <%= label_tag 'Changer mon avatar : ' %>
+              <%= f.file_field :avatar %>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row border text-center text-muted py-3">
-      <div class="col-6">inscrit depuis le <%= @user.created_at.strftime("%d-%m-%Y") %> </div>
-      <div class="col-6">nb de posts : <%= @user.thredded_posts.count %></div>
+    <div class="row text-md-left text-center text-muted py-5">
+      <div class="col-6 pl-5">inscrit depuis le <%= @user.created_at.strftime("%d-%m-%Y") %> </div>
+      <div class="col-6 pl-5">nb de posts : <%= @user.thredded_posts.count %></div>
     </div>
 
-    <%= form_for @user do |f| %>
-      <div class="row border text-center py-3">
-        <div class="col-md-6">
-          Changer mon avatar : <%= f.file_field :avatar %>
-        </div>
-
-        <div class="col-md-6">
-          <%= label_tag 'Pseudo : ' %>
-          <%= f.text_field :name %>
+      <div class="row text-md-left text-center py-3">
+        <div class="col-md-6 pl-5">
+          <%= label_tag 'Pseudo : ' %> <br>
+          <%= f.text_field :name, class: 'form-control' %>
         </div>
       </div>
-      <div class="row border text-center py-3">
-        <div class="col-md-6">
-          <%= label_tag 'Nom : ' %>
-          <%= f.text_field :last_name %>
+      <div class="row text-md-left text-center py-3">
+        <div class="col-md-6 pl-5">
+          <%= label_tag 'Nom : ' %><br>
+          <%= f.text_field :last_name, class: 'form-control' %>
         </div>
 
-        <div class="col-md-6">
-          <%= label_tag 'Prénom : ' %>
-          <%= f.text_field :first_name %>
+        <div class="col-md-6 pl-5 text-md-left text-center">
+          <%= label_tag 'Prénom : ' %> <br>
+          <%= f.text_field :first_name, class: 'form-control' %>
         </div>
       </div>
 
-      <div class="row border text-center py-3 mb-3">
-        <div class="col-md-6">
-          <%= label_tag 'Email : ' %>
-          <%= f.text_field :email %>
+      <div class="row text-md-left text-center py-3">
+        <div class="col-md-6 pl-5">
+          <%= label_tag 'Email : ' %> <br>
+          <%= f.text_field :email, class: 'form-control' %>
         </div>
-        <div class="col-md-6">
-          <%= label_tag 'Localisation : ' %>
-          <%= f.text_field :zip_code %>
+        <div class="col-md-6 pl-5">
+          <%= label_tag 'Localisation : ' %> <br>
+          <%= f.text_field :zip_code, class: 'form-control' %>
         </div>
       </div>
 
-      <div class="row justify-content-lg-between justify-content-md-center no-gutters mb-5">
-        <div class="col-md-2 text-md-center">
-          <%= link_to 'Supprimer compte', user_path(params[:id]), method: :delete, data: {confirm: "Etes vous sûre? Votre compte sera définitivement supprimé"}, class: 'btn btn-outline-primary mt-3' %>
+      <div class="row justify-content-lg-between justify-content-md-center no-gutters my-5">
+        <div class="col-md-3 text-center">
+          <%= link_to 'Supprimer mon compte', user_path(params[:id]), method: :delete, data: {confirm: "Etes vous sûre? Votre compte sera définitivement supprimé"}, class: 'btn btn-outline-primary mt-3' %>
         </div>
-        <div class="col-md-3 text-md-center">
+        <div class="col-md-3 text-center">
           <%= f.submit 'Enregistrer les modifications', :class => "btn btn-primary mt-3" %>
         </div>
       </div>

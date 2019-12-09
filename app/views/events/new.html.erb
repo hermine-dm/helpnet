@@ -1,0 +1,73 @@
+ <section>
+    <br/>
+    <div class="container bg-white justify-content-center">
+    <br/>
+      <h1 class="mt-5">Créer un évènement</h1>
+      <div class="container d-flex justify-content-center ">
+        <div class="col-md-8 order-md-1">
+          <%= form_tag organization_events_path(@organization.id), method: "post", multipart: true do %>
+            <input type="hidden" name="authenticity_token" value= <%= form_authenticity_token %> ><br/>
+              <div class="mb-3">
+                <%= label_tag "Titre de l'évènement*" %> <br/>
+                <%= text_field_tag 'title', "", class: "form-control", placeholder: "Titre"%>
+                <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire </div>
+              </div>
+              <div class="mb-3">
+                <%= label_tag "Description de l'évènement*" %> <br/>
+                <%= text_area_tag 'description', "", class: "form-control"%>
+                <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
+              </div>
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col">
+                    <%= label_tag "Début de l'évènement*" %> <br/>
+                    <%= date_field_tag 'start_date', "", class: "form-control"%>
+                    <%= time_field_tag 'start_time', "", class: "form-control"%>
+                    <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
+                  </div>
+                  <div class="col">
+                    <%= label_tag "Fin de l'évènement" %> <br/>
+                    <%= date_field_tag 'end_date', "", class: "form-control"%>
+                    <%= time_field_tag 'end_time', "", class: "form-control"%>
+                    <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                  <%= label_tag "Lieu de l'évènement"%>
+                  <div class="row mb-1">
+                    <div class="col">
+                      <%= text_field_tag 'number', "", class: "form-control", placeholder: "N°"  %>
+                    </div>
+                    <div class="col">
+                      <%= text_field_tag 'street', "", class: "form-control", placeholder: "Voie"%>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col">
+                      <%= text_field_tag 'additionnal_information', "", class: "form-control", placeholder: "Complément d'adresse"%>
+                    </div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col">
+                    <%= text_field_tag 'zip_code', "", class: "form-control", placeholder: "Code Postal*"%>
+                  </div>
+                  <div class="col">
+                    <%= text_field_tag 'city', "", class: "form-control", placeholder: "Ville"%>
+                  </div>
+                  </div>
+              </div>
+              <div class="mb-3">
+                <%= label_tag "Ajoutez une photo à l'évènement"%><br/>
+                <%= file_field_tag 'illustration'%>
+              </div>
+              <div class="mb-3">
+                <%= submit_tag "Créer l'évènement", class: 'btn btn-primary btn-lg'  %>
+              </div>
+              <br/>
+          <% end %>
+          
+        </div>
+      </div>
+    </div>
+</section>

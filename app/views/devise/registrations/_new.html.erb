@@ -6,7 +6,7 @@
           <%= render "devise/shared/error_messages", resource: resource %>
 
           <div class="field">
-            <%= f.label :email %>
+            <%= f.label :votre_email %>
             <div class="border rounded p-1 flex-row d-flex align-items-center">
               <span class="fa fa-user errspan pl-1 pr-2"></span>
                <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=> 'noborder flex-fill' %>
@@ -14,9 +14,9 @@
           </div>
 
           <div class="field">
-            <%= f.label :password %>
+            <%= f.label :mot_de_passe %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> caractères minimum)</em>
+            <em style="font-size: 12px">(<%= @minimum_password_length %> caractères minimum)</em>
             <% end %>
             <div class="border rounded p-1 flex-row d-flex align-items-center">
                 <span class="fas fa-unlock-alt errspan pl-1 pr-2"></span>
@@ -25,7 +25,7 @@
           </div>
 
           <div class="field">
-            <%= f.label :password_confirmation %>
+            <%= f.label :confirmer_votre_mot_de_passe%>
             <div class="border rounded p-1 flex-row d-flex align-items-center">
               <span class="fas fa-unlock-alt errspan pl-1 pr-2"></span>
               <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=> 'noborder flex-fill' %>

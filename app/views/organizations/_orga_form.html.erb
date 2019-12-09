@@ -1,0 +1,83 @@
+
+<%= form_for @organization do |f| %>
+  <div class="container mt-n5">
+    <div class="row">
+      <div class="col-md-8 text-center text-md-left">
+        <%= label_tag 'Le nom : '%>
+        <%= f.text_field :name %> (*) <br/>
+        <%= label_tag 'Le numéro du registre RNA : '%>
+        <%= f.text_field  :num_rna, placeholder: "W000000000"  %> (*)
+      </div>
+    </div>
+  </div>
+  <div class="container bg-light py-3">
+    <div class="row">
+      <div class="col py-3 text-center">
+        <h4 class="pb-3">
+          Slogan : <small>(petite description entre 100 et 200 caractères)</small> (*)
+        </h4>
+        <p> <%= f.text_area :description, class: 'w-75' %> </p>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col py-3 text-center">
+          <h4 class="pb-3">
+            Dites nous en plus : (*)
+          </h4>
+          <p> <%= f.text_area :content, class: 'w-75', style: 'height: 20rem;' %> </p>
+        </div>
+    </div>
+    <div class="form-group text-center">
+      <h4> <%= label_tag "Logo de l'association" %></h4>
+        <%= f.file_field :logo %>
+    </div>
+  </div>
+  <div class="container bg-light py-3">
+      <h2 class="d-flex justify-content-center">Informations de contacts</h2>
+      <div class="container d-flex justify-content-center">
+        <div class=" text-center">
+              <div class="form-group">
+                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> <br/>
+                  <%= f.text_field :location %>
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span><br/>
+                <%= f.text_field :zip_code%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le site internet" %> <br/>
+                <%= f.text_field :website%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le lien Facebook" %> <br/>
+                <%= f.text_field :fb_website%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "L'email de contact" %> <br/>
+                <%= f.text_field :email%> 
+              </div>
+              <div class="form-group">
+                <%= label_tag "Le numero de téléphone" %> <br/>
+                <%= f.text_field :phone%> 
+              </div>
+              <span class="text-muted" style="font-size: 10px">les champs avec (*) sont obligatoires</span>
+        </div>
+      </div>
+  </div>
+  <div class="container bg-light py-3">
+    <div class="row py-3">
+      <div class="col text-center">
+        <h2 class="py-3"> Soutenir l'association : </h2>
+          <div class="form-group">
+                  <%= label_tag "Lien pour faire des dons" %> <br/>
+                  <%= f.text_field :donate_link%> 
+          </div>
+      </div>
+    </div>
+    <div class="row text-center py-3">
+      <div class="col">
+        <%= f.submit 'Valider', class: "btn btn-primary" %>      
+      </div>
+    </div>
+  </div>
+<% end %>

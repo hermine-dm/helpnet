@@ -4,6 +4,8 @@
 </div>
 
 <div class="container pb-3">
+
+  <!-- ***** Avatar // Pseudo // Edit button ***** -->
   <div class="row mt-n5 mb-3 text-center">
     <div class="col-md-2">
       <%if @user.avatar.attached?%>
@@ -21,34 +23,35 @@
             <%= @user.last_sign_in_at.strftime("%d-%m-%Y") %>
           </p>
         </div>
-        <div class="col-md-3 text-right">
+        <div class="col-md-3 text-md-right text-center">
           <%= link_to 'Modifier mes infos', edit_user_path(params[:id]), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row text-muted py-5">
-    <div class="col-md-6">inscrit depuis le
-      <%= @user.created_at.strftime("%d-%m-%Y") %></div>
-    <div class="col-md-6">nb de posts :
-      <b><%= @user.thredded_posts.count %></b></div>
+<!-- ***** Account infos ***** -->
+  <div class="row text-muted text-center py-5">
+    <div class="col-md-6 text-md-left py-2">inscrit depuis le <%= @user.created_at.strftime("%d-%m-%Y") %></div>
+    <div class="col-md-6 text-md-left py-2">nb de posts : <b><%= @user.thredded_posts.count %></b></div>
   </div>
 </div>
+
+<!-- ***** User's personnal infos ***** -->
 <div class="container-fluid py-5 bg-purple-gradient">
   <div class="container">
 
     <div class="row py-3">
-      <div class="col-md-6">Nom :<br>
+      <div class="col-md-6 py-2">Nom :<br>
         <%= @user.last_name %></div>
-      <div class="col-md-6">Prénom :<br>
+      <div class="col-md-6 py-2">Prénom :<br>
         <%= @user.first_name %></div>
     </div>
 
     <div class="row py-3">
-      <div class="col-md-6">Email :<br>
+      <div class="col-md-6 py-2">Email :<br>
         <%= @user.email %></div>
-      <div class="col-md-6">Localisation :<br>
+      <div class="col-md-6 py-2">Localisation :<br>
         <%= @user.zip_code %></div>
     </div>
   </div>
@@ -58,8 +61,17 @@
       <h2 class="col">Vos derniers commentaires</h2>
   </div>
 <div class="row">
+  <!-- ***** Last Comments in forum ***** -->
   <div class="col">
     <%= Thredded::ApplicationController.render partial: 'thredded/users/posts', locals: { posts: Thredded.posts_page_view(scope: @user.thredded_posts.order_newest_first.limit(5), current_user: current_user) } %>
+  </div>
+</div>
+<div class="row py-5 text-center">
+  <!-- ***** Links to Forum ***** -->
+  <div class="col">
+    <h3 class="px-4">Pour suivre les sujets qui vous intéressent ou en découvrir de nouveaux, rendez-vous sur notre <%= link_to "Forum", main_app.thredded_path %>
+    </h3>
+      <%= link_to "Aller au forum", main_app.thredded_path, class: 'btn btn-primary mt-3' %>
   </div>
 </div>
 </div>
