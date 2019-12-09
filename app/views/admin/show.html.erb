@@ -28,15 +28,24 @@
     Liste des associations => en attente partial pour voir
       <ul class="list-group col-12 text-left py-2"> 
         <li class="row py-2"> 
-          <div class="col-3 h6">ID</div>
-          <div class="col-3 h6">NOM</div>
-          <div class="col-3 h6">#RNA</div>
+          <div class="col-2 h6">ID</div>
+          <div class="col-2 h6">NOM</div>
+          <div class="col-2 h6">USER.ID</div>
+          <div class="col-2 h6">#RNA</div>
+          <div class="col-2 h6">VALIDATION</div>
         </li>
         <% @organizations.each do |organization| %>
          <li class="row py-2">
-          <div class="col-3 h6"><%= organization.id %> </div>
-          <div class="col-3 h6"><%= organization.name %> </div>
-          <div class="col-3 h6"><%= organization.num_rna %> </div>
+          <div class="col-2 h6"><%= organization.id %> </div>
+          <div class="col-2 h6"><%= organization.name %> </div>
+          <div class="col-2 h6"><%= organization.user_id %> </div>
+          <div class="col-2 h6"><%= organization.num_rna %> </div>
+          <div class="col-2 text-left">
+            <% if organization.validatedbyadmin == true %>
+              <%= link_to "OK", organization_validate_path(organization.id), method: :patch, data: {confirm: "Etes vous sûre? Le compte sera ou non validé"},  class: 'btn btn-sm btn-success' %></div>
+            <% else %>
+              <%= link_to "A valider", organization_validate_path(organization.id), method: :patch, data: {confirm: "Etes vous sûre? Le compte sera ou non validé"},  class: 'btn btn-sm btn-danger' %></div>
+            <% end %>
           <div class="col-1 text-right"><%= link_to 'Supprimer', organization_path(organization.id), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
           <div class="col-1 text-right"><%= link_to 'Editer', edit_organization_path(organization.id),  class: 'btn btn-sm btn-primary' %></div>
         </li>

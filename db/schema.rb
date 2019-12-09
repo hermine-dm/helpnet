@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_092506) do
+ActiveRecord::Schema.define(version: 2019_12_09_095040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(version: 2019_12_06_092506) do
     t.text "content"
     t.string "phone"
     t.string "donate_link"
+    t.bigint "user_id"
+    t.boolean "validatedbyadmin", default: false
+    t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
   create_table "thredded_categories", force: :cascade do |t|
@@ -356,6 +359,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_092506) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "organizations", "users"
   add_foreign_key "thredded_messageboard_users", "thredded_messageboards", on_delete: :cascade
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "thredded_posts", column: "post_id", on_delete: :cascade
