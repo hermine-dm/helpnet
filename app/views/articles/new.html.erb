@@ -1,37 +1,20 @@
 <div class="container-fluid py-5 bg-orange-gradient">
   <h1 class="text-center">Créer un nouvel article</h1>
 </div>
-<%= form_tag articles_path, method: "post" do %>
-  <div class="container bg-light py-3">
-    <div class="row">
-      <div class="col py-3 text-center">
-        <div class="row">
-          <h4 class="pb-3">Titre :</h4>
-          <p> <%= text_field_tag :title, class:"w-75" %> </p>
-        </div>
+<div class="container my-3">
+  <%= form_tag articles_path, method: "post" do %>
+    <div class="container pt-3 pl-5">
+      <div class="row">
+        <h4 class="pb-3">Titre :</h4>
+        <p> <%= text_field_tag :title,"", style: 'width: 40rem;' %> </p>
+      </div>
+      <div class="row">
+        <h4 class="pb-3">Article :</h4>
+        <p> <%= text_area_tag :content,"", style: 'width: 50rem; height: 20rem;' %> </p>
       </div>
     </div>
-    <div class="row">
-        <div class="col py-3 text-center">
-          <div class="row">
-            <h4 class="pb-3">Article :</h4>
-            <p> <%= text_area_tag :content, class:"w-75", style: 'height: 20rem;' %> </p>
-          </div>    
-        </div>
+    <div class="container py-3 text-center">
+          <%= submit_tag "Soumettre l'article", class: "btn btn-secondary" %>      
     </div>
-  <div class="container bg-light py-3">
-      <div class="row text-center py-3">
-      <div class="col">
-        <%= submit_tag "Soumettre l'article", class: "btn btn-primary" %>      
-      </div>
-    </div>
-  </div>
-<% end %>
-<div class="row py-3">
-  <div class="col text-center">
-    <p>Pour éditer cet article, cliquer ici : </p>
-    <% if current_user && current_user.admin == true %>
-    <%= link_to "Editer",edit_article_path(@article.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
-    <%end%>
-  </div>
+  <% end %>
 </div>

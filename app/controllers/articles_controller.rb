@@ -1,9 +1,13 @@
 class ArticlesController < ApplicationController
+	before_action :authenticate_user_assoc, only: [:create, :new]
+	before_action :authenticate_user_assoc_author, only: [:edit, :update, :destroy]
+	
 	def new
 	end
 	def show
 		@article=Article.find(params[:id])
 		@user=User.find(@article.user_id)
+		@organization = User.find(@article.user_id).organization
 		@comments=@article.article_comments
 	end
 	def index
@@ -23,6 +27,7 @@ class ArticlesController < ApplicationController
 		@article=Article.find(params[:id])
 		@user=User.find(@article.user_id)
 	end
+
 	def update
 		@article = Article.find(params[:id])
     	post_params = params.require(:article).permit(:title, :content)
@@ -34,6 +39,7 @@ class ArticlesController < ApplicationController
 	      redirect_to edit_article_path(@article.id)
 	    end
 	end
+
 	def destroy
 		@article=Article.find(params[:id])
 		@article.destroy
