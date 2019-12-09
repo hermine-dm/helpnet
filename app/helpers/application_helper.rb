@@ -46,7 +46,7 @@ module ApplicationHelper
 	end
 
 	def remote_ip #allow to set a special IP in local
-		if request.remote_ip.to_s == '127.0.0.1'
+		if request.remote_ip == '127.0.0.1'
 			# Hard coded remote address
 			'123.45.67.89'
 		else
