@@ -1,103 +1,69 @@
 <div class="container-fluid py-5 bg-orange-gradient">
   <h1 class="text-center">Modifier les informations</h1>
 </div>
-<%= form_for @organization do |f| %>
-  <div class="container mt-n5">
-    <div class="row">
-      <div class="col-md-2 text-center">
-        <%if @organization.logo.attached?%>
-          <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %>
-        <%else%>
-          <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
-        <%end%>      
-      </div>
-      <div class="col-md-8 text-center text-md-left">
-        <h2> <%= f.text_field :name %> (*) </h2>
-        <%= label_tag 'Le numéro du registre RNA : '%>
-        <%= f.text_field  :num_rna  %> (*)
-      </div>
-    </div>
+<div class="container d-flex justify-content-center ">
+<div class="col-md-8 order-md-1">
+<%= form_for [@organization, @event] do |f| %>
+  <div class="mb-3">
+    <%= label_tag "Titre de l'évènement*" %> <br/>
+    <%= f.text_field :title, class: "form-control"%>
+    <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire </div>
   </div>
-  <div class="container bg-light py-3">
-    <div class="row">
-      <div class="col py-3 text-center">
-        <h4 class="pb-3">
-          Slogan : <small>(entre 100 et 200 caractères)</small> (*)
-        </h4>
-        <p> <%= f.text_area :description, class: 'w-75' %> </p>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col py-3 text-center">
-          <h4 class="pb-3">
-            Description : (*)
-          </h4>
-          <p> <%= f.text_area :content, class: 'w-75', style: 'height: 20rem;' %> </p>
-        </div>
-    </div>
-    <div class="form-group text-center">
-      <h4> <%= label_tag "Logo de l'association" %></h4>
-      <%if @organization.logo.attached?%>
-        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %> </br>
-        <p> Changer de logo :</p>
-        <%= f.file_field :logo %>
-      <%else%>
-        <p style="color: #212529;"> Ajouter un logo :</p>
-        <%= f.file_field :logo %>
-      <%end%>
-    </div>
+  <div class="mb-3">
+    <%= label_tag "Description de l'évènement*" %> <br/>
+    <%= f.text_area :description, class: "form-control"%>
+    <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
   </div>
-  <div class="container bg-light py-3">
-      <h2 class="d-flex justify-content-center">Informations de contacts</h2>
-      <div class="container d-flex justify-content-center">
-        <div class="">
-              <div class="form-group">
-                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> <br/>
-                  <%= f.text_field :location %>
-              </div>
-              <div class="form-group">
-                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span><br/>
-                <%= f.text_field :zip_code%> 
-              </div>
-              <div class="form-group">
-                <%= label_tag "Le site internet" %> <br/>
-                <%= f.text_field :website%> 
-              </div>
-              <div class="form-group">
-                <%= label_tag "Le lien Facebook" %> <br/>
-                <%= f.text_field :fb_website%> 
-              </div>
-              <div class="form-group">
-                <%= label_tag "L'email de contact" %> <br/>
-                <%= f.text_field :email%> 
-              </div>
-              <span class="text-muted" style="font-size: 10px">les champs avec (*) sont obligatoires</span>
-        </div>
-      </div>
-  </div>
-  <div class="container bg-light py-3">
-    <div class="row py-3">
-      <div class="col text-center">
-        <h2 class="py-3"> Soutenir l'association : </h2>
-          <div class="form-group">
-                  <%= label_tag "Lien pour faire des dons" %> <br/>
-                  <%= f.text_field :donate_link%> 
-          </div>
-      </div>
-    </div>
-    <div class="row text-center py-3">
+  <div class="mb-3">
+    <div class="row">
       <div class="col">
-        <%= f.submit 'Valider les modifications', class: "btn btn-primary" %>      
+        <%= label_tag "Début de l'évènement*" %> <br/>
+        <%= f.date_field :start_date, class: "form-control"%>
+        <%= f.time_field :start_date, class: "form-control"%>
+        <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
+      </div>
+      <div class="col">
+        <%= label_tag "Fin de l'évènement" %> <br/>
+        <%= f.date_field :end_date, class: "form-control"%>
+        <%= f.time_field :end_date, class: "form-control"%>
+        <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
       </div>
     </div>
   </div>
-<% end %>
-
-  <div class="row py-3">
-    <div class="col text-center">
-      <p>Pour supprimer le compte de cette association ainsi que ses informations, cliquer ici : </p>
-      <% if current_user && current_user.admin == true %>
-      <%= link_to "Supprimer",organization_path(@organization.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
+  <div class="mb-3">
+    <% fields_for @address do |ff| %>
+      <%= label_tag "Lieu de l'évènement"%>
+      <div class="row mb-1">
+        <div class="col">
+          <%= ff.text_field :number, class: "form-control"%>
+        </div>
+        <div class="col">
+          <%= ff.text_field :street, class: "form-control"%>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col">
+          <%= ff.text_field :additionnal_information, class: "form-control"%>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col">
+        <%= ff.text_field :zip_code, class: "form-control"%>
+      </div>
+      <div class="col">
+        <%= ff.text_field :city, class: "form-control"%>
+      </div>
+      </div>
       <%end%>
     </div>
-  </div>
+    <div class="mb-3">
+      <%= label_tag "Ajoutez une photo à l'évènement"%><br/>
+      <%= f.file_field :illustration%>
+    </div>
+    <div class="mb-3">
+      <%= f.submit "Modifier l'évènement", class: 'btn btn-primary btn-lg'  %>
+    </div>
+    <br/>
+  <% end %>
+</div>
+</div>
