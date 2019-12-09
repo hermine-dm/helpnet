@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :article_comments
   has_many :follows
   has_many :organizations, through: :follows
+  has_many :participations
+  has_many :events, through: :participations
   after_create :generate_name
   after_create :welcome_send
 
