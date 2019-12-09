@@ -1,15 +1,16 @@
 module ApplicationHelper
 	def authenticate_user
 		unless current_user
-	    	redirect_to new_user_session_path
-	  	end
+	   	redirect_to new_user_session_path
+	  end
 	end
+
 	def authenticate_current_user
 	    @user = User.find(params[:id])
 	    unless (current_user.id == @user.id)
 	    	redirect_to root_path
   		end
-  	end
+  end
 
 	def authenticate_current_user_or_admin
 	    @user = User.find(params[:id])
@@ -30,7 +31,6 @@ module ApplicationHelper
 	    unless ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true )
 	    	redirect_to root_path
   		end
-<<<<<<< HEAD
   	end
 
   	def authenticate_user_assoc
@@ -47,7 +47,6 @@ module ApplicationHelper
 	    	redirect_to root_path
   		end
   	end
-	end
 
 	def is_remote_ip_known(ip)
 		users= User.all
@@ -67,7 +66,6 @@ module ApplicationHelper
 		end
 	end
 
->>>>>>> fc63000fefe35345b0a284251566e276b6ca52bf
 	def bootstrap_class_for_flash(type)
 	  case type
 	    when 'notice' then "alert-info"
