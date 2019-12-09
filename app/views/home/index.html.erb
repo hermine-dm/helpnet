@@ -2,14 +2,14 @@
 <div class="container-fluid py-5">
   <div class="container py-5">
     <div class="row py-5">
-      <div class="col-md-8 py-5 my-5">
+      <div class="col-md-6 py-5 my-5">
         <h1>Bienvenue sur Shine : le réseau d'entraide</h1>
         <p class="py-3">Bénevoles, médécins, malades, accompagnants, familles, amis voici une plateforme pour échanger, trouver vos associations, vos évènements, des conseils et surtout de la bienveillance</p>
         <%= link_to "Découvrir", '#', class: 'btn btn-lg btn-primary' %>
       </div>
 <!-- ***** SIGN UP FORM ***** -->
-      <div class="col-md-4">
-        <!-- render sign_in form here -->
+      <div class="col-md-6">
+        <%= render 'devise/registrations/new'%>
       </div>
     </div>
   </div>
