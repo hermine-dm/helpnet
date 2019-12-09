@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_103506) do
     t.bigint "organization_id"
     t.bigint "address_id"
     t.datetime "start_date"
-    t.integer "duration"
+    t.datetime "end_date"
     t.text "description"
     t.string "title"
     t.datetime "created_at", null: false

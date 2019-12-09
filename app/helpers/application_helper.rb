@@ -35,7 +35,7 @@ module ApplicationHelper
 	end
 
 	def address_validation
-		@address=Adress.new(number: params[:number], street:params[:street], additionnal_information:params[:additionnal_information], zip_code:params[:zipcode], city:params[:city])
+		@address=Address.new(number: params[:number], street:params[:street], additionnal_information:params[:additionnal_information], zip_code:params[:zip_code], city:params[:city])
 		if @address.save
 			return @address
 		else
