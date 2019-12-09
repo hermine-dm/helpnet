@@ -1,90 +1,22 @@
 <div class="container-fluid py-5 bg-orange-gradient">
-  <h1 class="text-center">Modifier les informations</h1>
+  <h1 class="text-center">Modifier l'article</h1>
 </div>
-<%= form_for @organization do |f| %>
-  <div class="container mt-n5">
-    <div class="row">
-      <div class="col-md-2 text-center">
-        <%if @organization.logo.attached?%>
-          <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %>
-        <%else%>
-          <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
-        <%end%>      
-      </div>
-      <div class="col-md-8 text-center text-md-left">
-        <h2> <%= f.text_field :name %> (*) </h2>
-        <%= label_tag 'Le numéro du registre RNA : '%>
-        <%= f.text_field  :num_rna  %> (*)
-      </div>
-    </div>
-  </div>
+<%= form_for @article do |f| %>
   <div class="container bg-light py-3">
     <div class="row">
       <div class="col py-3 text-center">
-        <h4 class="pb-3">
-          Slogan : <small>(entre 100 et 200 caractères)</small> (*)
-        </h4>
-        <p> <%= f.text_area :description, class: 'w-75' %> </p>
+        <h4 class="pb-3">Titre :</h4>
+        <p> <%= f.text_area :title, class: 'w-75' %> </p>
       </div>
     </div>
     <div class="row">
         <div class="col py-3 text-center">
-          <h4 class="pb-3">
-            Description : (*)
-          </h4>
+          <h4 class="pb-3">Article :</h4>
           <p> <%= f.text_area :content, class: 'w-75', style: 'height: 20rem;' %> </p>
         </div>
     </div>
-    <div class="form-group text-center">
-      <h4> <%= label_tag "Logo de l'association" %></h4>
-      <%if @organization.logo.attached?%>
-        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %> </br>
-        <p> Changer de logo :</p>
-        <%= f.file_field :logo %>
-      <%else%>
-        <p style="color: #212529;"> Ajouter un logo :</p>
-        <%= f.file_field :logo %>
-      <%end%>
-    </div>
   </div>
   <div class="container bg-light py-3">
-      <h2 class="d-flex justify-content-center">Informations de contacts</h2>
-      <div class="container d-flex justify-content-center">
-        <div class="">
-              <div class="form-group">
-                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> <br/>
-                  <%= f.text_field :location %>
-              </div>
-              <div class="form-group">
-                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span><br/>
-                <%= f.text_field :zip_code%> 
-              </div>
-              <div class="form-group">
-                <%= label_tag "Le site internet" %> <br/>
-                <%= f.text_field :website%> 
-              </div>
-              <div class="form-group">
-                <%= label_tag "Le lien Facebook" %> <br/>
-                <%= f.text_field :fb_website%> 
-              </div>
-              <div class="form-group">
-                <%= label_tag "L'email de contact" %> <br/>
-                <%= f.text_field :email%> 
-              </div>
-              <span class="text-muted" style="font-size: 10px">les champs avec (*) sont obligatoires</span>
-        </div>
-      </div>
-  </div>
-  <div class="container bg-light py-3">
-    <div class="row py-3">
-      <div class="col text-center">
-        <h2 class="py-3"> Soutenir l'association : </h2>
-          <div class="form-group">
-                  <%= label_tag "Lien pour faire des dons" %> <br/>
-                  <%= f.text_field :donate_link%> 
-          </div>
-      </div>
-    </div>
     <div class="row text-center py-3">
       <div class="col">
         <%= f.submit 'Valider les modifications', class: "btn btn-primary" %>      
@@ -92,12 +24,11 @@
     </div>
   </div>
 <% end %>
-
-  <div class="row py-3">
-    <div class="col text-center">
-      <p>Pour supprimer le compte de cette association ainsi que ses informations, cliquer ici : </p>
-      <% if current_user && current_user.admin == true %>
-      <%= link_to "Supprimer",organization_path(@organization.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
-      <%end%>
-    </div>
+<div class="row py-3">
+  <div class="col text-center">
+    <p>Pour supprimer cet article, cliquer ici : </p>
+    <% if current_user && (current_user == @user || current_user.admin == true)%>
+    <%= link_to "Supprimer",article_path(@article.id), method: :delete, data: {confirm: "Etes vous sur(e)? L'article sera définitevement supprimé"}, class: 'btn btn-outline-primary' %>
+    <%end%>
   </div>
+</div>

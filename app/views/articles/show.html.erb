@@ -31,6 +31,14 @@
       <p> <%= @article.content %> </p>
     </div>
   </div>
+  <div class="row py-3">
+  <div class="col text-center">
+    <p>Pour éditer cet article, cliquer ici : </p>
+    <% if current_user && (current_user == @user || current_user.admin == true)%>
+    <%= link_to "Editer", edit_article_path(@article.id), class: 'btn btn-outline-primary' %>
+    <%end%>
+  </div>
+</div>
   <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
     <div class="row py-3 justify-content-center">
       <div class="form-group">
