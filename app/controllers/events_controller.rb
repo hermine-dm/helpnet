@@ -5,6 +5,9 @@ class EventsController < ApplicationController
 	def new
 		@organization=Organization.find(params[:organization_id])
 	end
+	def index
+		@events=Event.all
+	end
 	def show
 		@organization=Organization.find(params[:organization_id])
 		@event=Event.find(params[:id])
@@ -20,5 +23,13 @@ class EventsController < ApplicationController
 		    @address.destroy
 		    render :new
 		end
+	end
+	def edit
+		@organization=Organization.find(params[:organization_id])
+		@event=Event.find(params[:id])
+	end
+	def update
+	end
+	def destroy
 	end
 end
