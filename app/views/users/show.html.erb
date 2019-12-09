@@ -31,11 +31,9 @@
   </div>
 
 <!-- ***** Account infos ***** -->
-  <div class="row text-muted text-center py-3">
-    <div class="col-md-6 text-md-left py-2">inscrit depuis le
-      <%= @user.created_at.strftime("%d-%m-%Y") %></div>
-    <div class="col-md-6 text-md-left py-2">nb de posts :
-      <b><%= @user.thredded_posts.count %></b></div>
+  <div class="row text-muted text-center py-5">
+    <div class="col-md-6 text-md-left py-2">inscrit depuis le <%= @user.created_at.strftime("%d-%m-%Y") %></div>
+    <div class="col-md-6 text-md-left py-2">nb de posts : <b><%= @user.thredded_posts.count %></b></div>
   </div>
 </div>
 
