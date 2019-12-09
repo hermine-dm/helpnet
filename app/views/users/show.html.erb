@@ -1,4 +1,5 @@
-<div class="container-fluid bg-light py-5">
+<!-- ***** Gradient top banner ***** -->
+<div class="container-fluid bg-purple-gradient py-5">
   <br>
 </div>
 
@@ -14,46 +15,51 @@
     <div class="col-md-10">
       <div class="row d-flex justify-content-between">
 
-        <div class="col-md-3 d-flex flex-column">
+        <div class="col-md-4">
           <h1 class="mb-4 text-md-left"><%= @user.name %></h1>
-          <p class="text-md-left">Dernière connexion :  <%= @user.last_sign_in_at.strftime("%d-%m-%Y") %> </p>
+          <p class="text-md-left">Dernière connexion :
+            <%= @user.last_sign_in_at.strftime("%d-%m-%Y") %>
+          </p>
         </div>
-        <!--  if current_user == false || current_user.id != @user.id %>
-        <div class="col-md-2 align-self-end">
-          = link_to Contacter (NA)", root_path, class: 'btn btn-primary mb-2' 
-        </div> 
-        end -->
+        <div class="col-md-3 text-right">
+          <%= link_to 'Modifier mes infos', edit_user_path(params[:id]), class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row border text-center text-muted py-3">
-    <div class="col-6">inscrit depuis le <%= @user.created_at.strftime("%d-%m-%Y") %></div>
-    <div class="col-6">nb de posts : <%= @user.thredded_posts.count %></div>
+  <div class="row text-muted py-5">
+    <div class="col-md-6">inscrit depuis le
+      <%= @user.created_at.strftime("%d-%m-%Y") %></div>
+    <div class="col-md-6">nb de posts :
+      <b><%= @user.thredded_posts.count %></b></div>
   </div>
+</div>
+<div class="container-fluid py-5 bg-purple-gradient">
+  <div class="container">
 
-  <div class="row border text-center py-3">
-    <div class="col-md-6">Nom : <%= @user.last_name %></div>
-    <div class="col-md-6">Prénom : <%= @user.first_name %></div>
-  </div>
+    <div class="row py-3">
+      <div class="col-md-6">Nom :<br>
+        <%= @user.last_name %></div>
+      <div class="col-md-6">Prénom :<br>
+        <%= @user.first_name %></div>
+    </div>
 
-  <div class="row border text-center py-3">
-    <div class="col-md-6">Email : <%= @user.email %></div>
-    <div class="col-md-6">Localisation : <%= @user.zip_code %></div>
-  </div>
-  <div class=" py-3 pl-3">
-    <div class="H5"> Vos derniers commentaires </div> </br>
-    <div class=""> 
-      <%= Thredded::ApplicationController.render partial: 'thredded/users/posts', locals: {
-      posts: Thredded.posts_page_view(scope: @user.thredded_posts.order_newest_first.limit(5), current_user: current_user) } %>
+    <div class="row py-3">
+      <div class="col-md-6">Email :<br>
+        <%= @user.email %></div>
+      <div class="col-md-6">Localisation :<br>
+        <%= @user.zip_code %></div>
     </div>
   </div>
-  <div class="row justify-content-lg-end justify-content-md-center">
-    <div class="col-md-2 text-md-center">
-      <%= link_to 'Modifier mes infos', edit_user_path(params[:id]), class: 'btn btn-primary mt-3' %>
-    </div>
-    <div class="col-md-2 text-md-center">
-      <%= link_to 'Supprimer compte', user_path(params[:id]), method: :delete, data: {confirm: "Etes vous sûre? Votre compte sera définitivement supprimé"},  class: 'btn btn-outline-primary mt-3' %>
-    </div>
+</div>
+<div class="container">
+  <div class="row py-5">
+      <h2 class="col">Vos derniers commentaires</h2>
   </div>
+<div class="row">
+  <div class="col">
+    <%= Thredded::ApplicationController.render partial: 'thredded/users/posts', locals: { posts: Thredded.posts_page_view(scope: @user.thredded_posts.order_newest_first.limit(5), current_user: current_user) } %>
+  </div>
+</div>
 </div>

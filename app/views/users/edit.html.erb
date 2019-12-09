@@ -1,5 +1,5 @@
 
-<div class="container-fluid bg-light py-5">
+<div class="container-fluid bg-purple-gradient py-5">
   <br>
 </div>
 
@@ -30,12 +30,12 @@
     <%= form_for @user do |f| %>
       <div class="row border text-center py-3">
         <div class="col-md-6">
-          Changer sa photo : <%= f.file_field :avatar %>
+          Changer mon avatar : <%= f.file_field :avatar %>
         </div>
 
         <div class="col-md-6">
           <%= label_tag 'Pseudo : ' %>
-          <%= f.text_field :name %>    
+          <%= f.text_field :name %>
         </div>
       </div>
       <div class="row border text-center py-3">
@@ -46,11 +46,11 @@
 
         <div class="col-md-6">
           <%= label_tag 'Prénom : ' %>
-          <%= f.text_field :first_name %>      
+          <%= f.text_field :first_name %>
         </div>
       </div>
 
-      <div class="row border text-center py-3">
+      <div class="row border text-center py-3 mb-3">
         <div class="col-md-6">
           <%= label_tag 'Email : ' %>
           <%= f.text_field :email %>
@@ -61,12 +61,13 @@
         </div>
       </div>
 
-      <div class="row d-flex pt-3 justify-content-end">
-        <div class="col-md-3 text-right">
-          <%= f.submit 'Enregistrer les modifications', :class => "btn btn-default bg-primary text-white" %>
+      <div class="row justify-content-lg-between justify-content-md-center no-gutters mb-5">
+        <div class="col-md-2 text-md-center">
+          <%= link_to 'Supprimer compte', user_path(params[:id]), method: :delete, data: {confirm: "Etes vous sûre? Votre compte sera définitivement supprimé"}, class: 'btn btn-outline-primary mt-3' %>
+        </div>
+        <div class="col-md-3 text-md-center">
+          <%= f.submit 'Enregistrer les modifications', :class => "btn btn-primary mt-3" %>
         </div>
       </div>
     <% end %>
-    <br/>
 </div>
-

@@ -36,7 +36,7 @@
   </div>
 
   <div class="row py-3">
-    <div class="col py-3 text-center">
+    <div class="col py-3">
       <h2 class="pb-3">
         Description :
       </h2>
@@ -80,7 +80,7 @@
   <div class="row py-3">
     <div class="col text-center">
       <h2 class="py-3"> Nous soutenir : </h2>
-      <p> <%= @organization.description %> </p>
+      <p><%= @organization.description %> </p>
       <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3' %>
     </div>
   </div>
