@@ -14,6 +14,5 @@ class ApplicationController < ActionController::Base
 	    session[:logged_signin] = true
 	  end
 	end
-
 	
 end
