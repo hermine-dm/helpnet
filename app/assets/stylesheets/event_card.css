@@ -105,6 +105,7 @@
     color: #333333;
     font-size: 26px;
     font-weight: 700;
+    overflow: hidden;
   }
   .post-module .post-content .sub_title {
     margin: 0;
