@@ -17,34 +17,37 @@
     </div>
   </div>
 </div>
-<div class="container d-flex flex-row my-3">
-  <div class="col-md-4">
-  <%if @event.illustration.attached?%>
-      <%= image_tag @event.illustration, class:"card-img-top"%>
-    <%else%>
-      <%= image_tag "event.jpg", class:"card-img-top top-image"%>
-    <%end%>
-  </div>
-  <div class="col-md-4 d-flex flex-column justify-content-between">
-    <p>À Propos : <%=@event.description%></p>
-    <%if current_user%>
-      <% @participation = Participation.find_by(user_id:current_user.id, event_id:@event.id)%>
-      <%if @participation == nil%>
-        <%= link_to "S'inscrire", organization_event_participations_path(@event.organization_id,@event.id), class: 'btn btn-secondary w-50', method: :post %>
+<div class="container my-3">
+  <div class="d-flex row">
+    <div class="col-sm-12 col-md-4">
+    <%if @event.illustration.attached?%>
+        <%= image_tag @event.illustration, class:"card-img-top"%>
       <%else%>
-        <%= link_to "Se désinscrire", organization_event_participation_path(@event.organization_id,@event.id,@participation.id), class: 'btn btn-secondary w-50', method: :delete %>
+        <%= image_tag "event.jpg", class:"card-img-top top-image"%>
       <%end%>
-    <%else%>
-      <%= link_to "S'inscrire", new_user_session_path, class: 'btn btn-secondary w-50'%>
-    <%end%>
-  </div>
-  <div class="col-md-4">
-     <h4>Détails de l'évenement</h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Lieu : <%=@event.address.number%> <%=@event.address.street%><br/><%=@event.address.zip_code%> <%=@event.address.city%></li>
-            <li class="list-group-item">Début : <%=@event.start_date.strftime("%d/%m/%y %Hh%M")%></li>
-            <li class="list-group-item">Fin : <%=@event.end_date.strftime("%d/%m/%y %Hh%M")%></li>
-          </ul>
+    </div>
+    <div class="col-sm-12 col-md-4 d-flex flex-column justify-content-between mt-1">
+      <h5>À Propos</h5>
+      <p><%=@event.description%></p>
+      <%if current_user%>
+        <% @participation = Participation.find_by(user_id:current_user.id, event_id:@event.id)%>
+        <%if @participation == nil%>
+          <%= link_to "S'inscrire", organization_event_participations_path(@event.organization_id,@event.id), class: 'btn btn-secondary w-50', method: :post %>
+        <%else%>
+          <%= link_to "Se désinscrire", organization_event_participation_path(@event.organization_id,@event.id,@participation.id), class: 'btn btn-secondary w-50', method: :delete %>
+        <%end%>
+      <%else%>
+        <%= link_to "S'inscrire", new_user_session_path, class: 'btn btn-secondary w-50'%>
+      <%end%>
+    </div>
+    <div class="col-sm-12 col-md-4 mt-1">
+        <h5>Détails de l'évenement</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Lieu : <%=@event.address.number%> <%=@event.address.street%><br/><%=@event.address.zip_code%> <%=@event.address.city%></li>
+              <li class="list-group-item">Début : <%=@event.start_date.strftime("%d/%m/%y %Hh%M")%></li>
+              <li class="list-group-item">Fin : <%=@event.end_date.strftime("%d/%m/%y %Hh%M")%></li>
+            </ul>
+    </div>
   </div>
 </div>
 
