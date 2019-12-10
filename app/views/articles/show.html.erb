@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-8 text-center text-md-left">
       <h1> <%= @article.title %> </h1> <!-- Title -->
-      <h5>Par : <%= @user.name %> de <%= @organization.name %> </h5> <!-- Author -->
+      <h5>Par : <%= link_to "#{@article.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'article '#{@article.title}'", user_names: "#{@article.user.name}"}) %> de <%= @organization.name %> </h5><!-- Author -->
     </div>
   </div>
 
