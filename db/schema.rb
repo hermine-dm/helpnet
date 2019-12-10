@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_151737) do
     t.string "name"
     t.text "description"
     t.string "category"
-    t.string "transaction"
+    t.string "type_of_transaction"
     t.boolean "availability", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

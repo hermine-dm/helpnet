@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 	def new
+		@item=Item.new
+		@organization=Organization.all.sample
 	end
 	def create
 		@item=Item.new(item_params)
@@ -40,6 +42,6 @@ class ItemsController < ApplicationController
 	private
 
 	def item_params
-		params.require(:item).permit(:name,:description,:category,:transaction,:availability,:organization_id, :images[])
+		params.require(:item).permit(:name,:description,:category,:type_of_transaction,:availability,:organization_id, :images[])
 	end
 end

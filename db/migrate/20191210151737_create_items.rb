@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
     	t.string :name
     	t.text :description
     	t.string :category
-    	t.string :transaction
+    	t.string :type_of_transaction
     	t.boolean :availability, default: true
     	t.timestamps
     end

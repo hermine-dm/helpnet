@@ -1,0 +1,9 @@
+<h1 class="d-flex justify-content-center mt-5">Materiel mis à disposition par les associations partenaires</h1>
+<div class="container">
+  <div class="card-deck mt-3 mb-5">
+    <% @items.each do |item| %>
+          <%= render 'item_card', item: item %>
+    <% end %>
+  </div>
+  <hr>
+</div>
