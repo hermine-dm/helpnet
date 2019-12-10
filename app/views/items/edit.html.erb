@@ -1,0 +1,32 @@
+<div class="container-fluid py-5 bg-orange-gradient">
+  <br>
+</div>
+
+<div class="container mt-n5">
+  <div class="row">
+    <div class="col-md-2 text-center">
+      <%if @organization.logo.attached?%>
+        <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"120", width:"120" %>
+      <%else%>
+        <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
+      <%end%>
+    </div>
+    <div class="col-md-10 text-center text-md-left">
+      <h1> <%= @organization.name %> </h1>
+      <h1>Modifier les informations</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <%= render 'organizations/orga_form' %>
+</div>
+
+<div class="row py-3">
+  <div class="col text-center">
+    <% if current_user && current_user.admin == true %>
+      <p>Pour supprimer le compte de cette association ainsi que ses informations, cliquer ici : </p>
+      <%= link_to "Supprimer",organization_path(@organization.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
+    <%end%>
+  </div>
+</div>

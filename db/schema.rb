@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_211616) do
+ActiveRecord::Schema.define(version: 2019_12_10_151737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,18 @@ ActiveRecord::Schema.define(version: 2019_12_09_211616) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.string "name"
+    t.text "description"
+    t.string "category"
+    t.string "type_of_transaction"
+    t.boolean "availability", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_items_on_organization_id"
   end
 
   create_table "organizations", force: :cascade do |t|
