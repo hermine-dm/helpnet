@@ -47,14 +47,16 @@
           </h2>
         </div>
       </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
     
           <p><i class="fas fa-home"></i>  <%= @organization.location %> </p>
           <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.zip_code %> </p>
           <p><i class="fas fa-phone-alt"></i>  <%= @organization.phone %> </p>
         </div>
-        <div class="col-md-3">
+        
+        <div class="col-md-5">
           <% unless @organization.email.nil? %>
             <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
           <%end%>
@@ -64,6 +66,7 @@
           <% unless @organization.fb_website.nil? %>
             <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
           <%end%>
+            <p> <i class="fas fa-comment"> </i> <%= link_to "L'administrateur #{@organization.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'association '#{@organization.name}'", user_names: "#{@organization.user.name}"}) %> <p>
         </div>
       </div>
   </div>
@@ -73,7 +76,7 @@
   <div class="row py-3">
     <div class="col text-center">
       <h2 class="py-3"> Nous soutenir : </h2>
-      <p><%= @organization.description %> </p>
+      <p class="text-md-left"><%= @organization.description %> </p>
       <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3' %>
     </div>
   </div>
