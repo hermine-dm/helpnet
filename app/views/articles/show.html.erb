@@ -6,75 +6,98 @@
 <div class="container mt-n5">
   <!-- ***** Title && Author ***** -->
   <div class="row">
-    <div class="col-md-8 text-center text-md-left">
-      <h1> <%= @article.title %> </h1> <!-- Title -->
-      <h5>Par : <%= @user.name %> de <%= @organization.name %> </h5> <!-- Author -->
+    <div class="col-md-10 text-center text-md-left">
+      <!-- Title -->
+      <h1><%= @article.title %></h1>
+      <!-- Author -->
+      <h5 class="mb-3">Par : <%= @user.name %>, de l'association <%= link_to @organization.name, organization_path(@organization.id)%> </h5>
+    </div>
+    <div class="col-md-2 text-center text-md-right">
+      <% if current_user && (current_user == @user || current_user.admin == true)%>
+        <%= link_to "Modifier article", edit_article_path(@article.id), class: 'btn btn-primary' %>
+      <%end%>
     </div>
   </div>
 
   <!-- ***** Article's body ***** -->
-  <div class="row py-3">
-    <div class="col py-3 text-center">
-      <p> <%= @article.content %> </p>
-    </div>
-  </div>
-
-<!-- ***** Thank Section ***** -->
-  <div class="row">
-    <div class="col text-center">
+  <div class="row py-3 my-5">
+    <div class="col py-3">
       <p>
-      Vous avez trouvé cet article intéressant ? Faites le savoir à son auteur :
-      <%if current_user%>
-      <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
-      <%if @like == nil%>
-      <%= link_to "Like", article_article_likes_path(@article.id), method: :post, :class => "ml-3 btn btn-primary" %>
-      <%else%>
-      <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, :class => "ml-3 btn btn-secondary" %>
-      <%end%>
-      <%else%>
-      <%= link_to "Like", new_user_session_path, :class => "ml-3 btn btn-primary"%>
-      <%end%>
+        <%= @article.content %>
       </p>
     </div>
   </div>
 
-  <!-- ***** Comment Section ***** -->
-<div class="row py-3">
-  <h3>Réagir à cet article</h3>
-</div>
-<div class="row">
-  
+  <!-- ***** Thank Section ***** -->
+  <div class="row">
+    <div class="col text-center">
+      <p>
+        <%= @article.article_likes.count %> personnes ont aimé cet article.
+      </p>
+      <p>
+        Vous avez trouvé cet article intéressant ? Faites le savoir à son auteur :
+        <%if current_user%>
+          <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
+            <%if @like == nil%>
+              <%= link_to "Like", article_article_likes_path(@article.id), method: :post, :class => "ml-3 btn btn-primary" %>
+            <%else%>
+              <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, :class => "ml-3 btn btn-secondary" %>
+            <%end%>
+          <%else%>
+            <%= link_to "Like", new_user_session_path, :class => "ml-3 btn btn-primary"%>
+          <%end%>
+        </p>
+      </div>
+  </div>
 </div>
 
-  <div class="row py-3">
-  <div class="col text-center">
-    <% if current_user && (current_user == @user || current_user.admin == true)%>
-      <p>Pour éditer cet article, cliquer ici : </p>
-      <%= link_to "Editer", edit_article_path(@article.id), class: 'btn btn-outline-primary' %>
-    <%end%>
+    <!-- ***** Linked Pages Section ***** -->
+<div class="container-fluid bg-orange-gradient py-5 my-3">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-center py-3">Articles similaires qui pourraient vous intéresser : </h3>
+        <!-- ***** 3 cards row redirecting to articles with same tag ***** -->
+      </div>
+    </div>
   </div>
 </div>
-  <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
-    <div class="row py-3 justify-content-center">
-      <div class="form-group">
-        <%= text_area_tag 'content', "", class: "form-control", rows:"3", class:"w-100"%>
+
+    <!-- ***** Comment Section ***** -->
+<div class="container">
+    <div class="row my-3">
+      <div class="col-md-6">
+        <h3 class="py-3">
+          Précédents commentaires</h3>
+        <%if @comments.count == 0 %>
+          <p class="py-3">Soyez la première personne à réagir à cet article !</p>
+        <%else%>
+        <% @comments.each do |comment| %>
+          <div class="border p-3">
+            <p><%=comment.content%></p>
+            <div class="blockquote-footer text-right">
+              par
+              <%=comment.user.name%>
+              <br>
+              posté le
+              <%=comment.created_at.strftime("%d/%m/%Y")%>
+              à
+              <%=comment.created_at.strftime("%H:%M")%>
+            </div>
+          </div>
+        <%end%>
+        <%end%>
       </div>
-      <div>
-        <%= submit_tag "Commenter", class: 'btn btn-primary'  %>
-      </div>
-    </div>
-  <%end%>
-  <% @comments.each do |comment| %>
-  <div class="row justify-content-center">
-    <div class="col-lg-4 text-align-left">
-      <div class="bs-component">
-        <blockquote class="blockquote">
-          <p class="mb-0"><%=comment.content%></p>
-          <footer class="blockquote-footer"><%=comment.user.name%>
-          </footer>
-        </blockquote>
-      </div>
+      <div class="col">
+        <h3 class="py-3">Réagir à cet article</h3>
+        <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
+        <div class="form-group">
+          <%= text_area_tag 'content', "", class: "form-control"%>
+        </div>
+        <div class="text-right">
+          <%= submit_tag "Commenter", class: 'btn btn-primary' %>
+        </div>
+      <%end%>
     </div>
   </div>
-  <%end%>
 </div>
