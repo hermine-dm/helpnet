@@ -12,4 +12,5 @@ class Organization < ApplicationRecord
   	has_many :follows
   	has_many :users, through: :follows
   	has_many :events
+  	has_many :items
 end
