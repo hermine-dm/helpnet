@@ -1,29 +1,10 @@
 <div class="container-fluid py-5 bg-orange-gradient">
   <h1 class="text-center">Modifier l'article</h1>
 </div>
-<%= form_for @article do |f| %>
-  <div class="container bg-light py-3">
-    <div class="row">
-      <div class="col py-3 text-center">
-        <h4 class="pb-3">Titre :</h4>
-        <p> <%= f.text_area :title, class: 'w-75' %> </p>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col py-3 text-center">
-          <h4 class="pb-3">Article :</h4>
-          <p> <%= f.text_area :content, class: 'w-75', style: 'height: 20rem;' %> </p>
-        </div>
-    </div>
-  </div>
-  <div class="container bg-light py-3">
-    <div class="row text-center py-3">
-      <div class="col">
-        <%= f.submit 'Valider les modifications', class: "btn btn-primary" %>      
-      </div>
-    </div>
-  </div>
-<% end %>
+
+<%= render 'articles/articles_form' %>
+
+
 <div class="row py-3">
   <div class="col text-center">
     <% if current_user && (current_user == @user || current_user.admin == true)%>
