@@ -7,6 +7,8 @@ class EventsController < ApplicationController
 	end
 	def index
 		@events=Event.where(organization_id:params[:organization_id])
+		@organization=Organization.find(params[:organization_id])
+
 	end
 	def show
 		@organization=Organization.find(params[:organization_id])
