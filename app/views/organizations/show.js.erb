@@ -1,0 +1,5 @@
+//alert("le fichier JS est exécuté!");
+document.getElementById("showorganization").innerHTML = 
+	"<%= j render 'orga_show', organization: @organization %>" + "<hr>" +
+	"<h4 class='text-center'> La partie ci dessous n'est pas visible aux utilisateurs</h4>";
+document.getElementById("buttondashboard").classList.remove("d-none");

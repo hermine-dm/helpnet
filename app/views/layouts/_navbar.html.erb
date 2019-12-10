@@ -39,6 +39,10 @@
                 <li class="nav-item text-uppercase px-3 active">
                   <%= link_to "Dashboard",  main_app.admin_show_path, class: 'nav-link' %>
                 </li>
+              <%elsif current_user.organization.nil? == false %>
+                <li class="nav-item text-uppercase px-3 active">
+                  <%= link_to "Dashboard",  main_app.organization_path(current_user.organization.id), class: 'nav-link' %>
+                </li>
               <%end%>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle btn btn-outline-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
