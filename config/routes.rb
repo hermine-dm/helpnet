@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :organizations do
     patch :validate #uniquement pour les admin
     resources :follows, only: [:create, :destroy]
-    resources :events
+    resources :events do
+      resources :participations, only: [:create, :destroy]
+    end
   end
   resources :articles do
     resources :article_likes, only: [:create, :destroy]

@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :follows
   has_many :organizations, through: :follows
   has_one :organization
+  has_many :participations
+  has_many :events, through: :participations
   after_create :generate_name
   #after_create :welcome_send
 

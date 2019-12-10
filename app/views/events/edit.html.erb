@@ -6,7 +6,7 @@
 <%= form_for [@organization, @event] do |f| %>
   <div class="mb-3">
     <%= label_tag "Titre de l'évènement*" %> <br/>
-    <%= f.text_field :title, class: "form-control"%>
+    <%= f.text_field :title, class: "form-control", placeholder: "Titre"%>
     <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire </div>
   </div>
   <div class="mb-3">
@@ -15,43 +15,37 @@
     <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
   </div>
   <div class="mb-3">
-    <div class="row">
-      <div class="col">
-        <%= label_tag "Début de l'évènement*" %> <br/>
-        <%= f.date_field :start_date, class: "form-control"%>
-        <%= f.time_field :start_date, class: "form-control"%>
-        <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
-      </div>
-      <div class="col">
-        <%= label_tag "Fin de l'évènement" %> <br/>
-        <%= f.date_field :end_date, class: "form-control"%>
-        <%= f.time_field :end_date, class: "form-control"%>
-        <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
-      </div>
-    </div>
+    <%= label_tag "Début de l'évènement*" %> <br/>
+    <%= f.datetime_select :start_date, class: "form-control"%>
+    <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
   </div>
   <div class="mb-3">
-    <% fields_for @address do |ff| %>
+    <%= label_tag "Fin de l'évènement" %> <br/>
+    <%= f.datetime_select :end_date, class: "form-control"%>
+    <div class="invalid-feedback" style="width: 100%;"> Ce champs est obligatoire</div>
+  </div>
+  <div class="mb-3">
+    <%= fields_for @address do |ff| %>
       <%= label_tag "Lieu de l'évènement"%>
       <div class="row mb-1">
         <div class="col">
-          <%= ff.text_field :number, class: "form-control"%>
+          <%= ff.text_field :number, class: "form-control", placeholder: "N°" %>
         </div>
         <div class="col">
-          <%= ff.text_field :street, class: "form-control"%>
-        </div>
-      </div>
-      <div class="row mb-1">
-        <div class="col">
-          <%= ff.text_field :additionnal_information, class: "form-control"%>
+          <%= ff.text_field :street, class: "form-control", placeholder: "Voie" %>
         </div>
       </div>
       <div class="row mb-1">
         <div class="col">
-        <%= ff.text_field :zip_code, class: "form-control"%>
+          <%= ff.text_field :additionnal_information, class: "form-control", placeholder: "Complément d'adresse"%>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col">
+        <%= ff.text_field :zip_code, class: "form-control", placeholder: "Code postal" %>
       </div>
       <div class="col">
-        <%= ff.text_field :city, class: "form-control"%>
+        <%= ff.text_field :city, class: "form-control", placeholder: "Ville"%>
       </div>
       </div>
       <%end%>
