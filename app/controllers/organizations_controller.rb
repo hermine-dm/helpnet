@@ -3,11 +3,16 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_user_assoc_or_admin, only: [:edit, :update]
 
   def index
-  	@organizations = Organization.all.where(validatedbyadmin: true)
+  	@organizations = Organization.all.where(validatedbyadmin: true).order("created_at desc")
   end
 
   def show
   	@organization = Organization.find(params[:id])
+    @events = @organization.events
+    respond_to do |format|
+        format.html { }
+        format.js { }
+    end
   end
 
   def new
