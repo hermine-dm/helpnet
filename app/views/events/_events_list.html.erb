@@ -15,8 +15,17 @@
                 </div>
               </div>
               <div class="card-footer d-flex justify-content-between">
-                <div class="btn btn-primary"> <%= link_to "En savoir plus", organization_event_path(event.organization_id,event.id), :class => "text-white" %>
-                </div>
+                <%= link_to "En savoir plus", organization_event_path(event.organization_id,event.id), :class => "btn btn-primary text-white" %>
+                <%if current_user%>
+                  <% @participation = Participation.find_by(user_id:current_user.id, event_id:event.id)%>
+                  <%if @participation == nil%>
+                    <%= link_to "S'inscrire", organization_event_participations_path(event.organization_id,event.id), class: 'btn btn-secondary', method: :post %>
+                  <%else%>
+                    <%= link_to "Se désinscrire", organization_event_participation_path(event.organization_id,event.id,@participation.id), class: 'btn btn-secondary', method: :delete %>
+                  <%end%>
+                <%else%>
+                   <%= link_to "S'inscrire", new_user_session_path, class: 'btn btn-secondary'%>
+                <%end%>
               </div>
             </div>
           </div> 
