@@ -20,10 +20,10 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    @organization = Organization.new(name: params[:organization][:name],logo: params[:organization][:logo], description: params[:organization][:description], phone: params[:organization][:phone], location: params[:organization][:location], zip_code: params[:organization][:zip_code], website: params[:organization][:website], fb_website: params[:organization][:fb_website], email: params[:organization][:email], num_rna: params[:organization][:num_rna], donate_link: params[:organization][:donate_link], content: params[:organization][:content]) 
+    @organization = Organization.new(name: params[:organization][:name],logo: params[:organization][:logo], description: params[:organization][:description], phone: params[:organization][:phone], location: params[:organization][:location], zip_code: params[:organization][:zip_code], website: params[:organization][:website], fb_website: params[:organization][:fb_website], email: params[:organization][:email], num_rna: params[:organization][:num_rna], donate_link: params[:organization][:donate_link], content: params[:organization][:content])
     @organization.user_id = current_user.id
     if @organization.save # essaie de sauvegarder en base
-      flash[:success] = "Merci l'association est en cours de validation par l'administration" 
+      flash[:success] = "Merci l'association est en cours de validation par l'administration"
       redirect_to organizations_path
     else
       flash.now[:error] = "Désolé il y a une erreur :#{@organization.errors.full_messages.to_sentence}"
@@ -37,7 +37,7 @@ class OrganizationsController < ApplicationController
 
   def validate
     @organization = Organization.find(params[:organization_id])
-    if @organization.validatedbyadmin == false then @organization.update(validatedbyadmin: true) else @organization.update(validatedbyadmin: false) end 
+    if @organization.validatedbyadmin == false then @organization.update(validatedbyadmin: true) else @organization.update(validatedbyadmin: false) end
     flash[:success] = "Les informations ont bien été prises en compte"
     redirect_back(fallback_location: admin_show_path)
   end
