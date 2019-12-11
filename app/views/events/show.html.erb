@@ -41,12 +41,12 @@
       <%end%>
     </div>
     <div class="col-sm-12 col-md-4 mt-1">
-        <h5>Détails de l'évenement</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Lieu : <%=@event.address.number%> <%=@event.address.street%><br/><%=@event.address.zip_code%> <%=@event.address.city%></li>
-              <li class="list-group-item">Début : <%=@event.start_date.strftime("%d/%m/%y %Hh%M")%></li>
-              <li class="list-group-item">Fin : <%=@event.end_date.strftime("%d/%m/%y %Hh%M")%></li>
-            </ul>
+      <h5>Détails de l'évenement</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Lieu : <%=@event.address.number%> <%=@event.address.street%><br/><%=@event.address.zip_code%> <%=@event.address.city%></li>
+          <li class="list-group-item">Début : <%=@event.start_date.strftime("%d/%m/%y %Hh%M")%></li>
+          <li class="list-group-item">Fin : <%=@event.end_date.strftime("%d/%m/%y %Hh%M")%></li>
+        </ul>
     </div>
   </div>
 </div>
