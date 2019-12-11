@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       resources :participations, only: [:create, :destroy]
     end
   end
-  resources :items
   resources :articles do
     resources :article_likes, only: [:create, :destroy]
     resources :article_comments
