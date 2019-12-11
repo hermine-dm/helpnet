@@ -14,11 +14,11 @@
         </div>
         <!-- Post Content-->
         <div class="post-content">
-            <div class="category"><%= link_to User.find(article.user_id).organization.name, organization_path(User.find(article.user_id).organization.id), {:style=>'color:#FFFFFF;'}%></div>
+            <div class="category"><%= link_to article.user.organization.name, organization_path(article.user.organization.id), {:style=>'color:#FFFFFF;'}%></div>
             <h3 class="title"><%= article.title %></h3>
             <p class="description"></p>
             <div class="post-meta d-flex justify-content-between flex-row align-items-center">
-            <span class="comments"><i class="fas fa-user-circle"></i> <%= User.find(article.user_id).name %></span>
+            <span class="comments"><i class="fas fa-user-circle"></i> <%= article.user.name %></span>
              <%= link_to "Lire l'article",  article_path(article.id), :class => "btn btn-primary text-white" %>
             </div>
         </div>
