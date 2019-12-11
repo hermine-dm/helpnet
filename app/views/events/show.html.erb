@@ -61,7 +61,7 @@
       </div>
       <div class="row d-flex mb-3 justify-content-center">
         <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?markers=color:0x7776BC%7C#{@event.address.google_format},France&zoom=14&size=700x300
-        &key=AIzaSyDFvjOU3myT6UEBijsYZTWBbeEHSlWqN2M", height:"300", width:"700" %>
+        &key=#{ENV['google_key']}", height:"300", width:"700" %>
       </div>
   </div>
 </div>
