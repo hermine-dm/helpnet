@@ -202,7 +202,7 @@ end
 puts "divers thredded (topics/msg) créées"
 
 10.times do
-	Address.create(number: rand(1..15), street: "rue du #{["Général","Maréchal",""].sample} #{Faker::Name.last_name}", zip_code: "#{rand(0..9)}#{rand(0..5)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}")
+	Address.create(number: rand(1..15), zip_code: "#{rand(0..9)}#{rand(0..5)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}")
 end
 puts "Adresses créées"
 
