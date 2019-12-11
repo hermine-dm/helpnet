@@ -81,7 +81,6 @@ module ApplicationHelper
 			return @address
 		else
 	      	flash[:error] = "Désolé il y a une erreur :#{@address.errors.full_messages.to_sentence}"
-	      	redirect_back(fallback_location: root_path)
 		end
 	end
 end
