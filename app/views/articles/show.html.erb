@@ -53,19 +53,9 @@
 </div>
 
     <!-- ***** Linked Pages Section ***** -->
-<div class="container-fluid bg-orange-gradient py-5 my-3">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h3 class="text-center py-3">Articles similaires qui pourraient vous intéresser : </h3>
-          <div class="card-deck my-3">
-            <% @articles=Article.all.sample(3).each do |article| %>
-              <%= render 'articles/article_card', article: article%>
-            <% end %>  
-          </div>
-      </div>
-    </div>
-  </div>
+<div class="container-fluid bg-orange-gradient py-3 my-3">
+        <h3 class="text-center pb-2">Articles similaires qui pourraient vous intéresser : </h3>
+            <%= render 'articles/articles_list'%>
 </div>
 
     <!-- ***** Comment Section ***** -->
