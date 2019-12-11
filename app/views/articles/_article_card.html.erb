@@ -1,0 +1,26 @@
+<div class="col-md-4 mt-4">
+    <div class="post-module">
+        <!-- Thumbnail-->
+        <div class="thumbnail">
+            <div class="date">
+            <div class="day"><%= article.article_likes.count %></div>
+            <div class="month" style="color: white"><i  class="fas fa-thumbs-up"></i></div>
+            </div>
+            <%if article.illustration.attached?%>
+                <%= image_tag article.illustration, class:"card-img-top"%>
+            <%else%>
+                <%= image_tag "article.jpg", class:"card-img-top"%>
+            <%end%>
+        </div>
+        <!-- Post Content-->
+        <div class="post-content">
+            <div class="category"><%= link_to User.find(article.user_id).organization.name, organization_path(User.find(article.user_id).organization.id), {:style=>'color:#FFFFFF;'}%></div>
+            <h1 class="title"><%= article.title %></h1>
+            <p class="description"></p>
+            <div class="post-meta d-flex justify-content-between flex-row align-items-center">
+            <span class="comments"><i class="fas fa-user-circle"></i> <%= User.find(article.user_id).name %></span>
+             <%= link_to "Lire l'article",  article_path(article.id), :class => "btn btn-primary text-white" %>
+            </div>
+        </div>
+    </div>
+</div>

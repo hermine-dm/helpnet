@@ -14,6 +14,13 @@
       </div>
     </div>
 
+    <div class="row py-3">
+      <div class="col">
+        <%= label_tag "Ajoutez une photo à l'évènement"%><br/>
+        <%= file_field_tag 'illustration'%>
+      </div>
+    </div>
+
     <div class="row py-3 text-center">
       <div class="col">
         <%= f.submit "Valider l'article", class: "btn btn-primary" %>

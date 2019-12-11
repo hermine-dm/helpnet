@@ -11,12 +11,14 @@ class ArticlesController < ApplicationController
 		@user=User.find(@article.user_id)
 		@organization = User.find(@article.user_id).organization
 		@comments=@article.article_comments
+		@articles=Article.all.sample(3)
+
 	end
 	def index
 		@articles=Article.all
 	end
 	def create
-		@article=Article.new(user_id: current_user.id, title: params[:article][:title], content: params[:article][:content])
+		@article=Article.new(user_id: current_user.id, title: params[:article][:title], content: params[:article][:content], illustration: params[:article][:illustration])
 		if @article.save
 			flash[:success] = "Article créé - Merci pour votre contribution!"
       		redirect_to article_path(@article.id)
@@ -32,7 +34,7 @@ class ArticlesController < ApplicationController
 
 	def update
 		@article = Article.find(params[:id])
-    	post_params = params.require(:article).permit(:title, :content)
+    	post_params = params.require(:article).permit(:title, :content, :illustration)
 	    if @article.update(post_params)
 	      flash[:success] = "L'article a bien été mis à jour"
 	      redirect_to article_path(@article.id)

@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="card-deck">
+        <% @articles.each do |article| %>
+            <%= render 'articles/article_card', article: article%>
+        <% end %>  
+    </div>
+</div>
