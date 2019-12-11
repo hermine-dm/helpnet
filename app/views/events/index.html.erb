@@ -1,3 +1,13 @@
 <h1 class="d-flex justify-content-center mt-5 mx-2">Les prochains évènements organisés par <%= @organization.name%> </h1>
   <%= render 'events_list'%>
 <br/>
+<div class="container py-5">
+  <div class="text-center">
+    <% if ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true) %>
+      <p>
+        Vous souhaitez partager le prochain évènement de <%= @organization.name%> ?<br/> Rendez vous ici :
+      </p>
+      <%= link_to "Créer un nouvel évènement", new_organization_event_path, class: 'btn btn-outline-primary' %>
+    <%end%>
+  </div>
+</div>
