@@ -19,3 +19,4 @@
 //= require thredded
 //= require chartkick
 //= require Chart.bundle
+//= require event_card

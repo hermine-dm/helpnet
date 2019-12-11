@@ -1,9 +1,11 @@
 class ArticlesController < ApplicationController
 	before_action :authenticate_user_assoc, only: [:create, :new]
 	before_action :authenticate_user_assoc_author, only: [:edit, :update, :destroy]
-	
+
 	def new
+		@article = Article.new
 	end
+
 	def show
 		@article=Article.find(params[:id])
 		@user=User.find(@article.user_id)
@@ -14,9 +16,9 @@ class ArticlesController < ApplicationController
 		@articles=Article.all
 	end
 	def create
-		@article=Article.new(user_id: current_user.id, title: params[:title], content: params[:content])
+		@article=Article.new(user_id: current_user.id, title: params[:article][:title], content: params[:article][:content])
 		if @article.save
-			flash[:success] = "Article créé - Merci pour votre contribution!" 
+			flash[:success] = "Article créé - Merci pour votre contribution!"
       		redirect_to article_path(@article.id)
     	else
 		    flash.now[:error] = "Désolé il y a une erreur :#{@article.errors.full_messages.to_sentence}"

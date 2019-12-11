@@ -1,0 +1,23 @@
+<div class="container my-3">
+  <%= form_for @article do |f| %>
+    <div class="row py-3">
+      <div class="col">
+        <%= label_tag "Titre de l'article : " %> <br>
+        <%= f.text_field :title, class:'form-control w-50' %>
+      </div>
+    </div>
+
+    <div class="row py-3">
+      <div class="col">
+        <%= label_tag "Contenu : " %> <br>
+        <%= f.text_area :content, class:'form-control', rows: '10' %>
+      </div>
+    </div>
+
+    <div class="row py-3 text-center">
+      <div class="col">
+        <%= f.submit "Valider l'article", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

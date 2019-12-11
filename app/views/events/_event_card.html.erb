@@ -1,0 +1,28 @@
+
+<div class="col-md-4 mt-4">
+    <div class="post-module">
+        <!-- Thumbnail-->
+        <div class="thumbnail">
+            <div class="date">
+            <div class="day"><%= event.start_date.strftime("%-d") %></div>
+            <div class="month"><%= event.start_date.strftime("%b")%></div>
+            </div>
+            <%if event.illustration.attached?%>
+                <%= image_tag event.illustration, class:"card-img-top"%>
+            <%else%>
+                <%= image_tag "event.jpg", class:"card-img-top"%>
+            <%end%>
+        </div>
+        <!-- Post Content-->
+        <div class="post-content">
+            <div class="category"><%= event.address.city %></div>
+            <h1 class="title"><%= event.title %></h1>
+            <h5><%= event.description %></h5>
+            <p class="description"><%= event.description %></p>
+            <div class="post-meta d-flex justify-content-between flex-row align-items-center">
+            <span class="comments"><i class="fas fa-users"></i></i><a href="#"> <%= event.participations.size%></a></span>
+             <%= link_to "Voir l'évènement", organization_event_path(event.organization_id,event.id), :class => "btn btn-primary text-white" %>
+            </div>
+        </div>
+    </div>
+</div>
