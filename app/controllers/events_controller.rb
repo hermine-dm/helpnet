@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 	def show
 		@organization=Organization.find(params[:organization_id])
 		@event=Event.find(params[:id])
+		@events=Event.where(organization_id:params[:organization_id]).sample(3)
 	end
 	def create
 		@organization=Organization.find(params[:organization_id])
