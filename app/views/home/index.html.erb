@@ -1,97 +1,103 @@
 <!-- ***** HEADER ***** -->
-<div class="container-fluid" id="hero">
-  <div class="container py-3">
+  <div class="container-fluid" id="hero">
+    <div class="container py-3">
+      <div class="row py-5">
+        <div class="col-md-7 mt-5">
+          <h1>Chez <strong style="color: #7776BC">Shine</strong> nous accompagnons la vie</h1>
+          <p class="py-3">Bénevoles, médécins, malades, accompagnants, familles, amis voici une plateforme pour échanger, trouver vos associations, vos évènements, des conseils et surtout de la bienveillance.</p>
+          <%= link_to "Découvrir", '#', class: 'btn btn-lg btn-primary' %>
+        </div>
+    <!-- ***** SIGN UP FORM ***** -->
+        <div class="col-md-5">
+          <% if current_user %>
+            <div class=" container" style="min-height: 35rem">
+            </div>
+          <% elsif is_remote_ip_known(@client_ip) == "8" %>
+            <%= render 'devise/sessions/new'%>
+          <% else %>
+            <%= render 'devise/registrations/new'%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** 3 KEYPOINTS ROW ***** -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 text-center bg-orange py-5">
+        <span class="fas fa-comments fa-3x mb-3 mt-5 icon"></span>
+        <h2 class="py-3">Un espace d'échange</h2>
+        <p>Pour que l'acceptation deviennent réalité, en parler est la meilleure solution.</p>
+        <%= link_to "J'en parle", main_app.thredded_path, class: 'btn btn-lg btn-primary my-3' %>
+      </div>
+      <div class="col-md-4 text-center bg-dark-purple py-5">
+        <span class="fas fa-users fa-3x mb-3 mt-5 icon"></span>
+        <h2 class="py-3 text-light">Des professionnels</h2>
+        <p class="text-light">Nos associations partenaires sont présentes pour sortir la maladie du silence.</p>
+        <%= link_to "Je découvre", main_app.organizations_path, class: 'btn btn-lg btn-primary my-3' %>
+      </div>
+      <div class="col-md-4 text-center bg-light-purple py-5">
+        <span class="fas fa-hand-holding-heart fa-3x mb-3 mt-5 icon"></span>
+        <h2 class="py-3">De la solidarité</h2>
+        <p>Des prêts d'outils et de matériels entre particuliers, aidez la communauté ! </p>
+        <%= link_to "J'emprunte", '#', class: 'btn btn-lg btn-primary my-3' %>    </div>
+    </div>
+  </div>
+
+  <!-- ***** QUOTE ROW ***** -->
+  <div class="container py-5">
+    <div class="col text-center py-5">
+      <blockquote class="blockquote py-5">
+        <h5 class="font-italic">"Quand on est malade, rien ne chante plus fort que l'envie de guérir."</h5>
+        <p class="blockquote-footer">Jean GIONO</p>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- ***** FORUM ROW ***** -->
+  <div class="container-fluid bg-orange-gradient py-5">
     <div class="row py-5">
-      <div class="col-md-7 mt-5">
-        <h1>Bienvenue sur Shine : le réseau d'entraide</h1>
-        <p class="py-3">Bénevoles, médécins, malades, accompagnants, familles, amis voici une plateforme pour échanger, trouver vos associations, vos évènements, des conseils et surtout de la bienveillance</p>
-        <%= link_to "Découvrir", '#', class: 'btn btn-lg btn-primary' %>
+      <div class="col-md-6 px-5">
+        <%= image_tag "https://images.unsplash.com/photo-1542338347-4fff3276af78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt:"", class:"rounded float-right", height:"300" %>
       </div>
-  <!-- ***** SIGN UP FORM ***** -->
-      <div class="col-md-5">
-        <% if current_user %>
-          <div class=" container" style="min-height: 35rem">
-          </div>
-        <% elsif is_remote_ip_known(@client_ip) == "8" %>
-          <%= render 'devise/sessions/new'%>
-        <% else %>
-          <%= render 'devise/registrations/new'%>
-        <% end %>
+      <div class="col-md-6 py-5 px-4 text-center text-md-left">
+        <h2>Un forum de discussion</h2>
+        <p class="py-3">Ne restez pas seul face à la maladie. Pour dédramatiser, prodiguer ou reçevoir de bons conseils, le plus important c'est d'en parler ! </p>
+        <%= link_to "J'en parle", main_app.thredded_path, class: 'btn btn-lg btn-primary' %>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ***** 3 KEYPOINTS ROW ***** -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4 text-center bg-orange py-5">
-      <span class="fas fa-comments fa-5x mb-3 mt-5 icon"></span>
-      <h2 class="py-3">Un espace d'échange</h2>
-      <%= link_to "Découvrir", main_app.thredded_path, class: 'btn btn-lg btn-primary my-3' %>
-    </div>
-    <div class="col-md-4 text-center bg-dark-purple py-5">
-      <span class="fas fa-user fa-5x mb-3 mt-5 icon"></span>
-      <h2 class="py-3 text-light">Des professionnels</h2>
-          <%= link_to "Découvrir", main_app.organizations_path, class: 'btn btn-lg btn-primary my-3' %>
-    </div>
-    <div class="col-md-4 text-center bg-light-purple py-5">
-      <span class="fas fa-hand-holding-heart fa-5x mb-3 mt-5 icon"></span>
-      <h2 class="py-3">De la solidarité</h2>
-  <%= link_to "Découvrir (NA)", '#', class: 'btn btn-lg btn-primary my-3' %>    </div>
-  </div>
-</div>
-
-<!-- ***** QUOTE ROW ***** -->
-<div class="container py-5">
-  <div class="col text-center py-5">
-    <blockquote class="blockquote py-5">
-      <p class="font-italic">"Quand on est malade, rien ne chante plus fort que l'envie de guérir."</p>
-      <p class="blockquote-footer">Jean GIONO</p>
-    </blockquote>
-  </div>
-</div>
-
-<!-- ***** FORUM ROW ***** -->
-<div class="container-fluid bg-orange-gradient py-5">
-  <div class="row py-5">
-    <div class="col-md-6 px-5">
-      <%= image_tag "https://images.unsplash.com/photo-1542338347-4fff3276af78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt:"", class:"rounded float-right", height:"300" %>
-    </div>
-    <div class="col-md-6 py-5 px-4 text-center text-md-left">
-      <h2>Forum de discussion</h2>
-      <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, laudantium</p>
-      <%= link_to "Découvrir", main_app.thredded_path, class: 'btn btn-lg btn-primary' %>
-    </div>
-  </div>
-</div>
-
-<!-- ***** ARTICLE && ASSOS ROW ***** -->
-<div class="container py-5">
-  <div class="row py-5">
-    <div class="col-md-6 py-5 px-4 text-center text-md-left">
-      <h2>Des articles professionnels</h2>
-      <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, laudantium</p>
-          <%= link_to "Découvrir", main_app.articles_path, class: 'btn btn-lg btn-primary' %>
-    </div>
-    <div class="col-md-6 py-5 px-4 text-center text-md-left shadow">
-      <h2>Nos assos partenaires</h2>
-      <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, laudantium</p>
-          <%= link_to "Découvrir", main_app.organizations_path, class: 'btn btn-lg btn-primary' %>
-      </div>
-  </div>
-</div>
-
-<!-- ***** DONATEPLACE ROW ***** -->
-
-<div class="container-fluid py-5 bg-purple-gradient">
-  <div class="container">
+  <!-- ***** ARTICLE && ASSOS ROW ***** -->
+  <div class="container py-5">
     <div class="row py-5">
       <div class="col-md-6 py-5 px-4 text-center text-md-left">
-        <h2>Notre DonnatePlace</h2>
-        <p class="py-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, laudantium</p>
-          <%= link_to "Découvrir (NA)", '#', class: 'btn btn-lg btn-primary my-3' %>
+        <h2>Des articles professionnels</h2>
+        <p class="py-3">Des professionnels de santé publient chaque semaine les dernières actualités, de bons conseils et partagent leurs expériences.</p>
+            <%= link_to "Tout savoir", main_app.articles_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+      <div class="col-md-6 py-5 px-4 text-center text-md-left shadow">
+        <h2>Nos assos partenaires</h2>
+        <p class="py-3">Elles sont présentes pour répondre à l'évolution des besoins des malades pour favoriser l'accès aux soins et pour améliorer la qualité de vie.</p>
+            <%= link_to "Découvrir", main_app.organizations_path, class: 'btn btn-lg btn-primary' %>
+        </div>
+    </div>
+  </div>
+
+  <!-- ***** DONATEPLACE ROW ***** -->
+
+  <div class="container-fluid py-5 bg-purple-gradient">
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-md-6 py-5 px-4 text-center text-md-left">
+          <h2>Notre DonnatePlace</h2>
+          <p class="py-3">Pour prêter ou emprunter du matériel médical entre particuliers et associations.</p>
+            <%= link_to "J'aide", '#', class: 'btn btn-lg btn-primary my-3' %>
+        </div>
+        <div class="col-md-6 px-5">
+         <%= image_tag "https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", alt:"", class:"rounded float-right", height:"300" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
