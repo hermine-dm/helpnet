@@ -2906,6 +2906,7 @@ fieldset:disabled a.btn {
 .btn-outline-secondary {
   color: #7776BC;
   border-color: #7776BC;
+  background-color: white;
 }
 
 .btn-outline-secondary:hover {
@@ -6812,11 +6813,11 @@ button.bg-dark:focus {
 }
 
 .bg-purple-gradient {
-  background: linear-gradient(127deg, #fff, rgba(184, 184, 255, 0.4)) !important;
+  background: linear-gradient(127deg, #fff, rgba(184, 184, 255, 0.5)) !important;
 }
 
 .bg-orange-gradient {
-  background: linear-gradient(to right, #fff, rgba(251, 216, 190, 0.4)) !important;
+  background: linear-gradient(to right, #fff, rgba(251, 216, 190, 0.6)) !important;
 }
 
 .border {

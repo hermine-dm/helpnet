@@ -1,20 +1,31 @@
-<h1 class="d-flex justify-content-center mt-5">Nos associations partenaires</h1>
-<div class="container">
-  <div class="card-deck mt-3 mb-5">
-    <% @organizations.each do |organization| %>
-          <%= render 'organization_card', organization: organization %>
-    <% end %>
+<!-- ***** HEADER ***** -->
+<div class="container-fluid bg-orange-gradient">
+  <div class="container py-3">
+    <div class="row py-5">
+      <div class="col-md-9 mt-5">
+        <h1>Nos associations partenaires : </h1>
+        <p class="py-3">Vous trouverez dans cette rubrique la liste de nos associations partenaires. Avant de nous rejoindre, chaque association fait l'objet d'une vérification détaillée, afin de vous garantir leur professionnalisme et l'identité de ses membres.</p>
+      </div>
+    </div>
   </div>
-  <hr>
-  <div class="d-flex flex-row justify-content-center mt-3 mb-5">
+</div>
+
+<!-- ***** Add my organizations section ***** -->
+<div class="container py-5">
+  <div class="row text-center justify-content-center">
     <% if current_user && current_user.organization.nil? %>
-      <div class="row">
-        <div class="col-10">
-          <p>Vous gèrez une association et vous aimeriez qu'elle apparaisse sur le site, partager ces évènements, etc. Cliquez sur le bouton pour remplir le formulaire </p>
-        </div>
-        <div class="col-2 text-right">
-          <%= link_to "Espace association", new_organization_path(), :class => "btn btn-sm btn-outline-primary" %>
-        </div>  
+          <p>
+            Vous gèrez une association et vous aimeriez qu'elle apparaisse sur notre site, partager ses évènements, son actualité, etc. ?<br> Rendez vous ici :
+          </p>
+          <%= link_to "Espace association", new_organization_path(), :class => "btn btn-outline-primary" %>
     <%end%>
   </div>
 </div>
+
+<!-- ***** Organizations list ***** -->
+<div class="container-fluid py-5">
+  <div class="row justify-content-center">
+    <% @organizations.each do |organization| %>
+    <%= render 'organization_card', organization: organization %>
+    <% end %>
+  </div>
