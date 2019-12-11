@@ -11,7 +11,7 @@
       <!-- Title -->
       <h1><%= @article.title %></h1>
       <!-- Author -->
-      <h5 class="mb-3">Par : <%= @user.name %>, de l'association <%= link_to @organization.name, organization_path(@organization.id)%> </h5>
+      <h5 class="mb-3">Par : <%= link_to "#{@article.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'article '#{@article.title}'", user_names: "#{@article.user.name}"}) %>, de l'association <%= link_to @organization.name, organization_path(@organization.id)%> </h5>
     </div>
     <div class="col-md-2 text-center text-md-right">
       <% if current_user && (current_user == @user || current_user.admin == true)%>
