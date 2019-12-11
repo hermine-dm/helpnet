@@ -10,22 +10,14 @@
   </div>
   <div class="row border text-center py-4 mb-2">
     <div class="col-2 mb-4 text-md-left">
-      Utilisateurs créés
+      Graphique sur les Utilisateurs 
     </div>
     <div class="col-10 py-2">
       <%= line_chart [{name: "Utilisateurs créés", data: User.group_by_day(:created_at).count },{name: "Utilisateurs connectés", data: User.group_by_day(:last_sign_in_at).count }] %>
     </div>
   </div>
-  <div class="row border text-center py-4 mb-2">
-    <div class="col-2 mb-4 text-md-left">
-      Utilisateurs connectés
-    </div>
-    <div class="col-10">
-      <%= line_chart User.group_by_day(:last_sign_in_at).count %>
-    </div> <!-- ne sert a rien tant que last_sign_in_at est pas renseigné-->
-  </div>
   <div class="row border text-center py-4 pl-3 mb-2">
-    Liste des associations => en attente partial pour voir
+    Liste des associations 
       <ul class="list-group col-12 text-left py-2"> 
         <li class="row py-2"> 
           <div class="col-2 h6">ID</div>
@@ -54,7 +46,7 @@
       </ul>
   </div>
   <div class="row border text-center py-4 pl-3 mb-2">
-    Liste des users (sauf admin) => en attente partial pour voir
+    Liste des Utilisateurs 
       <ul class="list-group col-12 text-left py-2"> 
         <li class="row py-2"> 
           <div class="col-1 h6"> ID </div>
