@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 		@organization=Organization.all.sample
 	end
 	def create
-		@item=Item.new(item_params)
+		@item=Item.new(name:params[:name],description:params[:description],category:params[:category],type_of_transaction:params[:type_of_transaction],availability:params[:availability],organization_id:params[:organization_id],images:params[:images[]])
 		if @item.save
 			flash[:success] = "Objet ajouté !" 
       		redirect_to items_path
