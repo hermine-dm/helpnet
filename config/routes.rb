@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "admin/show"
   get "/static/:page" => "static#show"
   resources :organizations do
-    patch :validate #uniquement pour les admin
+    patch :validate #only for the admin of the website
     resources :follows, only: [:create, :destroy]
     resources :events do
       resources :participations, only: [:create, :destroy]
