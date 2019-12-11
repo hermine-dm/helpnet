@@ -29,3 +29,11 @@
     <%= render 'organization_card', organization: organization %>
     <% end %>
   </div>
+</div>
+
+<!-- ***** Display description in Popover on hover ***** -->
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="popover"]').popover({ trigger: "hover" })
+  })
+</script>
