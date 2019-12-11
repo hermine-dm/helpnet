@@ -15,6 +15,11 @@
       <h1> <%= @event.title %> </h1>
       <p>Organisé par: <%=link_to "#{@organization.name}", organization_path(@organization.id) %></p>
     </div>
+    <div class="col-md-4 text-center text-md-right">
+      <% if ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true) %>
+        <%= link_to "Editer l'évènement", edit_organization_event_path(@event.id), class: 'btn btn-primary' %>
+      <%end%>
+    </div>
   </div>
 </div>
 <div class="container my-3">
@@ -50,6 +55,7 @@
     </div>
   </div>
 </div>
+    <!-- ***** Google maps ***** -->
 <div class="container-fluid py-3 bg-purple-gradient">
   <div class="container">
       <div class="row text-center">
@@ -67,6 +73,8 @@
       </div>
   </div>
 </div>
+
+    <!-- ***** Organization informations ***** -->
 <div class="container-fluid py-3 bg-orange-gradient">
   <div class="container">
       <div class="row text-center">
@@ -97,6 +105,7 @@
       </div>
   </div>
 </div>
+    <!-- ***** Donate Section ***** -->
 
 <div class="container">
   <div class="row py-3">
@@ -106,4 +115,9 @@
       <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3' %>
     </div>
   </div>
+</div>
+    <!-- ***** Other Events from this association ***** -->
+  <div class="container-fluid bg-orange-gradient py-5 mt-3">
+        <h3 class="text-center pb-2">Autres évènements organisés par <%= @organization.name%> </h3>
+            <%= render 'events/events_list'%>
 </div>

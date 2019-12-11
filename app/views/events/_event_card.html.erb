@@ -16,7 +16,7 @@
         <!-- Post Content-->
         <div class="post-content">
             <div class="category"> <% unless event.address.city.nil? %><%= event.address.city %> <%end%></div>
-            <h1 class="title"><%= event.title %></h1>
+            <h3 class="title"><%= event.title %></h3>
             <h5><% unless event.description.nil? %><%= event.description %><%end%></h5>
             <p class="description"><% unless event.description.nil? %><%= event.description %><%end%></p>
             <div class="post-meta d-flex justify-content-between flex-row align-items-center">

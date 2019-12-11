@@ -11,7 +11,13 @@
       <!-- Title -->
       <h1><%= @article.title %></h1>
       <!-- Author -->
-      <h5 class="mb-3">Par : <%= link_to "#{@article.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'article '#{@article.title}'", user_names: "#{@article.user.name}"}) %>, de l'association <%= link_to @organization.name, organization_path(@organization.id)%> </h5>
+      <h5 class="mb-3">Par :
+        <% if current_user %> 
+          <%= link_to "#{@article.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'article '#{@article.title}'", user_names: "#{@article.user.name}"}) %>
+        <%else%>
+          <%= @article.user.name %>
+        <%end%>
+          , de l'association <%= link_to @organization.name, organization_path(@organization.id)%> </h5>
     </div>
     <div class="col-md-2 text-center text-md-right">
       <% if current_user && (current_user == @user || current_user.admin == true)%>
@@ -21,7 +27,7 @@
   </div>
 
   <!-- ***** Article's body ***** -->
-  <div class="row py-3 my-5">
+  <div class="row py-3 my-3">
     <div class="col py-3">
       <p>
         <%= @article.content %>
@@ -53,7 +59,7 @@
 </div>
 
     <!-- ***** Linked Pages Section ***** -->
-<div class="container-fluid bg-orange-gradient py-3 my-3">
+<div class="container-fluid bg-orange-gradient py-5 my-3">
         <h3 class="text-center pb-2">Articles similaires qui pourraient vous intéresser : </h3>
             <%= render 'articles/articles_list'%>
 </div>
@@ -78,6 +84,10 @@
               <%=comment.created_at.strftime("%d/%m/%Y")%>
               à
               <%=comment.created_at.strftime("%H:%M")%>
+              <br>
+              <% if current_user && comment.user_id == current_user.id %>
+                <%= link_to "Supprimer le commentaire", article_article_comment_path(@article.id, comment.id), method: :delete, :class => "ml-3 secondary" %>
+              <%end%>
             </div>
           </div>
         <%end%>
