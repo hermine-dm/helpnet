@@ -2,9 +2,9 @@
 <%# @param post [Thredded::PostView] %>
 <header>
     <%if post.user.avatar.attached? %>
-        <%= image_tag main_app.url_for(post.user.avatar), alt: 'avatar', class:"rounded-circle", height:"120", width:"120" %>
+        <%= image_tag main_app.url_for(post.user.avatar), alt: 'avatar', class:"rounded-circle", height:"60", width:"60" %>
     <%else%>
-        <%= image_tag "avatar.png", alt:"", class:"rounded-circle", height:"120", width:"120" %>
+        <%= image_tag "avatar.png", alt:"", class:"rounded-circle", height:"60", width:"60" %>
     <%end%>
 
   <h2 class="thredded--post--user"><%= user_link post.user %></h2>

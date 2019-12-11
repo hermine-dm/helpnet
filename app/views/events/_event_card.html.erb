@@ -15,10 +15,10 @@
         </div>
         <!-- Post Content-->
         <div class="post-content">
-            <div class="category"><%= event.address.city %></div>
+            <div class="category"> <% unless event.address.city.nil? %><%= event.address.city %> <%end%></div>
             <h1 class="title"><%= event.title %></h1>
-            <h5><%= event.description %></h5>
-            <p class="description"><%= event.description %></p>
+            <h5><% unless event.description.nil? %><%= event.description %><%end%></h5>
+            <p class="description"><% unless event.description.nil? %><%= event.description %><%end%></p>
             <div class="post-meta d-flex justify-content-between flex-row align-items-center">
             <span class="comments"><i class="fas fa-users"></i></i><a href="#"> <%= event.participations.size%></a></span>
              <%= link_to "Voir l'évènement", organization_event_path(event.organization_id,event.id), :class => "btn btn-primary text-white" %>

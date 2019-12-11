@@ -45,7 +45,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Lieu : <%=@event.address.number%> <%=@event.address.street%><br/><%=@event.address.zip_code%> <%=@event.address.city%></li>
               <li class="list-group-item">Début : <%=@event.start_date.strftime("%d/%m/%y %Hh%M")%></li>
-              <li class="list-group-item">Fin : <%=@event.end_date.strftime("%d/%m/%y %Hh%M")%></li>
+              <li class="list-group-item"><% unless @event.end_date.nil? %>Fin : <%=@event.end_date.strftime("%d/%m/%y %Hh%M")%> <%end%></li>
             </ul>
     </div>
   </div>
