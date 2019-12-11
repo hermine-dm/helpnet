@@ -69,7 +69,9 @@
           <% unless @organization.fb_website.nil? %>
             <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
           <%end%>
-            <p> <i class="fas fa-comment"> </i> <%if current_user%><%= link_to "L'administrateur #{@organization.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'association '#{@organization.name}'", user_names: "#{@organization.user.name}"}) %> <p>
+          <%if current_user%>
+            <p> <i class="fas fa-comment"> </i> <%= link_to "L'administrateur #{@organization.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'association '#{@organization.name}'", user_names: "#{@organization.user.name}"}) %><p>
+          <%end%>
         </div>
       </div>
   </div>
