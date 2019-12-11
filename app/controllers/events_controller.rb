@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 	def edit
 		@organization=Organization.find(params[:organization_id])
 		@event=Event.find(params[:id])
-		@adress=Address.find(@event.address_id)
+		@address=Address.find(@event.address_id)
 	end
 	def update
 		@organization=Organization.find(params[:organization_id])
@@ -57,6 +57,6 @@ class EventsController < ApplicationController
 	    params.require(:event).permit(:start_date,:end_date,:title,:description,:illustration, address_attributes:[:number,:street,:additionnal_information,:zip_code,:city])
 	end
 	def address_params
-	    params.permit(:number,:street,:additionnal_information,:zip_code,:city)
+	    params.require(:address).permit(:number,:street,:additionnal_information,:zip_code,:city)
 	end
 end
