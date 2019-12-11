@@ -58,7 +58,11 @@
     <div class="row">
       <div class="col">
         <h3 class="text-center py-3">Articles similaires qui pourraient vous intéresser : </h3>
-        <!-- ***** 3 cards row redirecting to articles with same tag ***** -->
+          <div class="card-deck my-3">
+            <% @articles=Article.all.sample(3).each do |article| %>
+              <%= render 'articles/article_card', article: article%>
+            <% end %>  
+          </div>
       </div>
     </div>
   </div>

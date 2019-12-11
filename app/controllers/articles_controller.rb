@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 		@user=User.find(@article.user_id)
 		@organization = User.find(@article.user_id).organization
 		@comments=@article.article_comments
+		@articles=Article.all.sample(3)
+
 	end
 	def index
 		@articles=Article.all
