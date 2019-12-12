@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :edit, :update, :destroy]
   resource :admin, only: [:show]
-  resource :allevents, only: [:index]
+  resource :allevents, only: [:show]
   resources :organizations, param: :slug do
     patch :validate #only for the admin of the website
     resources :follows, only: [:create, :destroy]

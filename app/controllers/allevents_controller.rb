@@ -1,5 +1,5 @@
 class AlleventsController < ApplicationController
-  def index
+  def show
     @events=Event.all.sort_by{ |event| event.start_date}
   end
 end
