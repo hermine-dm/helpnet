@@ -45,10 +45,10 @@ puts "users créés"
 				    Promotion et accélération de la recherche
 				https://www.youtube.com/watch?v=rLtkR-Zm-4E",
 				logo_url: "https://www.arsla.org/wp-content/themes/arsla/images/logo.png", user_id: 5, validatedbyadmin: true)
-	adress_orga2 = Address.create(number: "",street:"",zip_code: "34000", city:"Montpellier")
+	adress_orga2 = Address.create(number: "10",street:"Avenue d'Assas",zip_code: "34000", city:"Montpellier")
 	organization2 = Organization.create!(name: "Espoir SLA", num_rna: "W343020413", address_id:adress_orga2.id,
 		description: "Le projet principal est de participer à diffèrentes manifestations sportives afin de communiquer sur cette maladie orpheline encore méconnue du grand public.", 
-		email: "espoirsla@gmail.com", website: "https://www.espoirsla.com/", fb_website: "https://www.facebook.com/lacoursedelespoir/", phone: "01........", donate_link: "https://www.espoirsla.com/faire-un-don", 
+		email: "espoirsla@gmail.com", website: "https://www.espoirsla.com/", fb_website: "https://www.facebook.com/lacoursedelespoir/", phone: "0100000000", donate_link: "https://www.espoirsla.com/faire-un-don", 
 		content: "Récemment, nous avons appris que notre père était atteint d'une maladie du motoneurone type SLA (Sclérose Latérale Amyotrophique), une maladie qui touche 1 personne sur 25 000. 
 				Pour l'heure, il n'y a aucun remède pour vaincre cette maladie.
 				Loin de baisser les bras, nous avons décidé de nous battre en nous mobilisant dans plusieurs projets.	​
@@ -203,13 +203,23 @@ Thredded::Post.all.each{|post| hash[post.postable_id] = post.messageboard_id}
 end
 puts "divers thredded (topics/msg) créées"
 
-10.times do
-	Address.create(number: rand(1..15), zip_code: "#{rand(0..9)}#{rand(0..5)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}")
-end
+	Address.create(number: 5, zip_code: "75013", street: "Parvis Alan Turing", city: "Paris")
+	Address.create(number: 83, zip_code: "75019", street: "Boulevard Macdonald", city: "Paris")
+	Address.create(number: 63, zip_code: "75011", street: "Rue Jean-Pierre Timbaud", city: "Paris")
+	Address.create(number: 37, zip_code: "77340", street: "Avenue des Marguerites", city: "Pontault-Combault")
+	Address.create(number: 9, zip_code: "92140", street: "Rue Pierre Bogaert", city: "Clamart")
+	Address.create(number: 31, zip_code: "78000", street: "Rue d'Anjou", city: "Versailles")
+	Address.create(number: 3, zip_code: "89000", street: "Rue Marcellin Berthelot", city: "Auxerre")
+	Address.create(number: 16, zip_code: "75013", street: "Rue de la Butte aux Cailles", city: "Paris")
+	Address.create(number: 4, zip_code: "34000", street: "Avenue de la Gaillarde", city: "Montpellier")
+	Address.create(number: 8, zip_code: "44312", street: "Route de la Jonelière", city: "Nantes")
+	Address.create(number: 16, zip_code: "15000", street: "Rue Guy de Veyre", city: "Aurillac")
+	Address.create(number: 3, zip_code: "29200", street: "Cité d'Antin", city: "Brest")
+
 puts "Adresses créées"
 
 30.times do 
-	Event.create(organization_id: Organization.all.sample.id, start_date: Faker::Date.forward(days: 50), description: ["un super nouvel évènement sportif pour faire parler de la maladie, participez ! ou faites tourner","retrouvons nous pour échanger autour #{["d'un verre", "d'un déjeuner","d'un diner","d'un gouter"].sample}","Soutenons #{Faker::Name.first_name} pour son évènement et sa campagne, partageons sa page", "Faisons parler de la maladie grâce à cette nouvelle campagne 'virale'","Evènement spécial accompagnants","Evenements spécial malades","Evenements pour tous !!" ].sample.capitalize(), title: ["Repas des amis","Course solidaire","Support entre sportifs","Meetingpot","Sortie Foot","Voyage Accompagnants Malades","Week end pour les malades","Soirée festive","Débat","Manisfestation pour les malades","RDV des accompagnants","Prise de Parole"].sample, address_id: Address.all.sample.id)
+	Event.create(organization_id: Organization.all.sample.id, start_date: Faker::Date.forward(days: 50), description: ["un super nouvel évènement sportif pour faire parler de la maladie, participez ! ou faites tourner","retrouvons nous pour échanger autour #{["d'un verre", "d'un déjeuner","d'un diner","d'un gouter"].sample}","Soutenons #{Faker::Name.first_name} pour son évènement et sa campagne, partageons sa page", "Faisons parler de la maladie grâce à cette nouvelle campagne 'virale'","Evènement spécial accompagnants, venez nombreux et #{Faker::Lorem.paragraph(sentence_count: 2)}","Evenements spécial malades, venez nombreux et #{Faker::Lorem.paragraph(sentence_count: 2)}","Evenements pour tous! Venez nombreux et #{Faker::Lorem.paragraph(sentence_count: 2)}"].sample.capitalize(), title: ["Repas des amis","Course solidaire","Support entre sportifs","Meetingpot","Sortie Foot","Voyage Accompagnants Malades","Week end pour les malades","Soirée festive","Débat","Manisfestation pour les malades","RDV des accompagnants","Prise de Parole"].sample, address_id: Address.all.sample.id)
 end
 puts "Evenements créés"
 
