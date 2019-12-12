@@ -1,26 +1,24 @@
 class UsersController < ApplicationController
-
+  include UsersHelper
   before_action :authenticate_user
   before_action :authenticate_current_user, except: [:destroy]
   before_action :authenticate_current_user_or_admin, only: [:destroy]
 
 	def show
     @user = User.find(params[:id])
+    user_address(@user)
   end
 
   def edit
     @user = User.find(params[:id])
-    
+    user_address(@user)
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.address_id == nil
-      address_validation
-    else 
-      @address=Address.find(@user.address_id)
-    end
+    user_address(@user)
     if (@user.update(post_params)&&@address.update(address_params))
+      @user.update(address_id:@address.id)
       flash[:success] = 'Vos informations ont bien été modifiées'
       redirect_to user_path(@user.id)
     else

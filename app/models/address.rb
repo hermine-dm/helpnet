@@ -3,6 +3,17 @@ class Address < ApplicationRecord
 	has_many :events
 	has_many :users
 
+	def numberandstreet
+		if self.number != nil
+			@address="#{self.number}, #{self.street}"
+		else 
+			@address="#{self.street}"
+		end
+		return @address
+	end
+	def zip_codeandcity
+		return @address="#{self.zip_code} #{self.city}"
+	end
 	def google_format
 		@address="#{self.number}+#{self.street}+#{self.zip_code}+#{self.city}+France"
 		return @address.tr(" ","")
