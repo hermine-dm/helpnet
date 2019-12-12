@@ -68,7 +68,6 @@ class OrganizationsController < ApplicationController
     @organization.events.destroy_all
     @organization.follows.destroy_all
     @organization.destroy
-    @address.destroy
     flash[:success] = "L'association a été supprimée'"
     redirect_to organizations_path
   end
