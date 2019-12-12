@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
-	before_action :authenticate_user_assoc, only: [:create, :new]
-	before_action :authenticate_user_assoc_author, only: [:edit, :update, :destroy]
+	include ArticlesHelper
+	before_action :authenticate_author_or_admin, only: [:edit, :update, :destroy]
+	before_action :authenticate_canbeauthor_or_admin, only: [:new, :create]
 
 	def new
 		@article = Article.new
