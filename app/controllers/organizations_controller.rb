@@ -13,7 +13,7 @@ class OrganizationsController < ApplicationController
   def show
   	@organization = Organization.find(params[:id])
     @address=Address.find(@organization.address_id)
-    @events = @organization.events
+    @events = @organization.events.sort_by{ |event| event.start_date}
     respond_to do |format|
         format.html { }
         format.js { }
