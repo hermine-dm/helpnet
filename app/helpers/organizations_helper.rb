@@ -1,6 +1,6 @@
 module OrganizationsHelper
     def authenticate_user_assoc_or_admin #the admin of the organiation or admin
-	    @organization = Organization.find(params[:id])
+	    @organization = Organization.friendly.find_by_slug(params[:slug])
 	    unless ((current_user && current_user.organization.nil? == false && current_user.organization.id == @organization.id) || (current_user && current_user.admin == true) )
 	    	redirect_to root_path
   		end

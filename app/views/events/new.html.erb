@@ -5,7 +5,7 @@
       <h1 class="mt-5">Créer un évènement</h1>
       <div class="container d-flex justify-content-center ">
         <div class="col-md-8 order-md-1">
-          <%= form_tag organization_events_path(@organization.id), method: "post", multipart: true do %>
+          <%= form_tag organization_events_path(@organization.slug), method: "post", multipart: true do %>
             <input type="hidden" name="authenticity_token" value= <%= form_authenticity_token %> ><br/>
               <div class="mb-3">
                 <%= label_tag "Titre de l'évènement*" %> <br/>

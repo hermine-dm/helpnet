@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   resources :organizations, param: :slug do
     patch :validate #only for the admin of the website
     resources :follows, only: [:create, :destroy]
-    resources :events do
+    resources :events, param: :slug do
       resources :participations, only: [:create, :destroy]
     end
   end
-  resources :articles do
+  resources :articles, param: :slug do
     resources :article_likes, only: [:create, :destroy]
     resources :article_comments
   end

@@ -6,6 +6,8 @@ class Article < ApplicationRecord
 	has_many :article_comments
 	has_one_attached :illustration
 	after_create :new_publication_send
+	extend FriendlyId
+  	friendly_id :title, use: :slugged
 
 	def new_publication_send
 		@organization = User.find(self.user_id).organization

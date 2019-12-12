@@ -17,12 +17,12 @@
         <%else%>
           <%= @article.user.name %>
         <%end%>
-          , de l'association <%= link_to @organization.name, organization_path(@organization.id)%> </h5>
+          , de l'association <%= link_to @organization.name, organization_path(@organization.slug)%> </h5>
     </div>
     <div class="col-md-3 text-center text-md-right">
       <% if current_user && (current_user == @user || current_user.admin == true)%>
-        <%= link_to "Modifier l'article", edit_article_path(@article.id), class: 'btn btn-sm btn-primary' %> 
-        <%= link_to "Supprimer l'article", article_path(@article.id), method: :delete, class: 'btn btn-sm btn-secondary' %>
+        <%= link_to "Modifier l'article", edit_article_path(@article.slug), class: 'btn btn-sm btn-primary' %> 
+        <%= link_to "Supprimer l'article", article_path(@article.slug), method: :delete, class: 'btn btn-sm btn-secondary' %>
       <%end%>
     </div>
   </div>
@@ -47,9 +47,9 @@
         <%if current_user%>
           <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
             <%if @like == nil%>
-              <%= link_to "Like", article_article_likes_path(@article.id), method: :post, :class => "ml-3 btn btn-primary" %>
+              <%= link_to "Like", article_article_likes_path(@article.slug), method: :post, :class => "ml-3 btn btn-primary" %>
             <%else%>
-              <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, :class => "ml-3 btn btn-secondary" %>
+              <%= link_to "Unlike", article_article_like_path(@article.slug, @like.id), method: :delete, :class => "ml-3 btn btn-secondary" %>
             <%end%>
           <%else%>
             <%= link_to "Like", new_user_session_path, :class => "ml-3 btn btn-primary"%>
@@ -81,7 +81,7 @@
       </div>
       <div class="col">
         <h3 class="py-3">Réagir à cet article</h3>
-        <%= form_tag article_article_comments_path(@article.id), remote:true, method: "post" do %>
+        <%= form_tag article_article_comments_path(@article.slug), remote:true, method: "post" do %>
           <div class="form-group">
             <%= text_area_tag 'content', "", class: "form-control"%>
           </div>
