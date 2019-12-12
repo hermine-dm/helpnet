@@ -20,7 +20,7 @@
             
             <div class="post-meta d-flex justify-content-between flex-row align-items-center">
             <span class="comments"><i class="fas fa-users"></i></i><a href="#"> <%= event.participations.size%></a></span>
-             <%= link_to "Voir l'évènement", organization_event_path(event.organization_slug,event.slug), :class => "btn btn-primary text-white" %>
+             <%= link_to "Voir l'évènement", organization_event_path(Organization.find(event.organization_id).slug,event.slug), :class => "btn btn-primary text-white" %>
             </div>
         </div>
     </div>
