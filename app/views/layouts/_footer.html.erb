@@ -53,10 +53,14 @@
            <%= link_to "L'équipe", "../static/team", class: 'nav-link px-0' %>
           </li>
           <li>
-           <%= link_to "The Hacking Project", 'https://www.thehackingproject.org/', class: 'nav-link px-0' %>
+           <%= link_to "The Hacking Project", 'https://www.thehackingproject.org/', class: 'nav-link px-0', target:"_blank" %>
           </li>
           <li>
-           <%= link_to "Contact", main_app.root_path, class: 'nav-link px-0' %>
+            <% if current_user %> 
+              <%= link_to "Contact", thredded.new_private_topic_path(private_topic: {title: "Réclamation", user_names: "Admin_shine1"}), class: 'nav-link px-0' %>
+            <%else%>
+              <%= link_to "Contact", main_app.new_user_session_path, class: 'nav-link px-0' %>
+            <%end%> 
           </li>
         </ul>
 
@@ -70,9 +74,7 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <p class="footer-copyright text-center py-3">© 2019 Copyright :
-    <%= link_to "Shine - The Hacking Project", "https://www.thehackingproject.org/"%>
-  </p>
+  <p class="footer-copyright text-center py-3">© 2019 Copyright : Shine</p>
   <!-- Copyright -->
 </div>
 </footer>
