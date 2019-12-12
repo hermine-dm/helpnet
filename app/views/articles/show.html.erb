@@ -74,36 +74,21 @@
         <%if @comments.count == 0 %>
           <p class="py-3">Soyez la première personne à réagir à cet article !</p>
         <%else%>
-        <% @comments.each do |comment| %>
-          <div class="border p-3">
-            <p><%=comment.content%></p>
-            <div class="blockquote-footer text-right">
-              par
-              <%=comment.user.name%>
-              <br>
-              posté le
-              <%=comment.created_at.strftime("%d/%m/%Y")%>
-              à
-              <%=comment.created_at.strftime("%H:%M")%>
-              <br>
-              <% if current_user && comment.user_id == current_user.id %>
-                <%= link_to "Supprimer le commentaire", article_article_comment_path(@article.id, comment.id), method: :delete, :class => "ml-3 secondary" %>
-              <%end%>
-            </div>
+          <div id="comments_article">
+            <%= render 'article_comments/comment_list' %>
           </div>
-        <%end%>
         <%end%>
       </div>
       <div class="col">
         <h3 class="py-3">Réagir à cet article</h3>
-        <%= form_tag article_article_comments_path(@article.id), method: "post" do %>
-        <div class="form-group">
-          <%= text_area_tag 'content', "", class: "form-control"%>
-        </div>
-        <div class="text-right">
-          <%= submit_tag "Commenter", class: 'btn btn-primary' %>
-        </div>
-      <%end%>
+        <%= form_tag article_article_comments_path(@article.id), remote:true, method: "post" do %>
+          <div class="form-group">
+            <%= text_area_tag 'content', "", class: "form-control"%>
+          </div>
+          <div class="text-right">
+            <%= submit_tag "Commenter", class: 'btn btn-primary' %>
+          </div>
+        <%end%>
     </div>
   </div>
 </div>
