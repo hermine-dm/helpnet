@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_185908) do
+ActiveRecord::Schema.define(version: 2019_12_12_093135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,8 +124,6 @@ ActiveRecord::Schema.define(version: 2019_12_11_185908) do
     t.string "name"
     t.string "num_rna"
     t.text "description"
-    t.string "zip_code"
-    t.string "location"
     t.string "logo_url"
     t.string "email"
     t.string "website"
@@ -137,6 +135,8 @@ ActiveRecord::Schema.define(version: 2019_12_11_185908) do
     t.string "donate_link"
     t.bigint "user_id"
     t.boolean "validatedbyadmin", default: false
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_organizations_on_address_id"
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
