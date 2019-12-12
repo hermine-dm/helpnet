@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user.delete
     flash[:alert] = 'Votre compte a été supprimé'
     if current_user.admin == true
-      redirect_back(fallback_location: admin_show_path)
+      redirect_back(fallback_location: admin_path)
     else
       redirect_to root_path
     end
