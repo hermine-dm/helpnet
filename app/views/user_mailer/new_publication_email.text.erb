@@ -1,0 +1,11 @@
+Bonjour <%=@user.name%>!
+
+Nous avons pensé que vous seriez interessé par lire le nouvel article proposé par <%=@organization.name%> sur notre site <%= link_to "Shine", @url %>.
+
+Vous pouvez acceder à cet article en cliquant sur le lien suivant : <%= link_to "#{@article.title}", @url_article %>.
+
+Toute l'équipe Shine reste à votre écoute pour tout commentaire.
+
+Pour accéder aux discussions, partager votre expérience et prodiguer de bons conseils connectez-vous via :<%=@url%>.
+
+A très vite sur Shine !

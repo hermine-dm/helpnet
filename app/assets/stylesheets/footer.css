@@ -11,3 +11,8 @@ html, body {
   .footer {
     flex-shrink: 0;
   }
+
+logo{
+  overflow: hidden;
+  max-height: 75px;
+}

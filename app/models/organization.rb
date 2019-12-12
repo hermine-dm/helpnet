@@ -14,4 +14,8 @@ class Organization < ApplicationRecord
 	has_many :items
 	extend FriendlyId
   	friendly_id :name, use: :slugged
+
+  def followers
+    self.users
+  end
 end

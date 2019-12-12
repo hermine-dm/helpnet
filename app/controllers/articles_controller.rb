@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
-	before_action :authenticate_user_assoc, only: [:create, :new]
-	before_action :authenticate_user_assoc_author, only: [:edit, :update, :destroy]
+	include ArticlesHelper
+	before_action :authenticate_author_or_admin, only: [:edit, :update, :destroy]
+	before_action :authenticate_canbeauthor_or_admin, only: [:new, :create]
 
 	def new
 		@article = Article.new
@@ -10,13 +11,14 @@ class ArticlesController < ApplicationController
 		@article=Article.find(params[:id])
 		@user=User.find(@article.user_id)
 		@organization = User.find(@article.user_id).organization
-		@comments=@article.article_comments
+		@comments=@article.article_comments.order("created_at desc")
 		@articles=Article.all.sample(3)
+	end
 
-	end
 	def index
-		@articles=Article.all
+		@articles=Article.all.order("created_at desc")
 	end
+
 	def create
 		@article=Article.new(user_id: current_user.id, title: params[:article][:title], content: params[:article][:content], illustration: params[:article][:illustration])
 		if @article.save
@@ -27,6 +29,7 @@ class ArticlesController < ApplicationController
 		    render :new
     	end
 	end
+
 	def edit
 		@article=Article.find(params[:id])
 		@user=User.find(@article.user_id)
