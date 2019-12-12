@@ -1,6 +1,8 @@
 class OrganizationsController < ApplicationController
+  include OrganizationsHelper
   before_action :authenticate_admin, only: [:destroy, :validate]
   before_action :authenticate_user_assoc_or_admin, only: [:edit, :update]
+  before_action :authenticate_canbeadmin_or_admin, only: [:new, :create]
 
   def index
   	@organizations = Organization.all.where(validatedbyadmin: true).order("created_at desc")

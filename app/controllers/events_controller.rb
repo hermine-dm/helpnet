@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
+	include EventsHelper
 	before_action :authenticate_user, except: [:show, :index]
+	before_action :authenticate_user_event_or_admin, only: [:new, :create, :edit, :update]
 	before_action :address_validation, only: [:create]
 
 	def new

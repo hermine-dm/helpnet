@@ -7,7 +7,7 @@
   <!-- ***** Title && Author ***** -->
   <div class="row">
 
-    <div class="col-md-10 text-center text-md-left">
+    <div class="col-md-9 text-center text-md-left">
       <!-- Title -->
       <h1><%= @article.title %></h1>
       <!-- Author -->
@@ -19,9 +19,10 @@
         <%end%>
           , de l'association <%= link_to @organization.name, organization_path(@organization.id)%> </h5>
     </div>
-    <div class="col-md-2 text-center text-md-right">
+    <div class="col-md-3 text-center text-md-right">
       <% if current_user && (current_user == @user || current_user.admin == true)%>
-        <%= link_to "Modifier article", edit_article_path(@article.id), class: 'btn btn-primary' %>
+        <%= link_to "Modifier l'article", edit_article_path(@article.id), class: 'btn btn-sm btn-primary' %> 
+        <%= link_to "Supprimer l'article", article_path(@article.id), method: :delete, class: 'btn btn-sm btn-secondary' %>
       <%end%>
     </div>
   </div>
