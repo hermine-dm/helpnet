@@ -1,9 +1,7 @@
 <h1 class="d-flex justify-content-center mt-5">Les publications de nos membres</h1>
 <div class="container">
   <div class="card-deck my-3">
-    <% @articles.each do |article| %>
-      <%= render 'articles/article_card', article: article%>
-    <% end %>
+      <%= render 'articles/articles_list'%>
   </div>
   <div class="d-flex flex-row justify-content-center mt-5">
     <% if current_user && current_user.organization.nil? == false %>
