@@ -50,7 +50,7 @@ class EventsController < ApplicationController
 		@organization=Organization.find(params[:organization_id])
 	    @address = Adress.find(@event.address_id)
 		@event.destroy
-		@address.destroy
+		#@address.destroy
 		flash[:success] = "L'évènement a été supprimé"
     	redirect_to organization_path(@organization.id)
 	end

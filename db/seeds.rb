@@ -15,7 +15,7 @@ DatabaseCleaner.clean
 
 puts "tout est détruit"
 
-@user = User.create!(email: "admin_helpnet@yopmail.com",  password: "password", password_confirmation: "password", admin: true)
+@user = User.create!(email: "admin_shine@yopmail.com",  password: "password", password_confirmation: "password", admin: true)
 puts "admin créé"
 User.find(1).avatar.attach(io: File.open('app/assets/images/louis01.jpg'), filename: 'louis01.jpg')
 
