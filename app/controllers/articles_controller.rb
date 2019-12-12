@@ -49,8 +49,6 @@ class ArticlesController < ApplicationController
 
 	def destroy
 		@article=Article.friendly.find_by_slug(params[:slug])
-		@article.article_likes.destroy_all
-		@article.article_comments.destroy_all
 		@article.destroy
 		flash[:success] = "L'article a été supprimé"
     	redirect_to articles_path

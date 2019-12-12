@@ -65,8 +65,6 @@ class OrganizationsController < ApplicationController
     @organization = Organization.friendly.find_by_slug(params[:slug])
     @address = Address.find(@organization.address_id)
     @organization.user.articles.destroy_all
-    @organization.events.destroy_all
-    @organization.follows.destroy_all
     @organization.destroy
     flash[:success] = "L'association a été supprimée'"
     redirect_to organizations_path

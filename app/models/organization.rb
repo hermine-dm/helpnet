@@ -8,14 +8,14 @@ class Organization < ApplicationRecord
 	belongs_to :user
   	belongs_to :address
 	has_one_attached :logo
-	has_many :follows
+	has_many :follows, dependent: :destroy
 	has_many :users, through: :follows
-	has_many :events
+	has_many :events, dependent: :destroy
 	has_many :items
 	extend FriendlyId
   	friendly_id :name, use: :slugged
 
-  def followers
-    self.users
-  end
+    def followers
+      self.users
+    end
 end
