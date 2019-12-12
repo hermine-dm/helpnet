@@ -2,8 +2,8 @@
   <div class="d-flex justify-content-center fluid-container">
     <div class= "container d-flex justify-content-center" >
       <div class=" d-flex flex-column form" style="padding: 2rem  4rem  2rem 4rem">
-          <h2>Connexion</h2>
-          <h5 class="m-2">Libérez la parole</h5>
+          <h2 class="title-color pt-1">Libérez la parole ! </h2>
+        <h4 class="m-3">Connexion</h4>
 
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -11,7 +11,7 @@
               <%= f.label :votre_email %><br/>
               <div class="border rounded p-1">
                 <span class="fa fa-user errspan ml-1"></span>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=> 'noborder' %>
+                <%= f.email_field :email, autocomplete: "email", :class=> 'noborder' %>
               </div>
             </div>
 
