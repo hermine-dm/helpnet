@@ -1,7 +1,8 @@
 class Address < ApplicationRecord
-	validates :zip_code, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "please enter a valid french zip code" }
+	validates :zip_code, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "please enter a valid french zip code" }, on: :update, if: Proc.new { |u| u.zip_code.present? }
 	has_many :events
 	has_many :users
+	has_many :organizations
 
 	def numberandstreet
 		if self.number != nil

@@ -8,7 +8,6 @@ class EventsController < ApplicationController
 	def index
 		@events=Event.where(organization_id:params[:organization_id])
 		@organization=Organization.find(params[:organization_id])
-
 	end
 	def show
 		@organization=Organization.find(params[:organization_id])
@@ -47,7 +46,9 @@ class EventsController < ApplicationController
 	def destroy
 		@event=Event.find(params[:id])
 		@organization=Organization.find(params[:organization_id])
+	    @address = Adress.find(@event.address_id)
 		@event.destroy
+		@address.destroy
 		flash[:success] = "L'évènement a été supprimé"
     	redirect_to organization_path(@organization.id)
 	end

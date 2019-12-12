@@ -87,8 +87,8 @@
       <div class="row d-flex justify-content-center">
         <div class="col-md-3">
     
-          <p><i class="fas fa-home"></i>  <%= @organization.location %> </p>
-          <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.zip_code %> </p>
+          <p><i class="fas fa-home"></i>  <%= @organization.address.numberandstreet %> </p>
+          <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.address.zip_codeandcity %> </p>
           <p><i class="fas fa-phone-alt"></i>  <%= @organization.phone %> </p>
         </div>
         <div class="col-md-3">
