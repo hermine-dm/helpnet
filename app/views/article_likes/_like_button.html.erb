@@ -1,0 +1,6 @@
+<% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
+<%if @like == nil%>
+    <%= link_to "Like", article_article_likes_path(@article.id), method: :post, remote:true, :class => "ml-3 btn btn-primary" %>
+<%else%>
+    <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, remote:true, :class => "ml-3 btn btn-secondary" %>
+<%end%>

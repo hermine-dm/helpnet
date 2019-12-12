@@ -39,22 +39,19 @@
   <!-- ***** Thank Section ***** -->
   <div class="row">
     <div class="col text-center">
-      <p>
-        <%= @article.article_likes.count %> personnes ont aimé cet article.
+      <p id="count_like">
+        <%= @article.article_likes.count %> personne(s) ont aimé cet article.
       </p>
       <p>
         Vous avez trouvé cet article intéressant ? Faites le savoir à son auteur :
+      </p>
         <%if current_user%>
-          <% @like = ArticleLike.find_by(user_id:current_user.id, article_id:@article.id)%>
-            <%if @like == nil%>
-              <%= link_to "Like", article_article_likes_path(@article.id), method: :post, :class => "ml-3 btn btn-primary" %>
-            <%else%>
-              <%= link_to "Unlike", article_article_like_path(@article.id, @like.id), method: :delete, :class => "ml-3 btn btn-secondary" %>
-            <%end%>
-          <%else%>
-            <%= link_to "Like", new_user_session_path, :class => "ml-3 btn btn-primary"%>
-          <%end%>
-        </p>
+          <div id="like">
+           <%= render 'article_likes/like_button'%>
+          </div>
+        <%else%>
+          <%= link_to "Like", new_user_session_path, :class => "ml-3 btn btn-primary"%>
+        <%end%>
       </div>
   </div>
 </div>
