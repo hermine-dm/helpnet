@@ -90,13 +90,13 @@
         </div>
         <div class="col-md-3">
           <% unless @organization.email.nil? %>
-            <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
+            <p><i class="fas fa-envelope"></i> <%=@organization.email%> </p>
           <%end%>
           <% unless @organization.website.nil? %>
-            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
+            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website, target:"_blank"%> </p>
           <%end%>
           <% unless @organization.fb_website.nil? %>
-            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
+            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website, target:"_blank" %> <p>
           <%end%>
         </div>
       </div>

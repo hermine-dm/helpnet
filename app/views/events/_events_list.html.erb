@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-deck my-3">
     <% @events.each do |event| %>
-      <%= link_to (render 'events/event_card', event: event), organization_event_path(event.organization_id,event.id) %>
+      <%= link_to (render 'events/event_card', event: event), organization_event_path(event.organization.slug,event.slug) %>
     <% end %>
   </div>
 </div>

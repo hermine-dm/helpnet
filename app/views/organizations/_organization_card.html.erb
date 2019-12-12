@@ -10,11 +10,11 @@
           <%= image_tag "mains.jpg", alt:"", class:"rounded-circle", height:"120", width:"120" %>
       <%end%>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
       <!-- ***** Name ***** -->
       <h4 class="text-md-left text-center">
-        <% if organization.name.chars.count > 12 %>
-          <%= organization.name[0..9] + "..." %>
+        <% if organization.name.chars.count > 15 %>
+          <%= organization.name[0..14] + "..." %>
         <% else %>
           <%= organization.name %>
         <% end %>
