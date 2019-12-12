@@ -57,22 +57,57 @@
     </div>
   </div>
 </div>
+
+<!-- ***** Last activity on site ***** -->
 <div class="container">
-  <div class="row py-5">
-      <h2 class="col">Vos derniers commentaires</h2>
+  <div class="row py-5"><!-- ***** Liked Articles ***** -->
+      <h2 class="col" id="articles">Vos derniers articles aimés</h2>
   </div>
-<div class="row">
-  <!-- ***** Last Comments in forum ***** -->
-  <div class="col">
-    <%= Thredded::ApplicationController.render partial: 'thredded/users/posts', locals: { posts: Thredded.posts_page_view(scope: @user.thredded_posts.order_newest_first.limit(5), current_user: current_user) } %>
+  <div class="row d-none" id="last-articles">
+    <div class="col">
+
+      <%= render 'articles/articles_list' %>
+    </div>
+  </div>
+
+  <div class="row py-5"><!-- ***** Participating Events ***** -->
+      <h2 class="col" id="events">Voir vos derniers évènements</h2>
+  </div>
+  <div class="row d-none" id="last-events">
+    <div class="col">
+      <%= render 'events/events_list' %>
+    </div>
+  </div>
+
+  <div class="row py-5"> <!-- ***** Last Comments in forum ***** -->
+      <h2 class="col" id="comments">Vos derniers commentaires</h2>
+  </div>
+  <div class="row d-none" id="last-comments">
+    <div class="col">
+      <%= Thredded::ApplicationController.render partial: 'thredded/users/posts', locals: { posts: Thredded.posts_page_view(scope: @user.thredded_posts.order_newest_first.limit(5), current_user: current_user) } %>
+    </div>
+  </div>
+  <div class="row py-5 text-center">
+    <!-- ***** Links to Forum ***** -->
+    <div class="col">
+      <h3 class="px-4">Pour suivre les sujets qui vous intéressent ou en découvrir de nouveaux, rendez-vous sur notre <%= link_to "Forum", main_app.thredded_path %>
+      </h3>
+        <%= link_to "Aller au forum", main_app.thredded_path, class: 'btn btn-primary mt-3' %>
+    </div>
   </div>
 </div>
-<div class="row py-5 text-center">
-  <!-- ***** Links to Forum ***** -->
-  <div class="col">
-    <h3 class="px-4">Pour suivre les sujets qui vous intéressent ou en découvrir de nouveaux, rendez-vous sur notre <%= link_to "Forum", main_app.thredded_path %>
-    </h3>
-      <%= link_to "Aller au forum", main_app.thredded_path, class: 'btn btn-primary mt-3' %>
-  </div>
-</div>
-</div>
+
+<script type="text/javascript">
+  $( "#comments" ).click(function() {
+  $( "#last-comments" ).toggleClass( "d-none", "slow", function() {
+  });
+});
+$( "#events" ).click(function() {
+$( "#last-events" ).toggleClass( "d-none", "slow", function() {
+});
+});
+$( "#articles" ).click(function() {
+$( "#last-articles" ).toggleClass( "d-none", "slow", function() {
+});
+});
+</script>
