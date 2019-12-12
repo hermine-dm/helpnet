@@ -44,4 +44,6 @@ font-size: 12px;
 .noborder {
     border: none;
 }
-
+input{
+    overflow: hidden !important;
+}
