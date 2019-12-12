@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'allevents/index'
   get 'static/show'
   devise_for :users
   resources :users, only: [:show, :edit, :update, :destroy]
   get "admin/show"
   get "/static/:page" => "static#show"
+  resource :allevents, only: [:index]
   resources :organizations do
     patch :validate #only for the admin of the website
     resources :follows, only: [:create, :destroy]
