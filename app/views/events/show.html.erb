@@ -16,7 +16,7 @@
       <p>Organisé par: <%=link_to "#{@organization.name}", organization_path(@organization.id) %></p>
     </div>
     <div class="col-md-4 text-center text-md-right">
-      <% if ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true) %>
+      <% if (current_user && ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true)) %>
         <%= link_to "Editer l'évènement", edit_organization_event_path(@event.id), class: 'btn btn-primary' %>
       <%end%>
     </div>
