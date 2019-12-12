@@ -33,17 +33,35 @@
     </div>
   </div>
   <div class="container bg-light py-3">
-      <h2 class="d-flex justify-content-center">Informations de contacts</h2>
+      <h2 class="d-flex justify-content-center">Informations de contacts</h2><br/>
       <div class="container d-flex justify-content-center">
-        <div class=" text-center">
-              <div class="form-group">
-                  <%= label_tag "Le siège social de l'association" %><span class="text-muted">(*)</span> <br/>
-                  <%= f.text_field :location %>
-              </div>
-              <div class="form-group">
-                <%= label_tag "Le code postal" %> <span class="text-muted">(*)</span><br/>
-                <%= f.text_field :zip_code%> 
-              </div>
+        <div class=" text-center">   
+                <%= fields_for @address do |ff| %>
+                  <div class="form-group">
+                    <%= label_tag "Adresse : "%>
+                  </div>
+                  <div class="row text-md-left text-center py-3">
+                    <div class="col-md-6 pl-5">
+                      <%= ff.text_field :number, class: "form-control", placeholder: "N°" %>
+                    </div>
+                    <div class="col-md-6 pl-5">
+                      <%= ff.text_field :street, class: "form-control", placeholder: "Voie" %>
+                    </div>
+                  </div>
+                  <div class="row text-md-left text-center py-3">
+                    <div class="col-md-6 pl-5">
+                      <%= ff.text_field :additionnal_information, class: "form-control", placeholder: "Complément d'adresse"%>
+                    </div>
+                  </div>
+                  <div class="row text-md-left text-center py-3">
+                    <div class="col-md-6 pl-5">
+                      <%= ff.text_field :zip_code, class: "form-control", placeholder: "Code postal" %>
+                    </div>
+                    <div class="col-md-6 pl-5">
+                      <%= ff.text_field :city, class: "form-control", placeholder: "Ville"%>
+                    </div>
+                  </div>
+                <%end%>
               <div class="form-group">
                 <%= label_tag "Le site internet" %> <br/>
                 <%= f.text_field :website%> 

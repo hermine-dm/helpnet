@@ -1,14 +1,15 @@
 class EventsController < ApplicationController
+	include EventsHelper
 	before_action :authenticate_user, except: [:show, :index]
+	before_action :authenticate_user_event_or_admin, only: [:new, :create, :edit, :update]
 	before_action :address_validation, only: [:create]
 
 	def new
 		@organization=Organization.find(params[:organization_id])
 	end
 	def index
-		@events=Event.where(organization_id:params[:organization_id])
+		@events=Event.where(organization_id:params[:organization_id]).order("created_at desc")
 		@organization=Organization.find(params[:organization_id])
-
 	end
 	def show
 		@organization=Organization.find(params[:organization_id])
@@ -47,7 +48,9 @@ class EventsController < ApplicationController
 	def destroy
 		@event=Event.find(params[:id])
 		@organization=Organization.find(params[:organization_id])
+	    @address = Adress.find(@event.address_id)
 		@event.destroy
+		#@address.destroy
 		flash[:success] = "L'évènement a été supprimé"
     	redirect_to organization_path(@organization.id)
 	end

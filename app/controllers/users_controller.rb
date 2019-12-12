@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 	def show
     @user = User.find(params[:id])
     user_address(@user)
+    @events = current_user.events.limit(3)
+    user_liked_articles(current_user)
   end
 
   def edit
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
     flash[:alert] = 'Votre compte a été supprimé'
     if current_user.admin == true
       redirect_back(fallback_location: admin_show_path)
-    else 
+    else
       redirect_to root_path
     end
   end
