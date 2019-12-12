@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @client_ip = remote_ip()
+    @events=Event.all.sample(3)
   end
 end

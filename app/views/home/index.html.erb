@@ -1,3 +1,4 @@
+<script src="home.js"></script> 
 <!-- ***** HEADER ***** -->
   <div class="container-fluid" id="hero">
     <div class="container py-3">
@@ -86,6 +87,12 @@
             <%= link_to "Je découvre", main_app.organizations_path, class: 'btn btn-lg btn-primary' %>
         </div>
     </div>
+  </div>
+
+  <!-- ***** EVENTS ROW ***** -->
+  <div class="container py-2">
+    <h2 class="d-flex justify-content-center">Nos prochains évènements </h2>
+    <%= render 'events/events_list'%>
   </div>
 
   <!-- ***** DONATEPLACE ROW ***** -->
