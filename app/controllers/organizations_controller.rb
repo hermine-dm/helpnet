@@ -64,6 +64,7 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization = Organization.friendly.find_by_slug(params[:slug])
     @address = Address.find(@organization.address_id)
+    @organization.follows.destroy_all
     @organization.destroy
     @address.destroy
     flash[:success] = "L'association a été supprimée'"

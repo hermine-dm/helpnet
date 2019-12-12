@@ -49,6 +49,7 @@ class EventsController < ApplicationController
 		@event=Event.friendly.find_by_slug(params[:slug])
 		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
 	    @address = Adress.find(@event.address_id)
+	    @event.partipations.destroy_all
 		@event.destroy
 		#@address.destroy
 		flash[:success] = "L'évènement a été supprimé"
