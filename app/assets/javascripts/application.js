@@ -13,10 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require thredded/dependencies/timeago
 //= require timeago/locales/fr
 //= require thredded
 //= require chartkick
 //= require Chart.bundle
 //= require bootstrap.bundle.min
+//= require home
