@@ -46,7 +46,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.friendly.find_by_slug(params[:organization_slug])
     if @organization.validatedbyadmin == false then @organization.update(validatedbyadmin: true) else @organization.update(validatedbyadmin: false) end
     flash[:success] = "Les informations ont bien été prises en compte"
-    redirect_back(fallback_location: admin_show_path)
+    redirect_back(fallback_location: admin_path)
   end
 
   def update
