@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 		@user=User.find(@article.user_id)
 		@organization = User.find(@article.user_id).organization
 		@comments=@article.article_comments.order("created_at desc")
-		@articles=Article.all.sample(3)
+		@articles=Article.all.reject{ |article| article.id == @article.id}.sample(3)
 	end
 
 	def index
