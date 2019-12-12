@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_093135) do
+ActiveRecord::Schema.define(version: 2019_12_12_164255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2019_12_12_093135) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -83,8 +85,10 @@ ActiveRecord::Schema.define(version: 2019_12_12_093135) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["address_id"], name: "index_events_on_address_id"
     t.index ["organization_id"], name: "index_events_on_organization_id"
+    t.index ["slug"], name: "index_events_on_slug", unique: true
   end
 
   create_table "follows", force: :cascade do |t|
@@ -136,7 +140,9 @@ ActiveRecord::Schema.define(version: 2019_12_12_093135) do
     t.bigint "user_id"
     t.boolean "validatedbyadmin", default: false
     t.bigint "address_id"
+    t.string "slug"
     t.index ["address_id"], name: "index_organizations_on_address_id"
+    t.index ["slug"], name: "index_organizations_on_slug", unique: true
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 

@@ -10,8 +10,8 @@
         <%=comment.created_at.strftime("%H:%M")%>
         <br>
         <% if current_user && comment.user_id == current_user.id %>
-            <%= link_to "Editer votre commentaire", edit_article_article_comment_path(@article.id, comment.id),remote:true, :class => "ml-3 primary" %> <br>
-            <%= link_to "Supprimer votre commentaire", article_article_comment_path(@article.id, comment.id), method: :delete, remote:true, :class => "ml-3 secondary" %>
+            <%= link_to "Editer votre commentaire", edit_article_article_comment_path(@article.slug, comment.id),remote:true, :class => "ml-3 primary" %> <br>
+            <%= link_to "Supprimer votre commentaire", article_article_comment_path(@article.slug, comment.id), method: :delete, remote:true, :class => "ml-3 secondary" %>
         <%end%>
       </div>
 </div>

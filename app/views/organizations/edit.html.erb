@@ -26,7 +26,7 @@
   <div class="col text-center">
     <% if current_user && current_user.admin == true %>
       <p>Pour supprimer le compte de cette association ainsi que ses informations, cliquer ici : </p>
-      <%= link_to "Supprimer",organization_path(@organization.id), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
+      <%= link_to "Supprimer",organization_path(@organization.slug), method: :delete, data: {confirm: "Etes vous surs? L'association sera définitevement supprimée"}, class: 'btn btn-outline-primary' %>
     <%end%>
   </div>
 </div>

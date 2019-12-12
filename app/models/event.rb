@@ -8,6 +8,8 @@ class Event < ApplicationRecord
 	validates :start_date, presence: true
 	validate :start_in_the_future
 	validate :end_after_start_date
+	extend FriendlyId
+  	friendly_id :title, use: :slugged
 
 
 	def start_in_the_future
