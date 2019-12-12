@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 
 	end
 	def index
-		@articles=Article.all
+		@articles=Article.all.order("created_at desc")
 	end
 	def create
 		@article=Article.new(user_id: current_user.id, title: params[:article][:title], content: params[:article][:content], illustration: params[:article][:illustration])

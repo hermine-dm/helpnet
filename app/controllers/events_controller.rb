@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 		@organization=Organization.find(params[:organization_id])
 	end
 	def index
-		@events=Event.where(organization_id:params[:organization_id])
+		@events=Event.where(organization_id:params[:organization_id]).order("created_at desc")
 		@organization=Organization.find(params[:organization_id])
 
 	end
