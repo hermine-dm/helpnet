@@ -54,12 +54,35 @@
           <%= label_tag 'Email : ' %> <br>
           <%= f.text_field :email, class: 'form-control' %>
         </div>
-        <div class="col-md-6 pl-5">
-          <%= label_tag 'Localisation : ' %> <br>
-          <%= f.text_field :zip_code, class: 'form-control' %>
-        </div>
       </div>
-
+      <div class="mb-3">        
+        <%= fields_for @address do |ff| %>
+          <div class="col-md-6 pl-5">
+            <%= label_tag "Adresse : "%>
+          </div>
+          <div class="row text-md-left text-center py-3">
+            <div class="col-md-6 pl-5">
+              <%= ff.text_field :number, class: "form-control", placeholder: "N°" %>
+            </div>
+            <div class="col-md-6 pl-5">
+              <%= ff.text_field :street, class: "form-control", placeholder: "Voie" %>
+            </div>
+          </div>
+          <div class="row text-md-left text-center py-3">
+            <div class="col-md-6 pl-5">
+              <%= ff.text_field :additionnal_information, class: "form-control", placeholder: "Complément d'adresse"%>
+            </div>
+          </div>
+          <div class="row text-md-left text-center py-3">
+            <div class="col-md-6 pl-5">
+              <%= ff.text_field :zip_code, class: "form-control", placeholder: "Code postal" %>
+            </div>
+            <div class="col-md-6 pl-5">
+              <%= ff.text_field :city, class: "form-control", placeholder: "Ville"%>
+            </div>
+          </div>
+        <%end%>
+      </div>
       <div class="row justify-content-lg-between justify-content-md-center no-gutters my-5">
         <div class="col-md-3 text-center">
           <%= link_to 'Supprimer mon compte', user_path(params[:id]), method: :delete, data: {confirm: "Etes vous sûre? Votre compte sera définitivement supprimé"}, class: 'btn btn-outline-primary mt-3' %>
