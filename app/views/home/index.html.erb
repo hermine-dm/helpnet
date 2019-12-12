@@ -1,4 +1,3 @@
-<script src="home.js"></script> 
 <!-- ***** HEADER ***** -->
   <div class="container-fluid" id="hero">
     <div class="container py-3">
@@ -6,7 +5,7 @@
         <div class="col-md-7 mt-5">
           <h1>Chez <strong style="color: #7776BC">Shine</strong> nous accompagnons la vie</h1>
           <p class="py-3">Malades, accompagnants, familles, amis voici une plateforme pour échanger, trouver vos associations, vos évènements, des conseils et surtout de la bienveillance.</p>
-          <%= link_to "Découvrir", '#keypoints', class: 'btn btn-lg btn-primary mb-2' %>
+          <%= link_to "Découvrir", '#keypoints', class: 'btn btn-lg btn-primary mb-2', id: 'scroll-to' %>
         </div>
     <!-- ***** SIGN UP FORM ***** -->
         <div class="col-md-5">
@@ -62,7 +61,7 @@
     <div class="container">
       <div class="row py-5">
         <div class="col-md-6 px-5">
-          <%= image_tag "https://images.unsplash.com/photo-1542338347-4fff3276af78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt:"", class:"rounded img-fluid", height:"300" %>
+          <%= image_tag "coffee", alt:"", class:"rounded img-fluid", height:"300" %>
         </div>
         <div class="col-md-6 py-5 px-4 text-center text-md-left">
           <h2>Un forum de discussion</h2>
@@ -106,7 +105,7 @@
             <%= link_to "J'aide", "static/donateplace", class: 'btn btn-lg btn-primary my-3' %>
         </div>
         <div class="col-md-6 px-5">
-         <%= image_tag "https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", alt:"", class:"rounded img-fluid", height:"300" %>
+         <%= image_tag "flower", alt:"", class:"rounded img-fluid", height:"300" %>
         </div>
       </div>
     </div>
