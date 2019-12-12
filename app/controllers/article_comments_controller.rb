@@ -30,7 +30,7 @@ class ArticleCommentsController < ApplicationController
   	@comment = @article.article_comments.find(params[:id])
   	@comment.update(content: post_params[:content], article_id: @article.id)
   	respond_to do |format|
-        format.html { redirect_to article_path(@article), notice: 'Le commentaire a été mis à jour.'}
+        format.html { redirect_to article_path(@article.slug), notice: 'Le commentaire a été mis à jour.'}
         format.js { }
     end
   end
