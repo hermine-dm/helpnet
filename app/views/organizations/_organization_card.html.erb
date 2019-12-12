@@ -13,7 +13,11 @@
     <div class="col-md-8">
       <!-- ***** Name ***** -->
       <h4 class="text-md-left text-center">
-        <%= organization.name %>
+        <% if organization.name.chars.count > 12 %>
+          <%= organization.name[0..9] + "..." %>
+        <% else %>
+          <%= organization.name %>
+        <% end %>
       </h4>
       <!-- ***** Location ***** -->
       <p class="my-4">
