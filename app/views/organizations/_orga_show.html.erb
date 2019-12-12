@@ -94,10 +94,7 @@
         </div>
       </div>
       <div class="row d-flex mb-3 justify-content-center">
-        <a href=<%="https://maps.googleapis.com/maps/api/staticmap?markers=color:0x7776BC%7C#{@organization.address.google_format},France&key=#{ENV['google_key']}&signature=9cTSU_2aEq8SWizLM-KsjWjzpmI="%>>
-        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?markers=color:0x7776BC%7C#{@organization.address.google_format},France&zoom=14&size=700x300
-        &key=#{ENV['google_key']}", height:"300", width:"700" %>
-      </a>
+        <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?markers=color:0x7776BC%7C#{@organization.address.google_format},France&zoom=14&size=700x300&key=#{ENV['google_key']}"), "https://www.google.com/maps/search/?api=1&query=#{@organization.address.google_format},France", height:"300", width:"700", target:"_blank" %>
       </div>
   </div>
 </div>

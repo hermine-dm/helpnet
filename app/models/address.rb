@@ -16,7 +16,7 @@ class Address < ApplicationRecord
 		return @address="#{self.zip_code} #{self.city}"
 	end
 	def google_format
-		@address="#{self.number}+#{self.street}+#{self.zip_code}+#{self.city}+France"
-		return @address.tr(" ","")
+		@address="#{self.number}#{self.street}#{self.zip_code}#{self.city},France"
+		return @address_url=CGI::escape(@address)
 	end
 end
