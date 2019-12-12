@@ -8,7 +8,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-  	@organization = Organization.find(params[:id])
+  	@organization = Organization.friendly.find_by_slug(params[:slug])
     @address=Address.find(@organization.address_id)
     @events = @organization.events
     respond_to do |format|

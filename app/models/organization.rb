@@ -6,10 +6,12 @@ class Organization < ApplicationRecord
 	validates :num_rna, presence: true, format: { with: /\A([W]([0-9]{9}))\z/, message: "please enter a valid french association num W+9nbs"}
 	#validates :email, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }
 	belongs_to :user
-  belongs_to :address
+  	belongs_to :address
 	has_one_attached :logo
 	has_many :follows
 	has_many :users, through: :follows
 	has_many :events
 	has_many :items
+	extend FriendlyId
+  	friendly_id :name, use: :slugged
 end
