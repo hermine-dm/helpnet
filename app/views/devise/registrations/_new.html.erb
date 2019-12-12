@@ -1,6 +1,6 @@
 <div class=" d-flex flex-column form_home" style="padding: 1rem 3rem 1rem 3rem">
-        <h2>Créer votre compte </h2>
-        <h5 class="m-2">Libérez la parole !</h5>
+        <h2 class="title-color pt-3">Libérez la parole ! </h2>
+        <h5 class="m-1">Créez votre compte</h5>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,7 +9,7 @@
             <%= f.label :votre_email %>
             <div class="border rounded p-1 flex-row d-flex align-items-center">
               <span class="fa fa-user errspan pl-1 pr-2"></span>
-               <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=> 'noborder flex-fill' %>
+               <%= f.email_field :email, autocomplete: "email", :class=> 'noborder flex-fill' %>
             </div>
           </div>
 
@@ -31,16 +31,12 @@
               <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=> 'noborder flex-fill' %>
             </div>  
           </div>
-          <br/>
           <p style="font-size: 8px;">En vous inscrivant, vous acceptez les <a href="https://media.giphy.com/media/q8pghZNgAQ0rm/giphy.gif" target="_blank"> conditions générales d'utilisations.</a></p>
 
           <div class="actions">
-            <%= f.submit "Créer mon compte", :class=> 'btn btn-primary' %>
+            <%= f.submit "Rejoindre la communauté", :class=> 'btn btn-primary' %>
           </div>
           <% end %>
-          <div class="actions">
-            <a class=" row btn btn-sm btn-google m-2 p-2" style=" color: white;"><span class="fab fa-google"  style="color: white;"></span> S'inscire avec Google</a>
-          </div>
 
           <div style="font-size: 10px;">
               <p>Vous avez déjà un compte ? <%= render "devise/shared/links" %></p>
