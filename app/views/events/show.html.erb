@@ -8,16 +8,16 @@
         <%if @organization.logo.attached?%>
           <%= image_tag @organization.logo, alt: 'logo', class:"rounded-circle", height:"100", width:"100" %>
         <%else%>
-          <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSg6Tiu7ix5m4sH3bRK550_NoTJLhA99xzuq9IsxLbtnQEDBGNi", alt:"", class:"rounded-circle", height:"120", width:"120" %>
+          <%= image_tag "mains.jpg", alt:"", class:"rounded-circle", height:"120", width:"120" %>
         <%end%>
     </div>
     <div class="col-md-6 text-center text-md-left">
       <h1> <%= @event.title %> </h1>
-      <p>Organisé par: <%=link_to "#{@organization.name}", organization_path(@organization.id) %></p>
+      <p>Organisé par: <%=link_to "#{@organization.name}", organization_path(@organization.slug) %></p>
     </div>
     <div class="col-md-4 text-center text-md-right">
-      <% if ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true) %>
-        <%= link_to "Editer l'évènement", edit_organization_event_path(@event.id), class: 'btn btn-primary' %>
+      <% if (current_user && ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true)) %>
+        <%= link_to "Editer l'évènement", edit_organization_event_path(@organization.slug,@event.slug), class: 'btn btn-primary' %>
       <%end%>
     </div>
   </div>
@@ -37,9 +37,9 @@
       <%if current_user%>
         <% @participation = Participation.find_by(user_id:current_user.id, event_id:@event.id)%>
         <%if @participation == nil%>
-          <%= link_to "S'inscrire", organization_event_participations_path(@event.organization_id,@event.id), class: 'btn btn-secondary w-50', method: :post %>
+          <%= link_to "S'inscrire", organization_event_participations_path(@organization.slug,@event.slug), class: 'btn btn-secondary w-50', method: :post %>
         <%else%>
-          <%= link_to "Se désinscrire", organization_event_participation_path(@event.organization_id,@event.id,@participation.id), class: 'btn btn-secondary w-50', method: :delete %>
+          <%= link_to "Se désinscrire", organization_event_participation_path(@organization.slug,@event.slug,@participation.id), class: 'btn btn-secondary w-50', method: :delete %>
         <%end%>
       <%else%>
         <%= link_to "S'inscrire", new_user_session_path, class: 'btn btn-secondary w-50'%>
@@ -48,9 +48,9 @@
     <div class="col-sm-12 col-md-4 mt-1">
       <h5>Détails de l'évenement</h5>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Lieu : <%=@event.address.number%> <%=@event.address.street%><br/><%=@event.address.zip_code%> <%=@event.address.city%></li>
-            <li class="list-group-item">Début : <%=@event.start_date.strftime("%d/%m/%y %Hh%M")%></li>
-            <li class="list-group-item"><% unless @event.end_date.nil? %>Fin : <%=@event.end_date.strftime("%d/%m/%y %Hh%M")%> <%end%></li>
+            <li class="list-group-item"><p>Lieu : <%=@event.address.number%> <%=@event.address.street%><br/><%=@event.address.zip_code%> <%=@event.address.city%></p></li>
+            <li class="list-group-item"><p>Début : le <%=@event.start_date.strftime("%d/%m/20%y à %Hh%M")%></p></li>
+            <li class="list-group-item"><p><% unless @event.end_date.nil? %>Fin : <%=@event.end_date.strftime("%d/%m/20%y à %Hh%M")%> <%end%></p></li>
           </ul>
     </div>
   </div>
@@ -66,10 +66,7 @@
         </div>
       </div>
       <div class="row d-flex mb-3 justify-content-center">
-        <a href=<%="https://maps.googleapis.com/maps/api/staticmap?markers=color:0x7776BC%7C#{@event.address.google_format},France&key=#{ENV['google_key']}&signature=9cTSU_2aEq8SWizLM-KsjWjzpmI="%>>
-        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?markers=color:0x7776BC%7C#{@event.address.google_format},France&zoom=14&size=700x300
-        &key=#{ENV['google_key']}", height:"300", width:"700" %>
-      </a>
+        <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?markers=color:0x7776BC%7C#{@event.address.google_format},France&zoom=14&size=700x300&key=#{ENV['google_key']}"), "https://www.google.com/maps/search/?api=1&query=#{@event.address.google_format},France", height:"300", width:"700", target:"_blank" %>
       </div>
   </div>
 </div>
@@ -86,20 +83,20 @@
       </div>
       <div class="row d-flex justify-content-center">
         <div class="col-md-3">
-    
-          <p><i class="fas fa-home"></i>  <%= @organization.location %> </p>
-          <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.zip_code %> </p>
+
+          <p><i class="fas fa-home"></i>  <%= @organization.address.numberandstreet %> </p>
+          <p><i class="fas fa-map-marker-alt"></i>  <%= @organization.address.zip_codeandcity %> </p>
           <p><i class="fas fa-phone-alt"></i>  <%= @organization.phone %> </p>
         </div>
         <div class="col-md-3">
           <% unless @organization.email.nil? %>
-            <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
+            <p><i class="fas fa-envelope"></i> <%=@organization.email%> </p>
           <%end%>
           <% unless @organization.website.nil? %>
-            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
+            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website, target:"_blank"%> </p>
           <%end%>
           <% unless @organization.fb_website.nil? %>
-            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
+            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website, target:"_blank" %> <p>
           <%end%>
         </div>
       </div>
@@ -112,7 +109,7 @@
     <div class="col text-center">
       <h2 class="py-3"> Soutenir l'organisateur : </h2>
       <p> <%= @organization.description %> </p>
-      <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3' %>
+      <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3', target:"_blank" %>
     </div>
   </div>
 </div>

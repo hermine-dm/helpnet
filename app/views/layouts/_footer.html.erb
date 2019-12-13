@@ -10,11 +10,11 @@
       <div class="col-md-6 mt-md-0 mt-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase">Shining</h5>
+        <%= link_to image_tag('logo_shine_50.png'), main_app.root_path%>
         <p>Ensemble, libérons la parole. </p>
         <br/>
         <h5>Contact</h5>
-        <p>hello@shining.com </p>
+        <p>admin_shine@yopmail.com </p>
 
       </div>
       <!-- Grid column -->
@@ -25,7 +25,7 @@
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Shining</h5>
+        <h5 class="text-uppercase">Shine</h5>
 
         <ul class="list-unstyled">
           <li>
@@ -36,9 +36,6 @@
           </li>
           <li>
             <%= link_to "Articles", main_app.articles_path, class: 'nav-link px-0' %>
-          </li>
-          <li>
-          <%= link_to "Marketplace (NA)", main_app.root_path, class: 'nav-link px-0' %>
           </li>
         </ul>
 
@@ -53,16 +50,17 @@
 
         <ul class="list-unstyled">
           <li>
-           <%= link_to "L'équipe", main_app.root_path, class: 'nav-link px-0' %>
+           <%= link_to "L'équipe", "../static/team", class: 'nav-link px-0' %>
           </li>
           <li>
-           <%= link_to "The Hacking Project", 'https://www.thehackingproject.org/', class: 'nav-link px-0' %>
+           <%= link_to "The Hacking Project", 'https://www.thehackingproject.org/', class: 'nav-link px-0', target:"_blank" %>
           </li>
           <li>
-           <%= link_to "Contact", main_app.root_path, class: 'nav-link px-0' %>
-          </li>
-          <li>
-           <%= link_to "Jobs", main_app.root_path, class: 'nav-link px-0' %>
+            <% if current_user %> 
+              <%= link_to "Contact", thredded.new_private_topic_path(private_topic: {title: "Réclamation", user_names: "Admin_shine1"}), class: 'nav-link px-0' %>
+            <%else%>
+              <%= link_to "Contact", main_app.new_user_session_path, class: 'nav-link px-0' %>
+            <%end%> 
           </li>
         </ul>
 
@@ -76,9 +74,7 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <p class="footer-copyright text-center py-3">© 2019 Copyright :
-    <%= link_to "Shiny - The Hacking Project", "https://www.thehackingproject.org/"%>
-  </p>
+  <p class="footer-copyright text-center py-3">© 2019 Copyright : Shine</p>
   <!-- Copyright -->
 </div>
 </footer>

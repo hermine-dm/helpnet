@@ -1,0 +1,2 @@
+document.getElementById("like").innerHTML = "<%= j render 'article_likes/like_button' %>";
+document.getElementById("count_like").innerHTML = "<%= @article.article_likes.count %> personne(s) ont aimé cet article.";

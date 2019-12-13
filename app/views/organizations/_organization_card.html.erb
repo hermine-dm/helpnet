@@ -10,31 +10,32 @@
           <%= image_tag "mains.jpg", alt:"", class:"rounded-circle", height:"120", width:"120" %>
       <%end%>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
       <!-- ***** Name ***** -->
       <h4 class="text-md-left text-center">
-        <%= organization.name %>
+        <% if organization.name.chars.count > 15 %>
+          <%= organization.name[0..14] + "..." %>
+        <% else %>
+          <%= organization.name %>
+        <% end %>
       </h4>
       <!-- ***** Location ***** -->
       <p class="my-4">
-        <i class="fas fa-map-marker-alt"></i> <%= organization.location %>
+        <i class="fas fa-map-marker-alt"></i> <%= organization.address.city %>
       </p>
       <!-- ***** Follow and see more buttons ***** -->
       <div class="row text-md-left text-center">
         <div class="col-6">
-          <%if current_user%>
-            <% @follow = Follow.find_by(user_id:current_user.id, organization_id:organization.id)%>
-            <%if @follow == nil%>
-              <%= link_to "Suivre", organization_follows_path(organization.id), method: :post, :class => "btn btn-outline-secondary"  %>
-            <%else%>
-              <%= link_to "Ne plus suivre", organization_follow_path(organization.id, @follow.id), method: :delete, :class => "btn btn-outline-secondary" %>
-            <%end%>
+          <%if current_user %>
+            <div id="follow <%= organization.id%>">
+              <%= render 'follows/follow_button', organization: organization%>
+            </div>
           <%else%>
-              <%= link_to "Suivre", new_user_session_path, :class => "btn btn-outline-secondary"%>
+            <%= link_to "Suivre", new_user_session_path, :class => "btn btn-outline-secondary"%>
           <%end%>
         </div>
         <div class="col-6">
-          <%= link_to "Découvrir", organization_path(organization.id), class: "btn btn-primary" %>
+          <%= link_to "Découvrir", organization_path(organization.slug), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

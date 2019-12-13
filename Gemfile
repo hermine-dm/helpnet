@@ -31,6 +31,8 @@ gem 'kaminari-i18n'
 gem "chartkick" #make data graphics (admin dashboard)
 gem 'groupdate' #group data by date
 gem 'jquery-rails'
+gem 'url_escape'
+gem 'friendly_id'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

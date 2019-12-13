@@ -3,9 +3,9 @@
     <div class="container py-3">
       <div class="row py-5">
         <div class="col-md-7 mt-5">
-          <h1>Chez <strong style="color: #7776BC">Shine</strong> nous accompagnons la vie</h1>
-          <p class="py-3">Bénevoles, médécins, malades, accompagnants, familles, amis voici une plateforme pour échanger, trouver vos associations, vos évènements, des conseils et surtout de la bienveillance.</p>
-          <%= link_to "Découvrir", '#', class: 'btn btn-lg btn-primary' %>
+          <h1>Avec <strong style="color: #7776BC">Shine</strong>, rayonnons sur la maladie</h1>
+          <p class="py-3">Malades, accompagnants, familles, amis voici une plateforme pour échanger, trouver vos associations, vos évènements, des conseils et surtout de la bienveillance.</p>
+          <%= link_to "Découvrir", '#keypoints', class: 'btn btn-lg btn-primary mb-2', id: 'scroll-to' %>
         </div>
     <!-- ***** SIGN UP FORM ***** -->
         <div class="col-md-5">
@@ -23,7 +23,7 @@
   </div>
 
   <!-- ***** 3 KEYPOINTS ROW ***** -->
-  <div class="container-fluid">
+  <div class="container-fluid" id="keypoints">
     <div class="row">
       <div class="col-md-4 text-center bg-orange py-5">
         <span class="fas fa-comments fa-3x mb-3 mt-5 icon"></span>
@@ -40,8 +40,9 @@
       <div class="col-md-4 text-center bg-light-purple py-5">
         <span class="fas fa-hand-holding-heart fa-3x mb-3 mt-5 icon"></span>
         <h2 class="py-3">De la solidarité</h2>
-        <p>Des prêts d'outils et de matériels entre particuliers, aidez la communauté ! </p>
-        <%= link_to "J'emprunte", '#', class: 'btn btn-lg btn-primary my-3' %>    </div>
+        <p>Des évènements organisés par la communauté tout au long de l'année. Rejoignez-nous ! </p>
+        <%= link_to "Je participe", allevents_path, class: 'btn btn-lg btn-primary my-3' %>
+      </div>
     </div>
   </div>
 
@@ -57,14 +58,16 @@
 
   <!-- ***** FORUM ROW ***** -->
   <div class="container-fluid bg-orange-gradient py-5">
-    <div class="row py-5">
-      <div class="col-md-6 px-5">
-        <%= image_tag "https://images.unsplash.com/photo-1542338347-4fff3276af78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", alt:"", class:"rounded float-right", height:"300" %>
-      </div>
-      <div class="col-md-6 py-5 px-4 text-center text-md-left">
-        <h2>Un forum de discussion</h2>
-        <p class="py-3">Ne restez pas seul face à la maladie. Pour dédramatiser, accepter et prodiguer de bons conseils, le plus important c'est d'en parler ! </p>
-        <%= link_to "J'en parle", main_app.thredded_path, class: 'btn btn-lg btn-primary' %>
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-md-6 px-5">
+          <%= image_tag "coffee.jpg", alt:"", class:"rounded img-fluid", height:"300" %>
+        </div>
+        <div class="col-md-6 py-5 px-4 text-center text-md-left">
+          <h2>Un forum de discussion</h2>
+          <p class="py-3">Ne restez pas seul face à la maladie. Pour dédramatiser, accepter et prodiguer de bons conseils, le plus important c'est d'en parler ! </p>
+          <%= link_to "J'en parle", main_app.thredded_path, class: 'btn btn-lg btn-primary' %>
+        </div>
       </div>
     </div>
   </div>
@@ -85,18 +88,24 @@
     </div>
   </div>
 
+  <!-- ***** EVENTS ROW ***** -->
+  <div class="container py-2">
+    <h2 class="d-flex justify-content-center">Nos prochains évènements </h2>
+        <%= render 'events/events_list'%>
+  </div>
+
   <!-- ***** DONATEPLACE ROW ***** -->
 
   <div class="container-fluid py-5 bg-purple-gradient">
     <div class="container">
       <div class="row py-5">
         <div class="col-md-6 py-5 px-4 text-center text-md-left">
-          <h2>Notre DonnatePlace</h2>
+          <h2>Notre DonatePlace</h2>
           <p class="py-3">Pour prêter ou emprunter du matériel médical entre particuliers et associations.</p>
-            <%= link_to "J'aide", '#', class: 'btn btn-lg btn-primary my-3' %>
+            <%= link_to "J'aide", "static/donateplace", class: 'btn btn-lg btn-primary my-3' %>
         </div>
         <div class="col-md-6 px-5">
-         <%= image_tag "https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", alt:"", class:"rounded float-right", height:"300" %>
+         <%= image_tag "flower.jpg", alt:"", class:"rounded img-fluid", height:"300" %>
         </div>
       </div>
     </div>

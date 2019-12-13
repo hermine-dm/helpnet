@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card-deck">
         <% @articles.each do |article| %>
-            <%= render 'articles/article_card', article: article%>
+            <%= link_to (render 'articles/article_card', article: article), article_path(article.slug)%>
         <% end %>  
     </div>
 </div>

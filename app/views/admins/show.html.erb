@@ -34,12 +34,12 @@
           <div class="col-2 h6"><%= organization.num_rna %> </div>
           <div class="col-2 text-left">
             <% if organization.validatedbyadmin == true %>
-              <%= link_to "OK", organization_validate_path(organization.id), method: :patch, data: {confirm: "Etes vous sûre? Le compte sera ou non validé"},  class: 'btn btn-sm btn-success' %></div>
+              <%= link_to "OK", organization_validate_path(organization.slug), method: :patch, data: {confirm: "Etes vous sûre? Le compte sera ou non validé"},  class: 'btn btn-sm btn-success' %></div>
             <% else %>
-              <%= link_to "A valider", organization_validate_path(organization.id), method: :patch, data: {confirm: "Etes vous sûre? Le compte sera ou non validé"},  class: 'btn btn-sm btn-danger' %></div>
+              <%= link_to "A valider", organization_validate_path(organization.slug), method: :patch, data: {confirm: "Etes vous sûre? Le compte sera ou non validé"},  class: 'btn btn-sm btn-danger' %></div>
             <% end %>
-          <div class="col-1 text-right"><%= link_to 'Supprimer', organization_path(organization.id), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
-          <div class="col-1 text-right"><%= link_to 'Editer', edit_organization_path(organization.id),  class: 'btn btn-sm btn-primary' %></div>
+          <div class="col-1 text-right"><%= link_to 'Supprimer', organization_path(organization.slug), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
+          <div class="col-1 text-right"><%= link_to 'Editer', edit_organization_path(organization.slug),  class: 'btn btn-sm btn-primary' %></div>
         </li>
 
         <%end%> 
@@ -63,7 +63,7 @@
             <div class="col-3 h6"><%= user.email %> </div>
             <div class="col-1 h6"><%= user.thredded_posts.count %> </div>
             <div class="col-1 h6"><% if user.organization.nil? %> - <%else%><%= user.organization.id %> <%end%></div>
-            <div class="col-2 text-right"><%= link_to 'Supprimer', user_path(user.id), method: :delete, data: {confirm: "Etes vous sûre? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
+            <div class="col-2 text-right"><%= link_to 'Supprimer', user_path(user.id), method: :delete, data: {confirm: "Etes vous sûr? Le compte sera définitivement supprimé"},  class: 'btn btn-sm btn-danger' %></div>
           <%end%>
         </li>
         <%end%> 
