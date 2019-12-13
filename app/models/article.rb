@@ -7,7 +7,7 @@ class Article < ApplicationRecord
   has_many :article_likes, dependent: :destroy
   has_many :article_comments, dependent: :destroy
   has_one_attached :illustration
-  # after_create :new_publication_send
+  after_create :new_publication_send
   extend FriendlyId
   friendly_id :title, use: :slugged
 

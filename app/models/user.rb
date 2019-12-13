@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :participations
   has_many :events, through: :participations
   after_create :generate_name
-  # after_create :welcome_send
+  after_create :welcome_send
 
   def generate_name # create a name from the email adress and id
     a = email.chars.index('@') # find the position of @ in the email adress

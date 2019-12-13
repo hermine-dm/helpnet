@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validate :start_in_the_future
   validate :end_after_start_date
-  # after_create :new_event_send
+  after_create :new_event_send
   extend FriendlyId
   friendly_id :title, use: :slugged
 
