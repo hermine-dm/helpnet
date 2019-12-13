@@ -1,4 +1,4 @@
-# Shine Project
+# Shine README
 
 ## The Project
 
@@ -15,7 +15,7 @@ We've created a website that gathers patients, their friends, family and compani
 This app is run on rails 5.2.4 and ruby 2.5.1
 Check the Gemfile for more. 
 
-#### For locals only : 
+### For locals only : 
 Clone the repository : 
 ```
 git clone https://github.com/hermine-dm/helpnet/
@@ -28,7 +28,7 @@ Create the PostgreSQL Database :
 ```
 rails db:create
 ```
-Time for some nice migrations : 
+You're not a Zebra but I know you're always up for some nice migrations : 
 ```
 rails db:migrate
 ```
@@ -42,11 +42,13 @@ rails s
 ```
 Enjoy and peace out man ! 
 
-#### In production
+### In production
 Yes, you're right it's a hard work to make it work on your local machine, that why it's for locals only. We have a solution for you...guess what it's also available online using Heroku.
 Go on https://helpnet-prod.herokuapp.com
 
-This app has :
+### Technical stuff
+
+Models :
 - a user Model
 - an organization Model
 - an article Model
@@ -70,4 +72,15 @@ Login : admin_shine@yopmail.com
 mdp : password
 
 With the admin access you have an overview dashboard, you can edit and delete associations/users/messages and many other objects.
+
+## Team
+
+This website is made in 2 weeks with love by a team of students at The Hacking Project for their final project. 
+The team include : 
+- Hermine S. De Menthière, ajax and back-end magician
+- Jordan Pedro, front-end genius
+- Philippe Gatti, who know's that even grand-pa can became a magnificent back-end architect ? 
+- Benjamin Bertrand, README lover
+
+Enjoy ! 
 
