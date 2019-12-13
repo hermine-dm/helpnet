@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonjour <%=@user.name%>!</h1>
+    <p>
+      Nous avons pensé que vous seriez interessé par vous inscrire au nouvel évènement proposé par <%=@organization.name%> sur notre site <%= link_to "Shine", @url %>.
+
+      Vous pouvez acceder à cet évènement en cliquant sur le lien suivant : <%= link_to "#{@event.title}", @url_event %>.
+
+      Toute l'équipe Shine reste à votre écoute pour tout commentaire.
+    </p>
+    <p>
+      Pour accéder aux discussions, partager votre expérience et prodiguer de bons conseils connectez-vous via :<%=@url%>.
+    </p>
+    <p> A très vite sur Shine ! </p>
+  </body>
+</html>
