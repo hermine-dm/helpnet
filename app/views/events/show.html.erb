@@ -54,6 +54,23 @@
           </ul>
     </div>
   </div>
+  <div class="text-muted">
+      <% if (current_user && ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true)) %>
+        <hr>
+        <div class="row">
+          <div class="col-md-5 text-center text-md-left">
+            [Informations réservées aux admins]<br>
+          </div>
+          <div class="col-md-7 text-md-right">
+            <%= link_to "Envoyer un message à tous les participants", thredded.new_private_topic_path(private_topic: {title: "A propos de l'évènement '#{@event.title}'", user_names: "#{@attendants.join(', ')}"}), class: 'btn btn-primary'%>
+          </div>
+          <div class="col-md-8 text-center text-md-left">
+            Voici les participants à votre évènement :  <br>
+            <%= @attendants.join(", ") %>
+          </div>
+        </div>
+      <%end%>
+  </div>
 </div>
     <!-- ***** Google maps ***** -->
 <div class="container-fluid py-3 bg-purple-gradient">

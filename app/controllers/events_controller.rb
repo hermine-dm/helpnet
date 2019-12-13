@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
 		@event=Event.friendly.find_by_slug(params[:slug])
 		@events=Event.where(organization_id:@organization.id).reject{ |event| event.id == @event.id}.sample(3)
+		@attendants = @event.participations.map{|participe| User.find(participe.user_id).name}
 	end
 	def create
 		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
