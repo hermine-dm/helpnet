@@ -15,24 +15,30 @@ We've created a website that gathers patients, their friends, family and compani
 This app is run on rails 5.2.4 and ruby 2.5.1
 Check the Gemfile for more. 
 
-##### For locals only : 
+#### For locals only : 
 Clone the repository : 
-```git clone https://github.com/hermine-dm/helpnet/
+```
+git clone https://github.com/hermine-dm/helpnet/
 ```
 Install gems and versions : 
-```bundle install
+```
+bundle install
 ```
 Create the PostgreSQL Database : 
-```rails db:create
+```
+rails db:create
 ```
 Time for some nice migrations : 
-```rails db:migrate
+```
+rails db:migrate
 ```
 Fullfill the database (this will send a lot of emails - you can comment them in user model and article model) : 
-```rails db:seed
+```
+rails db:seed
 ```
 Now you can run your server for locals only : 
-```rails s
+```
+rails s
 ```
 Enjoy and peace out man ! 
 
