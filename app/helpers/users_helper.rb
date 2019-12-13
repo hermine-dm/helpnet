@@ -10,9 +10,9 @@ module UsersHelper
 
 	def user_liked_articles(user)
 		@likes = current_user.article_likes.limit(3)
-    @articles = []
-    for like in @likes do
-      @articles << Article.find(like.article_id)
+	    @articles = []
+	    for like in @likes do
+	      @articles << Article.find(like.article_id)
 		end
 	end
 

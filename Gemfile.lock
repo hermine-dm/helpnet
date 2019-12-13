@@ -421,6 +421,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot
   faker
+  friendly_id
   groupdate
   jbuilder (~> 2.5)
   jquery-rails

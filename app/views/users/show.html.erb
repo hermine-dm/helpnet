@@ -11,7 +11,7 @@
       <%if @user.avatar.attached?%>
         <%= image_tag @user.avatar, alt: 'avatar', class:"rounded-circle", height:"120", width:"120" %>
       <%else%>
-        <%= image_tag "avatar", alt:"", class:"rounded-circle", height:"120", width:"120" %>
+        <%= image_tag "avatar.png", alt:"", class:"rounded-circle", height:"120", width:"120" %>
       <%end%>
     </div>
     <div class="col-md-10">

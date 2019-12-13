@@ -13,11 +13,11 @@
     </div>
     <div class="col-md-6 text-center text-md-left">
       <h1> <%= @event.title %> </h1>
-      <p>Organisé par: <%=link_to "#{@organization.name}", organization_path(@organization.id) %></p>
+      <p>Organisé par: <%=link_to "#{@organization.name}", organization_path(@organization.slug) %></p>
     </div>
     <div class="col-md-4 text-center text-md-right">
       <% if (current_user && ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true)) %>
-        <%= link_to "Editer l'évènement", edit_organization_event_path(@event.id), class: 'btn btn-primary' %>
+        <%= link_to "Editer l'évènement", edit_organization_event_path(@organization.slug,@event.slug), class: 'btn btn-primary' %>
       <%end%>
     </div>
   </div>
@@ -37,9 +37,9 @@
       <%if current_user%>
         <% @participation = Participation.find_by(user_id:current_user.id, event_id:@event.id)%>
         <%if @participation == nil%>
-          <%= link_to "S'inscrire", organization_event_participations_path(@event.organization_id,@event.id), class: 'btn btn-secondary w-50', method: :post %>
+          <%= link_to "S'inscrire", organization_event_participations_path(@organization.slug,@event.slug), class: 'btn btn-secondary w-50', method: :post %>
         <%else%>
-          <%= link_to "Se désinscrire", organization_event_participation_path(@event.organization_id,@event.id,@participation.id), class: 'btn btn-secondary w-50', method: :delete %>
+          <%= link_to "Se désinscrire", organization_event_participation_path(@organization.slug,@event.slug,@participation.id), class: 'btn btn-secondary w-50', method: :delete %>
         <%end%>
       <%else%>
         <%= link_to "S'inscrire", new_user_session_path, class: 'btn btn-secondary w-50'%>
@@ -90,13 +90,13 @@
         </div>
         <div class="col-md-3">
           <% unless @organization.email.nil? %>
-            <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
+            <p><i class="fas fa-envelope"></i> <%=@organization.email%> </p>
           <%end%>
           <% unless @organization.website.nil? %>
-            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
+            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website, target:"_blank"%> </p>
           <%end%>
           <% unless @organization.fb_website.nil? %>
-            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
+            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website, target:"_blank" %> <p>
           <%end%>
         </div>
       </div>
