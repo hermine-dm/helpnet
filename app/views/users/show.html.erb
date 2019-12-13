@@ -24,7 +24,7 @@
           </p>
         </div>
         <div class="col-md-3 text-md-right text-center">
-          <%= link_to 'Modifier mes infos', edit_user_path(params[:id]), class: 'btn btn-primary' %>
+          <%= link_to "Voir mes Messages", thredded.private_topics_path, class: 'btn btn-outline-secondary' %>
         </div>
       </div>
     </div>
@@ -40,19 +40,31 @@
 <!-- ***** User's personnal infos ***** -->
 <div class="container-fluid py-5 bg-purple-gradient">
   <div class="container">
-
     <div class="row py-3">
-      <div class="col-md-6 py-2">Nom :<br>
-        <%= @user.last_name %></div>
-      <div class="col-md-6 py-2">Prénom :<br>
-        <%= @user.first_name %></div>
-    </div>
-
-    <div class="row py-3">
-      <div class="col-md-6 py-2">Email :<br>
-        <%= @user.email %></div>
-      <div class="col-md-6 py-2">Localisation :<br>
-        <%= @address.numberandstreet %> <%= @address.zip_codeandcity %>
+      <div class="col-md-9 d-flex flex-column py-3">
+        <div class="row">
+          <div class="col-md-8 py-2">
+            <p>Nom :</p>
+            <p><%= @user.last_name %></p>
+          </div>
+          <div class="col-md-4 py-2">
+            <p>Prénom :</p>
+            <p><%= @user.first_name %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 py-3">
+            <p>Email :</p>
+            <p><%= @user.email %></p>
+          </div>
+          <div class="col-md-4 py-3">
+            <p>Localisation :</p>
+            <p><%= @address.numberandstreet %> <%= @address.zip_codeandcity %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 text-md-right text-center py-3">
+        <%= link_to 'Modifier mes infos', edit_user_path(params[:id]), class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
