@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 	  devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:name, :first_name, :last_name, :description, :email, :zip_code, :password, :password_confirmation, :current_password)}
 	end
 
-	def update_last_sign_in_at #permet de mettre a jour toutes les atributs liés à devise trackable
+	def update_last_sign_in_at #allow trackable devise
 	 if user_signed_in? && !session[:logged_signin]
 	    sign_in(current_user, :force => true)
 	    session[:logged_signin] = true
