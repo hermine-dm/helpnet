@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   include UsersHelper
   before_action :authenticate_user
   before_action :authenticate_current_user, except: [:destroy]
   before_action :authenticate_current_user_or_admin, only: [:destroy]
 
-	def show
+  def show
     @user = User.find(params[:id])
     user_address(@user)
     @events = current_user.events.limit(3)
@@ -19,8 +21,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     user_address(@user)
-    if (@user.update(post_params)&&@address.update(address_params))
-      @user.update(address_id:@address.id)
+    if @user.update(post_params) && @address.update(address_params)
+      @user.update(address_id: @address.id)
       flash[:success] = 'Vos informations ont bien été modifiées'
       redirect_to user_path(@user.id)
     else
@@ -30,10 +32,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user=User.find(params[:id])
-    if @address=Address.find(@user.address_id)
-      @address.delete
-    end
+    @user = User.find(params[:id])
+    @address.delete if @address = Address.find(@user.address_id)
     @user.delete
     flash[:alert] = 'Votre compte a été supprimé'
     redirect_to root_path
@@ -42,9 +42,10 @@ class UsersController < ApplicationController
   private
 
   def post_params
-      params.require(:user).permit(:name, :first_name, :last_name, :email, :avatar, address_attributes:[:number,:street,:additionnal_information,:zip_code,:city])
+    params.require(:user).permit(:name, :first_name, :last_name, :email, :avatar, address_attributes: %i[number street additionnal_information zip_code city])
   end
+
   def address_params
-      params.require(:address).permit(:number,:street,:additionnal_information,:zip_code,:city)
+    params.require(:address).permit(:number, :street, :additionnal_information, :zip_code, :city)
   end
 end

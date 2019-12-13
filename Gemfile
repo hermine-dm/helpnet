@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -16,23 +18,23 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 gem 'faker'
-gem "table_print"
-#gem 'stripe'
-gem 'devise'
-gem 'pry'
-gem 'rubocop', '~> 0.57.2'
-gem 'dotenv-rails'
+gem 'table_print'
+# gem 'stripe'
+gem 'aws-sdk-s3', require: false
+gem 'chartkick' # make data graphics (admin dashboard)
 gem 'database_cleaner'
-gem "aws-sdk-s3", require: false
-gem 'thredded', '~> 0.16.14'
+gem 'devise'
+gem 'dotenv-rails'
 gem 'factory_bot'
-gem 'rails-i18n' #translate
-gem 'kaminari-i18n'
-gem "chartkick" #make data graphics (admin dashboard)
-gem 'groupdate' #group data by date
-gem 'jquery-rails'
-gem 'url_escape'
 gem 'friendly_id'
+gem 'groupdate' # group data by date
+gem 'jquery-rails'
+gem 'kaminari-i18n'
+gem 'pry'
+gem 'rails-i18n' # translate
+gem 'rubocop', '~> 0.57.2'
+gem 'thredded', '~> 0.16.14'
+gem 'url_escape'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -56,14 +58,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -78,5 +80,5 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'stripe'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
