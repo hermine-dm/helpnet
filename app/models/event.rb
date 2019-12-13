@@ -2,12 +2,14 @@ class Event < ApplicationRecord
 	belongs_to :organization
 	belongs_to :address
 	has_one_attached :illustration
-	has_many :participations
+	has_many :participations, dependent: :destroy
 	has_many :users, through: :participations
 	validates :title, presence: true
 	validates :start_date, presence: true
 	validate :start_in_the_future
 	validate :end_after_start_date
+	extend FriendlyId
+  	friendly_id :title, use: :slugged
 
 
 	def start_in_the_future

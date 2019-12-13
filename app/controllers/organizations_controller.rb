@@ -11,9 +11,9 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-  	@organization = Organization.find(params[:id])
+  	@organization = Organization.friendly.find_by_slug(params[:slug])
     @address=Address.find(@organization.address_id)
-    @events = @organization.events
+    @events = @organization.events.sort_by{ |event| event.start_date}
     respond_to do |format|
         format.html { }
         format.js { }
@@ -38,35 +38,36 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-  	@organization = Organization.find(params[:id])
+  	@organization = Organization.friendly.find_by_slug(params[:slug])
     @address=Address.find(@organization.address_id)
   end
 
   def validate
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.friendly.find_by_slug(params[:organization_slug])
     if @organization.validatedbyadmin == false then @organization.update(validatedbyadmin: true) else @organization.update(validatedbyadmin: false) end
     flash[:success] = "Les informations ont bien été prises en compte"
-    redirect_back(fallback_location: admin_show_path)
+    redirect_back(fallback_location: admin_path)
   end
 
   def update
-    @organization = Organization.find(params[:id])
+    @organization = Organization.friendly.find_by_slug(params[:slug])
     @address = Address.find(@organization.address_id)
     if (@organization.update(post_params)&&@address.update(address_params))
       flash[:success] = "Les informations ont bien été prises en compte"
-      redirect_to organization_path(@organization.id)
+      redirect_to organization_path(@organization.slug)
     else
       flash[:error] = "Désolé il y a une erreur :#{@organization.errors.full_messages.to_sentence} #{@address.errors.full_messages.to_sentence}"
-      redirect_to organization_path(@organization.id)
+      redirect_to organization_path(@organization.slug)
     end
   end
 
   def destroy
-    @organization = Organization.find(params[:id])
+    @organization = Organization.friendly.find_by_slug(params[:slug])
     @address = Address.find(@organization.address_id)
+    @organization.user.articles.destroy_all
     @organization.destroy
-    @address.destroy
-    redirect_back(fallback_location: admin_show_path)
+    flash[:success] = "L'association a été supprimée'"
+    redirect_to organizations_path
   end
 
   private

@@ -5,23 +5,23 @@ class EventsController < ApplicationController
 	before_action :address_validation, only: [:create]
 
 	def new
-		@organization=Organization.find(params[:organization_id])
+		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
 	end
 	def index
-		@events=Event.where(organization_id:params[:organization_id]).order("created_at desc")
-		@organization=Organization.find(params[:organization_id])
+		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
+		@events=Event.where(organization_id:@organization.id).order("created_at desc")
 	end
 	def show
-		@organization=Organization.find(params[:organization_id])
-		@event=Event.find(params[:id])
-		@events=Event.where(organization_id:params[:organization_id]).sample(3)
+		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
+		@event=Event.friendly.find_by_slug(params[:slug])
+		@events=Event.where(organization_id:@organization.id).reject{ |event| event.id == @event.id}.sample(3)
 	end
 	def create
-		@organization=Organization.find(params[:organization_id])
+		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
 		@event=Event.new(organization_id:@organization.id,address_id: @address.id, start_date: params[:start_date],end_date: params[:end_date],title: params[:title], description:params[:description], illustration: params[:illustration])
 		if @event.save
 			flash[:success] = "Evenement créé !" 
-      		redirect_to organization_event_path(@organization.id,@event.id)
+      		redirect_to organization_event_path(@organization.slug,@event.slug)
       	else 
 		    flash.now[:error] = "Désolé il y a une erreur :#{@event.errors.full_messages.to_sentence}"
 		    @address.destroy
@@ -29,30 +29,29 @@ class EventsController < ApplicationController
 		end
 	end
 	def edit
-		@organization=Organization.find(params[:organization_id])
-		@event=Event.find(params[:id])
+		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
+		@event=Event.friendly.find_by_slug(params[:slug])
 		@address=Address.find(@event.address_id)
 	end
 	def update
-		@organization=Organization.find(params[:organization_id])
-		@event = Event.find(params[:id])
+		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
+		@event = Event.friendly.find_by_slug(params[:slug])
 		@address = Address.find(@event.address_id)
 	    if (@event.update(post_params)&&@address.update(address_params))
 	      flash[:success] = "Les informations ont bien été prises en compte"
-	      redirect_to organization_event_path(@organization.id,@event.id)
+	      redirect_to organization_event_path(@organization.slug,@event.slug)
 	    else
 	      flash.now[:error] = "Désolé il y a une erreur :#{@event.errors.full_messages.to_sentence} #{@address.errors.full_messages.to_sentence}"
 	      render :edit
 	    end
 	end
 	def destroy
-		@event=Event.find(params[:id])
-		@organization=Organization.find(params[:organization_id])
-	    @address = Adress.find(@event.address_id)
+		@event=Event.friendly.find_by_slug(params[:slug])
+		@organization=Organization.friendly.find_by_slug(params[:organization_slug])
 		@event.destroy
 		#@address.destroy
 		flash[:success] = "L'évènement a été supprimé"
-    	redirect_to organization_path(@organization.id)
+    	redirect_to organization_path(@organization.slug)
 	end
 
 	private

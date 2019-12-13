@@ -2,10 +2,12 @@ class Article < ApplicationRecord
 	validates :title, presence: true
 	validates :content, presence: true
 	belongs_to :user
-	has_many :article_likes
-	has_many :article_comments
+	has_many :article_likes, dependent: :destroy
+	has_many :article_comments, dependent: :destroy
 	has_one_attached :illustration
 	after_create :new_publication_send
+	extend FriendlyId
+  	friendly_id :title, use: :slugged
 
 	def new_publication_send
 		@organization = User.find(self.user_id).organization

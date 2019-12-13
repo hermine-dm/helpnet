@@ -12,19 +12,18 @@
       <h1> <%= @organization.name %> </h1>
       <p><%= @organization.description %></p>
     </div>
-    <div class="col-md-4 text-center text-md-right">
+    <div class="col-md-4 text-md-right">
       <% if current_user %>
-        <% if ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true) %>
-          <%= link_to "Editer infos", edit_organization_path(@organization.id), class: 'btn btn-primary' %>
-        <%end%>
-        <% @follow = Follow.find_by(user_id:current_user.id, organization_id:@organization.id)%>
-        <%if @follow == nil%>
-          <%= link_to "Suivre", organization_follows_path(@organization.id), class: 'btn btn-secondary', method: :post %>
-        <%else%>
-          <%= link_to "Ne plus suivre", organization_follow_path(@organization.id, @follow.id), class: 'btn btn-secondary', method: :delete %>
-        <%end%>
+        <div class="flex row d-flex justify-content-around">
+          <% if ((current_user.organization.nil? == false && current_user.organization.id == @organization.id) || current_user.admin == true) %>
+            <%= link_to "Editer infos", edit_organization_path(@organization.slug), class: 'btn btn-primary' %>
+          <%end%>
+          <div id="follow <%= @organization.id%>">
+            <%= render 'follows/follow_button', organization: @organization%>
+          </div>
+        </div>
       <%else%>
-         <%= link_to "Suivre", new_user_session_path, class: 'btn btn-secondary'%>
+        <%= link_to "Suivre", new_user_session_path, class: 'btn btn-secondary'%>
       <%end%>
     </div>
   </div>
@@ -68,13 +67,13 @@
 <!-- ***** Contact infos ***** -->
         <div class="col-md-5">
           <% unless @organization.email.nil? %>
-            <p><i class="fas fa-envelope"></i> <%= link_to @organization.email, @organization.email%> </p>
+            <p><i class="fas fa-envelope"></i> <%= @organization.email%> </p>
           <%end%>
           <% unless @organization.website.nil? %>
-            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website%> </p>
+            <p><i class="fas fa-globe"></i> <%= link_to @organization.website, @organization.website, target:"_blank"%> </p>
           <%end%>
           <% unless @organization.fb_website.nil? %>
-            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website %> <p>
+            <p> <i class="fab fa-facebook">  </i> <%= link_to "Notre Facebook", @organization.fb_website, target:"_blank"%> <p>
           <%end%>
           <%if current_user%>
             <p> <i class="fas fa-comment"> </i> <%= link_to "L'administrateur #{@organization.user.name}", thredded.new_private_topic_path(private_topic: {title: "A propos de l'association '#{@organization.name}'", user_names: "#{@organization.user.name}"}) %><p>
@@ -104,7 +103,7 @@
     <div class="col text-center">
       <h2 class="py-3"> Nous soutenir : </h2>
       <p class="text-md-left"><%= @organization.description %> </p>
-      <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3' %>
+      <%= link_to 'Faire un don', @organization.donate_link, class: 'btn btn-primary my-3', target:"_blank" %>
     </div>
   </div>
 </div>
