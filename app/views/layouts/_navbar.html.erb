@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item text-uppercase px-3 active">
-          <%= link_to "Associations", main_app.organizations_path, class: 'nav-link' %>
+          <%= link_to "Forum", main_app.thredded_path, class: 'nav-link' %>
         </li>
         <li class="nav-item text-uppercase px-3 active">
-          <%= link_to "Forum", main_app.thredded_path, class: 'nav-link' %>
+          <%= link_to "Associations", main_app.organizations_path, class: 'nav-link' %>
         </li>
         <li class="nav-item text-uppercase px-3 active">
           <%= link_to "Articles", main_app.articles_path, class: 'nav-link' %>
@@ -31,6 +31,7 @@
           </li>
 <!-- ***** If user is logged in ***** -->
         <% else %>
+        <!-- ***** User is Admin ***** -->
           <% if current_user.admin == true %>
             <li class="nav-item text-uppercase px-3 active">
               <%= link_to "Dashboard",  main_app.admin_show_path, class: 'nav-link' %>
@@ -52,6 +53,8 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                 <%= link_to "Mon Profil", main_app.user_path(current_user.id), class: 'dropdown-item text-uppercase' %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Mes Messages", thredded.private_topics_path, class: 'dropdown-item text-uppercase' %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Se Déconnecter", main_app.destroy_user_session_path, method: :delete, class: 'dropdown-item text-uppercase' %>
               </div>
