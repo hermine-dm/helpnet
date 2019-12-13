@@ -1,7 +1,7 @@
 class Participation < ApplicationRecord
 	belongs_to :user
 	belongs_to :event
-	after_create :event_confirmation_send
+	#after_create :event_confirmation_send
 
 	def event_confirmation_send
 		@event=Event.find(self.event_id)
