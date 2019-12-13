@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     else
       flash.now[:error] = "Désolé il y a une erreur :#{@article.errors.full_messages.to_sentence}"
       render :new
-      end
+    end
   end
 
   def edit
@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
     else
       flash[:error] = "Désolé il y a une erreur :#{@article.errors.full_messages.to_sentence}"
       redirect_to edit_article_path(@article.slug)
-       end
+    end
   end
 
   def destroy

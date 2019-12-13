@@ -51,7 +51,7 @@ class EventsController < ApplicationController
     else
       flash.now[:error] = "Désolé il y a une erreur :#{@event.errors.full_messages.to_sentence} #{@address.errors.full_messages.to_sentence}"
       render :edit
-       end
+    end
   end
 
   def destroy

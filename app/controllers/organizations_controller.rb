@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(address_id: @address.id, name: params[:organization][:name], logo: params[:organization][:logo], description: params[:organization][:description], phone: params[:organization][:phone], website: params[:organization][:website], fb_website: params[:organization][:fb_website], email: params[:organization][:email], num_rna: params[:organization][:num_rna], donate_link: params[:organization][:donate_link], content: params[:organization][:content])
     @organization.user_id = current_user.id
-    if @organization.save # essaie de sauvegarder en base
+    if @organization.save
       flash[:success] = "Merci l'association est en cours de validation par l'administration"
       redirect_to organizations_path
     else

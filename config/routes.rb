@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   root to: 'home#index'
   get '/static/:page' => 'static#show'
+  get "static/team", :as => 'team'
   mount Thredded::Engine => '/forum'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -44,11 +44,11 @@ class ArticleCommentsController < ApplicationController
       format.html { redirect_to article_path(@article.slug), notice: 'Le commentaire a été supprimé.' }
       format.js {}
     end
-   end
+  end
 
   private
 
   def post_params
     params.require(:article_comment).permit(:content, :article_id)
-    end
+  end
 end

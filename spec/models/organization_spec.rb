@@ -45,7 +45,6 @@ RSpec.describe Organization, type: :model do
 				Chacun de vos sourires nous donnera la force de vaincre cette maladie .
 				La Famille ESPOIR SLA ", user: @user)
         expect(bad_orga).not_to be_valid
-        # test très sympa qui permet de vérifier que la fameuse formule .errors retourne bien un hash qui contient une erreur concernant le first_name.
         expect(bad_orga.errors.include?(:num_rna)).to eq(true)
       end
     end
@@ -75,9 +74,9 @@ RSpec.describe Organization, type: :model do
   context 'associations' do
     describe 'events' do
       it 'should have_many events' do
-        adresse = Address.create(number: rand(1..15), street: "rue du #{['Général', 'Maréchal', ''].sample} #{Faker::Name.last_name}", zip_code: "#{rand(0..9)}#{rand(0..5)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}")
-        evenement = Event.create(organization_id: @organization.id, start_date: Faker::Date.forward(days: 50), description: ['un super nouvel évènement sportif pour faire parler de la maladie, participez ! ou faites tourner', "retrouvons nous pour échanger autour #{["d'un verre", "d'un déjeuner", "d'un diner", "d'un gouter"].sample}", "Soutenons #{Faker::Name.first_name} pour son évènement et sa campagne, partageons sa page", "Faisons parler de la maladie grâce à cette nouvelle campagne 'virale'", 'Evènement spécial accompagnants', 'Evenements spécial malades', 'Evenements pour tous !!'].sample.capitalize, title: ['Repas des amis', 'Course solidaire', 'Support entre sportifs', 'Meetingpot', 'Sortie Foot', 'Voyage Accompagnants Malades', 'Week end pour les malades', 'Soirée festive', 'Débat', 'Manisfestation pour les malades', 'RDV des accompagnants', 'Prise de Parole'].sample, address_id: Address.all.sample.id)
-        expect(@organization.events.include?(evenement)).to eq(true)
+        @address = Address.create(number: rand(1..15), street: "rue du #{['Général', 'Maréchal', ''].sample} #{Faker::Name.last_name}", zip_code: "#{rand(0..9)}#{rand(0..5)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}")
+        @event = Event.create(organization_id: @organization.id, start_date: Faker::Date.forward(days: 50), description: ['un super nouvel évènement sportif pour faire parler de la maladie, participez ! ou faites tourner', "retrouvons nous pour échanger autour #{["d'un verre", "d'un déjeuner", "d'un diner", "d'un gouter"].sample}", "Soutenons #{Faker::Name.first_name} pour son évènement et sa campagne, partageons sa page", "Faisons parler de la maladie grâce à cette nouvelle campagne 'virale'", 'Evènement spécial accompagnants', 'Evenements spécial malades', 'Evenements pour tous !!'].sample.capitalize, title: ['Repas des amis', 'Course solidaire', 'Support entre sportifs', 'Meetingpot', 'Sortie Foot', 'Voyage Accompagnants Malades', 'Week end pour les malades', 'Soirée festive', 'Débat', 'Manisfestation pour les malades', 'RDV des accompagnants', 'Prise de Parole'].sample, address_id: Address.all.sample.id)
+        expect(@organization.events.include?(@event)).to eq(true)
       end
     end
   end

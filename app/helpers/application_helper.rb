@@ -12,22 +12,22 @@ module ApplicationHelper
 
   def authenticate_admin
     redirect_to root_path unless current_user && current_user.admin == true
-   end
+  end
 
   def authenticate_current_user_or_admin # current_user or admin
     @user = User.find(params[:id])
     unless current_user && (current_user.id == @user.id || current_user.admin == true)
       redirect_to root_path
     end
-    end
+  end
 
   def authenticate_user_assoc
     if current_user
       redirect_to root_path if current_user.organization.nil?
     else
       redirect_to root_path
-     end
-   end
+    end
+  end
 
   def is_remote_ip_known(ip)
     users = User.all
@@ -47,10 +47,10 @@ module ApplicationHelper
 
   def bootstrap_class_for_flash(type)
     case type
-    when 'notice' then 'alert-info'
-    when 'success' then 'alert-success'
-    when 'error' then 'alert-danger'
-    when 'alert' then 'alert-warning'
+      when 'notice' then 'alert-info'
+      when 'success' then 'alert-success'
+      when 'error' then 'alert-danger'
+      when 'alert' then 'alert-warning'
     end
   end
 

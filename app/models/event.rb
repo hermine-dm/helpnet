@@ -33,5 +33,5 @@ class Event < ApplicationRecord
     @organization.followers.each do |follower|
       UserMailer.new_event_email(follower, @organization, self).deliver_now
     end
-    end
+  end
 end

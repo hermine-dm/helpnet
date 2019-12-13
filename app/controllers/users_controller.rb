@@ -33,7 +33,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @address.delete if @address = Address.find(@user.address_id)
     @user.delete
     flash[:alert] = 'Votre compte a été supprimé'
     redirect_to root_path
