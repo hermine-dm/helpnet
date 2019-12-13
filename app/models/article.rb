@@ -16,5 +16,5 @@ class Article < ApplicationRecord
     @organization.followers.each do |follower|
       UserMailer.new_publication_email(follower, @organization, self).deliver_now
     end
-    end
+  end
 end
