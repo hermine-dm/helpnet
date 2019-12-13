@@ -2,14 +2,14 @@
 
 ## The Project
 
-The SLA, well known by the name charcot disease, is amongs all rare sickness the more common one...
+The SLA, well known by the name of charcot disease, is among all rare sicknesses the more common one...
 
 Just in France charcot disease is responsible of :
 - 3 new diagnostics per day
 - 6 000 persons are living with this unhealing disease
 - 1 200 death per year
 
-We've created a website that gathers patients, their friends, family and companions. Also associations that can help, write articles and gather people around events to fight all together around illness. 
+We've created a webapp that gathers patients, their friends, family and companions. Also associations that can help, write articles and gather people around events to fight all together around illness. 
 
 ## How does it work
 
