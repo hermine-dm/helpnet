@@ -3,6 +3,7 @@
 ## The Project
 
 The SLA, well known by the name charcot disease, is amongs all rare sickness the more common one...
+
 Just in France charcot disease is responsible of :
 - 3 new diagnostics per day
 - 6 000 persons are living with this unhealing disease
@@ -13,6 +14,7 @@ We've created a website that gathers patients, their friends, family and compani
 ## How does it work
 
 This app is run on rails 5.2.4 and ruby 2.5.1
+
 Check the Gemfile for more. 
 
 ### For locals only : 
@@ -44,6 +46,7 @@ Enjoy and peace out man !
 
 ### In production
 Yes, you're right it's a hard work to make it work on your local machine, that why it's for locals only. We have a solution for you...guess what it's also available online using Heroku.
+
 Go on https://helpnet-prod.herokuapp.com
 
 ### Technical stuff
