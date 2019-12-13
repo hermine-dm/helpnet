@@ -8,6 +8,7 @@ class Event < ApplicationRecord
 	validates :start_date, presence: true
 	validate :start_in_the_future
 	validate :end_after_start_date
+	after_create :new_event_send
 	extend FriendlyId
   	friendly_id :title, use: :slugged
 
@@ -24,4 +25,10 @@ class Event < ApplicationRecord
 			end
 		end
 	end
+	def new_event_send
+		@organization = Organization.find(self.organization_id)
+		@organization.followers.each do |follower|
+    		UserMailer.new_event_email(follower,@organization,self).deliver_now
+    	end
+  	end
 end
